@@ -10,11 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import com.ninetyseconds.auckland.core.fragment.replaceIn
+import com.stepango.archetype.fragment.replaceIn
 import com.stepango.archetype.action.Args
 import com.stepango.archetype.action.BaseActionHandler
 import com.stepango.archetype.action.argsOf
 import com.stepango.archetype.activity.BaseActivity
+import com.stepango.archetype.di.injector
 import com.trello.navi2.component.NaviFragment
 import io.reactivex.Completable
 
@@ -24,8 +25,8 @@ abstract class BaseFragment<T : ViewDataBinding> : NaviFragment() {
 
     open val actionHandler: BaseActionHandler by lazy {
         object : BaseActionHandler {
-            override fun handleAction(actionId: Number, map: Args) {
-                injector.contextActionsHandler.handleAction(this@BaseFragment.context, actionId, map)
+            override fun handleAction(actionId: Int, map: Args) {
+                injector.mainActionHandler().handleAction(this@BaseFragment.context, actionId, map)
             }
         }
     }

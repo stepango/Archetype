@@ -6,7 +6,7 @@ import android.content.ContextWrapper
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
-import com.ninetyseconds.auckland.core.fragment.replaceIn
+import com.stepango.archetype.fragment.replaceIn
 import com.stepango.archetype.fragment.BaseFragment
 import com.trello.navi2.component.NaviActivity
 
@@ -27,7 +27,7 @@ abstract class BaseActivity : NaviActivity() {
     private fun initActivityState(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             fragment = fragmentProducer()
-            fragment.replaceIn(this, containerId, animated = false)
+            fragment.replaceIn(this, containerId)
         } else {
             fragment = fragmentManager.findFragmentById(containerId) as BaseFragment<*>
         }
