@@ -1,14 +1,6 @@
 package com.ninetyseconds.auckland.core.widget
 
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-
-inline fun <T : ViewGroup.LayoutParams> View.updateLayoutParams(block: (T) -> Unit) {
-    @Suppress("UNCHECKED_CAST")
-    block(layoutParams as T)
-    postOnAnimation { requestLayout() }
-}
 
 fun View.stopAnimation() = apply { clearAnimation(); animate().cancel() }
 fun View.show() = apply { visibility = View.VISIBLE }
@@ -19,7 +11,3 @@ var View.visible: Boolean
     set(value) {
         if (value) show() else gone()
     }
-
-fun TextView.setFlag(flag: Int, enable: Boolean) = apply {
-    paintFlags = if (enable) paintFlags or flag else paintFlags and flag.inv()
-}

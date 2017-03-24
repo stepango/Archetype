@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
 
-</LinearLayout>
+    <data>
+
+        <variable
+            name="vm"
+            type="com.stepango.archetype.player.ui.EpisodesViewModel"
+            />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <include
+            layout="@layout/include_app_bar"
+            bind:title="@{@string/episodes_title}"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            bind:episodesAdapter="@{vm.episodes}"
+            bind:setHasFixedSize="@{true}"
+            bind:useDefaults="@{true}"
+            />
+
+    </LinearLayout>
+</layout>

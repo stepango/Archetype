@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: "io.mironov.smuggler"
 apply plugin: 'kotlin-android'
 
 android {
@@ -26,11 +27,36 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile "io.reactivex.rxjava2:rxjava:2.0.7"
     compile 'com.trello.navi2:navi:2.0'
-    compile "com.stepango.koptional:koptional:1.2.0"
-    compile "com.stepango.rxdatabindings:rxdatabindings:1.0.0"
+    compile("com.stepango.rxdatabindings:rxdatabindings:1.0.0") {
+        exclude group: "com.android.databinding", module: "library"
+        exclude group: "com.android.databinding", module: "baseLibrary"
+        exclude group: "com.android.databinding", module: "adapters"
+    }
 
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    compile("com.android.support:recyclerview-v7:$supportLibVersion") {
+        exclude group: "com.android.support", module: "support-v4"
+    }
+
+    compile("com.github.nitrico.lastadapter:lastadapter:$lastAdapterVersion") {
+        exclude group: "com.android.databinding", module: "library"
+        exclude group: "com.android.databinding", module: "baseLibrary"
+        exclude group: "com.android.databinding", module: "adapters"
+    }
+
+    compile("com.android.databinding:library:$dataBinding") {
+        exclude group: "com.android.support", module: "support-v4"
+    }
+
+    //TODO: remove it and solve version clash problem
+    compile "com.android.support:support-v4:$supportLibVersion"
+
+    compile "com.github.bumptech.glide:glide:$glideVersion"
+    compile "com.github.bumptech.glide:okhttp3-integration:$glideOkHttp@aar"
+
+    kapt "com.android.databinding:compiler:$androidPluginVersion"
     testCompile 'junit:junit:4.12'
+}
+
+kapt {
+    generateStubs = true
 }

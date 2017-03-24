@@ -5,4 +5,4 @@ import io.mironov.smuggler.AutoParcelable
 /**
  * AutoParcelable wrapper
  */
-internal interface AutoSerializable
+interface AutoSerializable : AutoParcelable

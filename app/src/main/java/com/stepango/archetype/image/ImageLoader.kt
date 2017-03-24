@@ -1,4 +1,4 @@
-package com.ninetyseconds.auckland.core.image
+package com.stepango.archetype.image
 
 import android.content.Context
 import android.graphics.Bitmap

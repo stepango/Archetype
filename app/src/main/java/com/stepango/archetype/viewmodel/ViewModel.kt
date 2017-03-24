@@ -2,16 +2,12 @@ package com.ninetyseconds.auckland.core.viewmodel
 
 import android.databinding.ObservableBoolean
 import android.os.Parcelable
-import com.ninetyseconds.auckland.aa.ArgsHolder
-import com.ninetyseconds.auckland.core.bundle.ViewModelStateStub
 import com.ninetyseconds.auckland.core.bundle.putState
-import com.ninetyseconds.auckland.core.rx.CompositeDisposableHolder
-import com.ninetyseconds.auckland.core.rx.CompositeDisposableHolderImpl
-import com.ninetyseconds.auckland.core.toast.Toaster
-import com.ninetyseconds.auckland.di.Injector
-import com.ninetyseconds.auckland.di.lazyInject
-import com.ninetyseconds.auckland.marketplace.Args
-import com.ninetyseconds.auckland.marketplace.argsOf
+import com.stepango.archetype.data.AutoSerializable
+import com.stepango.archetype.di.Injector
+import com.stepango.archetype.logger.logger
+import com.stepango.archetype.rx.CompositeDisposableComponent
+import com.stepango.archetype.rx.CompositeDisposableComponentImpl
 import com.trello.navi2.Event
 import com.trello.navi2.NaviComponent
 import com.trello.navi2.rx.RxNavi
@@ -25,11 +21,9 @@ private val onNextStub: (Any) -> Unit = {}
 private val onErrorStub: (Throwable) -> Unit = { Injector().logger.e(it, "On error not implemented") }
 private val onCompleteStub: () -> Unit = {}
 
-interface ViewModel : NaviComponent, ArgsHolder, CompositeDisposableHolder, LoaderHolder {
+interface ViewModel : NaviComponent, CompositeDisposableComponent, LoaderHolder {
 
-    val toaster: Toaster
-
-    override fun args(): Args
+    //    val toaster: Toaster
 
     fun <T : Any> Observable<T>.bindSubscribe(
             onNext: (T) -> Unit = onNextStub,
@@ -83,29 +77,23 @@ class LoaderHolderImpl(
 class ViewModelImpl(
         naviComponent: NaviComponent,
         event: Event<*> = Event.DETACH,
-        inline val args: Args = argsOf(),
-        inline val state: Parcelable = ViewModelStateStub.INSTANCE
+        inline val state: Parcelable = object : AutoSerializable {}
 ) :
         ViewModel,
         NaviComponent by naviComponent,
-        CompositeDisposableHolder by CompositeDisposableHolderImpl(),
+        CompositeDisposableComponent by CompositeDisposableComponentImpl(),
         LoaderHolder by LoaderHolderImpl() {
 
-    override val toaster by lazyInject { toaster }
+    //    override val toaster by lazyInject { toaster }
 
     init {
         observe(event).bindSubscribe(onNext = { resetCompositeDisposable() })
         observe(Event.SAVE_INSTANCE_STATE).bindSubscribe(onNext = { it.putState(state) })
     }
 
-    override fun args(): Args = args
-
     companion object {
         operator fun invoke(naviComponent: NaviComponent)
                 = ViewModelImpl(naviComponent = naviComponent)
-
-        operator fun invoke(naviComponent: NaviComponent, args: Args)
-                = ViewModelImpl(naviComponent = naviComponent, args = args)
 
         operator fun invoke(naviComponent: NaviComponent, event: Event<*>)
                 = ViewModelImpl(naviComponent = naviComponent, event = event)

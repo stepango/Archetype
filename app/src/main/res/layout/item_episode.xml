@@ -2,35 +2,31 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     >
 
     <data>
 
         <variable
-            name="vm"
-            type="com.stepango.archetype.player.ui.EpisodesViewModel"
+            name="item"
+            type="com.stepango.archetype.player.ui.EpisodesWrapper"
             />
 
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         >
 
-        <include
-            layout="@layout/include_app_bar"
-            bind:title="@{@string/episodes_title}"
-            />
-
-        <android.support.v7.widget.RecyclerView
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            bind:opportunitiesAdapter="@{vm.episodes}"
-            bind:setHasFixedSize="@{true}"
-            bind:space="@{@dimen/grid_size_x1}"
-            bind:useDefaults="@{true}"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="16sp"
+            bind:text="@{item.name}"
+            tools:text="Name"
             />
 
     </LinearLayout>

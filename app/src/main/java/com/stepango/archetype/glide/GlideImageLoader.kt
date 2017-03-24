@@ -10,11 +10,11 @@ import com.bumptech.glide.load.Transformation
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.FitCenter
-import com.ninetyseconds.auckland.core.image.CircleBorderTransformation
-import com.ninetyseconds.auckland.core.image.ColorFilterTransformation
-import com.ninetyseconds.auckland.core.image.CropCircleTransformation
-import com.ninetyseconds.auckland.core.image.ImageLoader
 import com.ninetyseconds.auckland.core.util.dp
+import com.stepango.archetype.image.CircleBorderTransformation
+import com.stepango.archetype.image.ColorFilterTransformation
+import com.stepango.archetype.image.CropCircleTransformation
+import com.stepango.archetype.image.ImageLoader
 import java.util.ArrayList
 
 class GlideImageLoader : ImageLoader {

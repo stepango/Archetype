@@ -1,15 +1,13 @@
-package com.ninetyseconds.auckland.core.databindings
+package com.stepango.archetype.databindings
 
 import android.databinding.BindingAdapter
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.OrientationHelper
 import android.support.v7.widget.RecyclerView
-import com.ninetyseconds.auckland.R
-import com.ninetyseconds.auckland.core.recycler.SpaceItemDecoration
-import com.ninetyseconds.auckland.core.util.listColumnsCount
+import com.stepango.archetype.R
+import com.stepango.archetype.widget.SpaceItemDecoration
 
 @BindingAdapter(
         "useDefaults",
@@ -24,34 +22,8 @@ fun useDefaults(
     view.clipToPadding = false
     view.apply {
         itemAnimator = DefaultItemAnimator()
-        val columnsCount = context.listColumnsCount(compact)
-        GridLayoutManager(context, columnsCount)
-                .apply {
-                    spanSizeLookup = SpanSizeLookupImpl(view, columnsCount).apply { isSpanIndexCacheEnabled = true }
-                    layoutManager = this
-                }
     }
-}
-
-@BindingAdapter("chatView")
-fun chatView(view: RecyclerView, chatView: Boolean) {
-    if (!chatView) return
-    view.apply {
-        clipToPadding = false
-        itemAnimator = DefaultItemAnimator()
-        layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true)
-    }
-}
-
-class SpanSizeLookupImpl(val view: RecyclerView, val columnsCount: Int) : GridLayoutManager.SpanSizeLookup() {
-    override fun getSpanSize(position: Int): Int {
-        val itemViewType = view.adapter.getItemViewType(position)
-        return when (itemViewType) {
-            R.layout.item_project     -> 1
-            R.layout.item_opportunity -> 1
-            else                      -> columnsCount
-        }
-    }
+    view.layoutManager = LinearLayoutManager(view.context)
 }
 
 @BindingAdapter("space")

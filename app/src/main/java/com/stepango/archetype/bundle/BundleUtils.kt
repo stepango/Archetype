@@ -2,9 +2,8 @@ package com.ninetyseconds.auckland.core.bundle
 
 import android.os.Bundle
 import android.os.Parcelable
-import com.ninetyseconds.auckland.core.hack.AutoSerializable
-import com.ninetyseconds.auckland.core.log.d
-import com.ninetyseconds.auckland.core.log.logger
+import com.stepango.archetype.logger.d
+import com.stepango.archetype.logger.logger
 
 interface BundleFactory {
     fun newBundle(): Bundle
@@ -28,14 +27,7 @@ inline fun <reified T : Parcelable> Bundle?.extract(defaultValueProducer: () -> 
 }
 
 fun <T : Parcelable> Bundle.putState(value: T) {
-    if (value is ViewModelStateStub) return
     val name = value::class.java.name
     putParcelable(name, value)
     logger.d { "State:: saved $name" }
-}
-
-data class ViewModelStateStub(@Transient val ignore: Boolean = true) : AutoSerializable {
-    companion object {
-        val INSTANCE = ViewModelStateStub()
-    }
 }
