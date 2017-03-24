@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <variable
+            name="title"
+            type="String"
+            />
+
+        <variable
+            name="menu"
+            type="int"
+            />
+
+        <variable
+            name="data"
+            type="com.ninetyseconds.auckland.aa.ArgsHolder"
+            />
+
+    </data>
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        style="@style/TopContainer"
+        >
+
+        <android.support.v7.widget.Toolbar
+            style="@style/ToolbarStyle.Navigation"
+            app:layout_collapseMode="pin"
+            bind:menuActionsData="@{data::args}"
+            bind:inflateMenu="@{menu}"
+            bind:title="@{title}"
+            bind:upOnNavigateAction="@{true}"
+            tools:title="End-to-end"
+            />
+
+    </android.support.design.widget.AppBarLayout>
+</layout>
