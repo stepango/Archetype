@@ -1,13 +1,15 @@
-package com.ninetyseconds.auckland.core.viewmodel
+package com.stepango.archetype.viewmodel
 
 import android.databinding.ObservableBoolean
 import android.os.Parcelable
-import com.ninetyseconds.auckland.core.bundle.putState
+import com.stepango.archetype.bundle.putState
 import com.stepango.archetype.data.AutoSerializable
-import com.stepango.archetype.di.Injector
 import com.stepango.archetype.logger.logger
+import com.stepango.archetype.player.di.Injector
+import com.stepango.archetype.player.di.lazyInject
 import com.stepango.archetype.rx.CompositeDisposableComponent
 import com.stepango.archetype.rx.CompositeDisposableComponentImpl
+import com.stepango.archetype.ui.Toaster
 import com.trello.navi2.Event
 import com.trello.navi2.NaviComponent
 import com.trello.navi2.rx.RxNavi
@@ -23,7 +25,7 @@ private val onCompleteStub: () -> Unit = {}
 
 interface ViewModel : NaviComponent, CompositeDisposableComponent, LoaderHolder {
 
-    //    val toaster: Toaster
+    val toaster: Toaster
 
     fun <T : Any> Observable<T>.bindSubscribe(
             onNext: (T) -> Unit = onNextStub,
@@ -84,7 +86,7 @@ class ViewModelImpl(
         CompositeDisposableComponent by CompositeDisposableComponentImpl(),
         LoaderHolder by LoaderHolderImpl() {
 
-    //    override val toaster by lazyInject { toaster }
+    override val toaster by lazyInject { toaster() }
 
     init {
         observe(event).bindSubscribe(onNext = { resetCompositeDisposable() })

@@ -3,4 +3,5 @@
 
     <!--Episodes-->
     <string name="episodes_title">Episodes</string>
+    <string name="episodes_error_loading">Error loading episodes</string>
 </resources>

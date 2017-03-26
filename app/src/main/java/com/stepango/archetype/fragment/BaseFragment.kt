@@ -10,12 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import com.stepango.archetype.fragment.replaceIn
 import com.stepango.archetype.action.Args
 import com.stepango.archetype.action.BaseActionHandler
 import com.stepango.archetype.action.argsOf
 import com.stepango.archetype.activity.BaseActivity
-import com.stepango.archetype.di.injector
+import com.stepango.archetype.player.di.injector
 import com.trello.navi2.component.NaviFragment
 import io.reactivex.Completable
 

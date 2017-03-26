@@ -2,7 +2,7 @@ package com.stepango.archetype.databindings
 
 import android.databinding.BindingAdapter
 import android.view.View
-import com.ninetyseconds.auckland.core.widget.visible
+import com.stepango.archetype.ui.visible
 
 @BindingAdapter("visible")
 fun visible(v: View, visible: Boolean) {

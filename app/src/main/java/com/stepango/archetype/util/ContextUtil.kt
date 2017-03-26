@@ -1,4 +1,4 @@
-package com.ninetyseconds.auckland.core.util
+package com.stepango.archetype.util
 
 import android.app.Activity
 import android.content.Context

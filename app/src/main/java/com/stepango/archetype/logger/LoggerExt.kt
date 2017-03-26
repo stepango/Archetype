@@ -1,6 +1,6 @@
 package com.stepango.archetype.logger
 
-import com.stepango.archetype.di.lazyInject
+import com.stepango.archetype.player.di.lazyInject
 
 val loggerImpl by lazyInject { logger }
 

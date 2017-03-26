@@ -1,4 +1,4 @@
-package com.ninetyseconds.auckland.core.databindings
+package com.stepango.archetype.databindings
 
 import android.databinding.BindingAdapter
 import android.view.View

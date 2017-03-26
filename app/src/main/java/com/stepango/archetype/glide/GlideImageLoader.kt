@@ -1,4 +1,4 @@
-package com.ninetyseconds.auckland.core.glide
+package com.stepango.archetype.glide
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -10,11 +10,11 @@ import com.bumptech.glide.load.Transformation
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.FitCenter
-import com.ninetyseconds.auckland.core.util.dp
 import com.stepango.archetype.image.CircleBorderTransformation
 import com.stepango.archetype.image.ColorFilterTransformation
 import com.stepango.archetype.image.CropCircleTransformation
 import com.stepango.archetype.image.ImageLoader
+import com.stepango.archetype.util.dp
 import java.util.ArrayList
 
 class GlideImageLoader : ImageLoader {

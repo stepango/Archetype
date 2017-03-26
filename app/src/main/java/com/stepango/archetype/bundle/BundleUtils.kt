@@ -1,4 +1,4 @@
-package com.ninetyseconds.auckland.core.bundle
+package com.stepango.archetype.bundle
 
 import android.os.Bundle
 import android.os.Parcelable

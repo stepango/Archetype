@@ -1,4 +1,4 @@
-package com.ninetyseconds.auckland.core.glide
+package com.stepango.archetype.glide
 
 import android.content.Context
 import android.graphics.Bitmap

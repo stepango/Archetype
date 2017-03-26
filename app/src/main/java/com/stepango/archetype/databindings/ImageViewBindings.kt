@@ -1,11 +1,11 @@
-package com.ninetyseconds.auckland.core.databindings
+package com.stepango.archetype.databindings
 
 import android.databinding.BindingAdapter
 import android.graphics.Color
 import android.support.annotation.ColorRes
 import android.support.annotation.DrawableRes
 import android.widget.ImageView
-import com.stepango.archetype.di.Injector
+import com.stepango.archetype.player.di.Injector
 
 @BindingAdapter(value = *arrayOf(
         "imageUrl",

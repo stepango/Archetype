@@ -1,4 +1,4 @@
-package com.ninetyseconds.auckland.core.widget
+package com.stepango.archetype.ui
 
 import android.view.View
 

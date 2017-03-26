@@ -7,7 +7,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.OrientationHelper
 import android.support.v7.widget.RecyclerView
 import com.stepango.archetype.R
-import com.stepango.archetype.widget.SpaceItemDecoration
+import com.stepango.archetype.ui.SpaceItemDecoration
 
 @BindingAdapter(
         "useDefaults",

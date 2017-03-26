@@ -1,4 +1,4 @@
-package com.ninetyseconds.auckland.core.recycler
+package com.stepango.archetype.ui
 
 import android.support.v7.widget.RecyclerView
 import com.github.nitrico.lastadapter.LastAdapter

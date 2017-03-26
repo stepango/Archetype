@@ -10,6 +10,8 @@ buildscript {
     ext.glideOkHttp = "1.4.0"
     ext.lastAdapterVersion = "2.0.0"
     ext.dataBinding = "1.3.1"
+    ext.okhttpVersion = "3.6.0"
+    ext.retrofitVersion = "2.2.0"
 
     repositories {
         jcenter()

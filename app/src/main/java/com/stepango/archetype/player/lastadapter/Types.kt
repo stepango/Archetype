@@ -1,4 +1,4 @@
-package com.ninetyseconds.auckland.lastadapter
+package com.stepango.archetype.lastadapter
 
 import com.github.nitrico.lastadapter.Type
 import com.stepango.archetype.R
