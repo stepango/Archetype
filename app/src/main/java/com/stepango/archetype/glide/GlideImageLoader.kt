@@ -8,10 +8,7 @@ import com.bumptech.glide.GenericRequestBuilder
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.Transformation
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.FitCenter
-import com.stepango.archetype.image.CircleBorderTransformation
-import com.stepango.archetype.image.ColorFilterTransformation
 import com.stepango.archetype.image.CropCircleTransformation
 import com.stepango.archetype.image.ImageLoader
 import com.stepango.archetype.util.dp
@@ -40,7 +37,6 @@ class GlideImageLoader : ImageLoader {
 
 
         private fun buildDrawableRequest(ctx: Context) = makeRequest(ctx).apply {
-            if (animate) crossFade()
             applyTransformations(ctx).apply { if (isNotEmpty()) bitmapTransform(*this) }
         }
 
@@ -57,12 +53,9 @@ class GlideImageLoader : ImageLoader {
             val transformations: MutableList<Transformation<Bitmap>> = ArrayList()
             if (placeholderId > 0) placeholder(ContextCompat.getDrawable(ctx, placeholderId))
             if (!isAsCircle) {
-                if (centerCrop) transformations += CenterCrop(ctx)
-                else transformations += FitCenter(ctx)
+                transformations += FitCenter(ctx)
             }
-            colorFilter?.let { transformations += ColorFilterTransformation(ctx, it) }
             if (isAsCircle) transformations += CropCircleTransformation(ctx)
-            if (borderParams != null) transformations += CircleBorderTransformation(ctx, borderParams!!.width, borderParams!!.color)
             return transformations.toTypedArray()
         }
     }

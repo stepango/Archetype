@@ -32,10 +32,6 @@ interface ImageLoader {
      */
     abstract class Request(protected var url: String? = null, @DrawableRes protected var drawableId: Int = 0) {
         protected var isAsCircle: Boolean = false
-        protected var borderParams: BorderRequestParams? = null
-        protected var animate = false
-        protected var centerCrop = true
-        protected var colorFilter: Int? = null
         @DrawableRes protected var placeholderId: Int = 0
         @DrawableRes protected var errorId: Int = 0
 
@@ -47,22 +43,8 @@ interface ImageLoader {
 
         fun asCircle(): Request = apply { isAsCircle = true }
 
-        fun animate(): Request = apply { animate = true }
-
-        fun fitCenter(): Request = apply { centerCrop = false }
-
-        fun colorFilter(color: Int) = apply { colorFilter = color }
-
-        fun border(color: Int, width: Float) = apply { borderParams = BorderRequestParams(color, width) }
-
         abstract fun into(imageView: ImageView)
 
         abstract fun bitmap(context: Context, width: Float, height: Float): Bitmap
     }
-
-    class BorderRequestParams(
-            val color: Int,
-            val width: Float
-    )
-
 }

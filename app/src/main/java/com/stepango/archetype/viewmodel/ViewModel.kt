@@ -3,7 +3,6 @@ package com.stepango.archetype.viewmodel
 import android.databinding.ObservableBoolean
 import android.os.Parcelable
 import com.stepango.archetype.bundle.putState
-import com.stepango.archetype.data.AutoSerializable
 import com.stepango.archetype.logger.logger
 import com.stepango.archetype.player.di.Injector
 import com.stepango.archetype.player.di.lazyInject
@@ -13,6 +12,7 @@ import com.stepango.archetype.ui.Toaster
 import com.trello.navi2.Event
 import com.trello.navi2.NaviComponent
 import com.trello.navi2.rx.RxNavi
+import io.mironov.smuggler.AutoParcelable
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Maybe
@@ -79,7 +79,7 @@ class LoaderHolderImpl(
 class ViewModelImpl(
         naviComponent: NaviComponent,
         event: Event<*> = Event.DETACH,
-        inline val state: Parcelable = object : AutoSerializable {}
+        inline val state: Parcelable = object : AutoParcelable {}
 ) :
         ViewModel,
         NaviComponent by naviComponent,
