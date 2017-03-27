@@ -69,7 +69,7 @@ fun episodesAdapter(view: RecyclerView, list: List<EpisodesWrapper>) {
 }
 
 class EpisodesWrapper(model: EpisodesModel) : StableId {
-    override val stableId: Long = model.id
+    override val stableId: Long = model.hashCode().toLong()
     val name: String = model.name
 }
 

@@ -1,15 +1,17 @@
 package com.stepango.archetype.player.network.get
 
 import com.stepango.archetype.player.db.model.EpisodesModel
+import com.stepango.archetype.player.di.lazyInject
 import io.reactivex.Single
+import io.reactivex.schedulers.Schedulers.io
 
 class EpisodesRequest {
-    fun operation(): Single<List<EpisodesModel>> = Single.just(listOf(
-            EpisodesModel(0, "aaa"),
-            EpisodesModel(1, "aab"),
-            EpisodesModel(2, "abb"),
-            EpisodesModel(3, "bbb"),
-            EpisodesModel(4, "bbc")
-    ))
+
+    val api by lazyInject { apiService() }
+
+    fun operation(): Single<List<EpisodesModel>> = api.feed()
+            .map { it.channel.item.map { feedItem -> EpisodesModel(feedItem.title) } }
+            .subscribeOn(io())
+
 }
 

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: "io.mironov.smuggler"
 apply plugin: 'kotlin-android'
+apply plugin: "kotlin-kapt"
 
 android {
     compileSdkVersion 25
@@ -51,10 +52,16 @@ dependencies {
     compile "com.android.support:support-v4:$supportLibVersion"
 
     compile "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    testCompile "com.squareup.okhttp3:mockwebserver:$okhttpVersion"
     compile "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    compile("com.squareup.retrofit2:converter-simplexml:$retrofitVersion") {
+        exclude module: 'stax'
+        exclude module: 'stax-api'
+        exclude module: 'xpp3'
+    }
 
     compile "com.github.bumptech.glide:glide:$glideVersion"
     compile "com.github.bumptech.glide:okhttp3-integration:$glideOkHttp@aar"

@@ -9,6 +9,6 @@ import io.reactivex.Single
 interface EpisodesModelRepo : PullableKeyValueRepo<Long, EpisodesModel> {
     override fun pull(keys: List<Long>): Single<List<EpisodesModel>> = EpisodesRequest()
             .operation()
-            .flatMap { save(it.associateBy({ it.id }, { it })) }
+            .flatMap { save(it.associateBy({ it.hashCode().toLong() }, { it })) }
             .map { it.values.toList() }
 }
