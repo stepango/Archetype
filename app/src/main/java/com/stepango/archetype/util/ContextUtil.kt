@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.DisplayMetrics
-import com.stepango.archetype.action.Args
 import com.stepango.archetype.activity.asBaseActivity
 import io.reactivex.Completable
 
@@ -16,14 +15,6 @@ fun Activity.screenWidth(): Int {
     val metrics = DisplayMetrics()
     this.windowManager.defaultDisplay.getMetrics(metrics)
     return metrics.widthPixels
-}
-
-@Throws(IllegalArgumentException::class)
-fun Args.hasKeysGuarg(vararg params: String): Unit {
-    val map = params.map { it to get(it) }
-    if (!map.all { it.second != null }) {
-        throw IllegalArgumentException("${map.filter { it.second == null }}")
-    }
 }
 
 fun setResultAndFinish(bundle: Bundle, context: Context): Completable = Completable.fromCallable {
