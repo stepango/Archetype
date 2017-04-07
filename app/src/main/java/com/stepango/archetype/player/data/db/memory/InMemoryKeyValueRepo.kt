@@ -1,4 +1,4 @@
-package com.stepango.archetype.player.db.memory
+package com.stepango.archetype.player.data.db.memory
 
 import android.databinding.ObservableArrayMap
 import android.databinding.ObservableMap.OnMapChangedCallback
@@ -40,6 +40,7 @@ class InMemoryKeyValueRepo<Key : Any, Value : Any>(val valClass: KClass<Value>) 
         }
         map.addOnMapChangedCallback(observer)
         s.setCancellable { map.removeOnMapChangedCallback(observer) }
+        map[key]?.let { s.onNext(it.toOptional()) }
     }
 
     override fun save(data: Map<Key, Value>): Single<Map<Key, Value>> {

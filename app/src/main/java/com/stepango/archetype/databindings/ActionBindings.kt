@@ -9,6 +9,6 @@ import com.stepango.archetype.player.di.Injector
 fun performAction(v: View, actionId: Int, args: Args?) {
     args ?: return
     v.setOnClickListener {
-        Injector().mainActionHandler().handleAction(v.context, actionId, args)
+        Injector().contextActionsHandler().handleAction(v.context, actionId, args)
     }
 }

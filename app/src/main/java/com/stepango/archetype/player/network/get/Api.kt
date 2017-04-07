@@ -1,6 +1,6 @@
 package com.stepango.archetype.player.network.get
 
-import com.stepango.archetype.player.db.response.feed.Rss
+import com.stepango.archetype.player.data.db.response.feed.Rss
 import io.reactivex.Single
 import retrofit2.http.GET
 

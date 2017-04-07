@@ -8,7 +8,7 @@
 
         <variable
             name="vm"
-            type="com.stepango.archetype.player.ui.EpisodesViewModel"
+            type="com.stepango.archetype.player.ui.episodes.EpisodesViewModel"
             />
 
     </data>

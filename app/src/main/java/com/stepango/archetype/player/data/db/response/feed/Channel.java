@@ -1,4 +1,4 @@
-package com.stepango.archetype.player.db.response.feed;
+package com.stepango.archetype.player.data.db.response.feed;
 
 
 import org.simpleframework.xml.Element;

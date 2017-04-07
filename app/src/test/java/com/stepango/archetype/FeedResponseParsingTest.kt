@@ -1,6 +1,6 @@
 package com.stepango.archetype
 
-import com.stepango.archetype.player.db.response.feed.Rss
+import com.stepango.archetype.player.data.db.response.feed.Rss
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.Assert
@@ -56,7 +56,8 @@ class FeedResponseParsingTest {
         val response = call.execute()
         val body = response.body()
         Assert.assertEquals("Подкасты Android Dev", body.channel.title)
-        Assert.assertEquals("Интересные материалы для Android-разработчика #63", body.channel.item[0].title)
+        val item = body.channel.item[0]
+        Assert.assertEquals("Интересные материалы для Android-разработчика #63", item.title)
     }
 
     @Throws(IOException::class)

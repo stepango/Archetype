@@ -1,17 +1,16 @@
-package com.stepango.archetype.player.ui
+package com.stepango.archetype.player.ui.episodes
 
 import android.databinding.BindingAdapter
 import android.databinding.ObservableField
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import com.github.nitrico.lastadapter.LastAdapter
-import com.github.nitrico.lastadapter.StableId
 import com.stepango.archetype.R
 import com.stepango.archetype.activity.BaseActivity
 import com.stepango.archetype.databinding.ScreenEpisodesBinding
 import com.stepango.archetype.fragment.BaseFragment
 import com.stepango.archetype.lastadapter.episodeItemType
-import com.stepango.archetype.player.db.model.EpisodesModel
+import com.stepango.archetype.player.data.wrappers.EpisodesWrapper
 import com.stepango.archetype.player.di.lazyInject
 import com.stepango.archetype.rx.filterNotEmpty
 import com.stepango.archetype.ui.swap
@@ -47,14 +46,12 @@ class EpisodesViewModel(
                 .filterNotEmpty()
                 .map { it.map(::EpisodesWrapper) }
                 .setTo(episodes) { it }
-                //TODO where we should pass subscribeOn io?
                 .bindSubscribe()
         refreshItems()
     }
 
     private fun refreshItems() {
         episodesRepo.pull()
-                //TODO where we should pass subscribeOn io?
                 .bindSubscribe(
                         onError = { toaster.showError(it, R.string.episodes_error_loading) }
                 )
@@ -67,9 +64,3 @@ fun episodesAdapter(view: RecyclerView, list: List<EpisodesWrapper>) {
             .type { episodeItemType }
             .swap(view)
 }
-
-class EpisodesWrapper(model: EpisodesModel) : StableId {
-    override val stableId: Long = model.hashCode().toLong()
-    val name: String = model.name
-}
-
