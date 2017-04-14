@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Archetype</string>
+
+    <!--Episodes-->
+    <string name="episodes_title">Episodes</string>
+    <string name="episodes_error_loading">Error loading episodes</string>
+
+    <!--Activity invocation-->
+    <string name="activity_not_found_error_text">"No suitable Applications found"</string>
+    <string name="choose_action">Choose action</string>
+
 </resources>

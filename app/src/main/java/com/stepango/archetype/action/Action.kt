@@ -1,25 +1,29 @@
 package com.stepango.archetype.action
 
 import android.content.Context
+import com.stepango.archetype.R
 import io.reactivex.Completable
 
-interface ActionHandler {
-    fun handleAction(context: Context, actionId: Int, map: Args = argsOf())
-    fun createAction(context: Context, actionId: Int, map: Args): Completable
-    fun stopActions(): Completable = Completable.complete()
-}
-
-interface BaseActionHandler {
-    fun handleAction(actionId: Int, map: Args = argsOf())
-}
-
-interface ContextAction {
-
+interface Action<in T> {
     fun isDisposable() = true
+    fun invoke(context: T, args: Args): Completable
+}
+
+interface ContextAction : Action<Context> {
+
+    val id: Number
 
     /**
      * Action should perform with [Context]
      */
-    operator fun invoke(context: Context, args: Args = argsOf()): Completable
+    override operator fun invoke(context: Context, args: Args): Completable
+
+}
+
+class IdleAction : ContextAction {
+
+    override val id = R.id.action_idle
+
+    override fun invoke(context: Context, args: Args): Completable = Completable.complete()
 
 }

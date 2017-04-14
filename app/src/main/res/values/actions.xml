@@ -2,4 +2,6 @@
 <resources>
 
     <item name="action_idle" type="id"/>
+    <item name="action_show_episode" type="id"/>
+
 </resources>

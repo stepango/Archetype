@@ -1,8 +1,8 @@
 package com.stepango.archetype.logger
 
-import com.stepango.archetype.di.lazyInject
+import com.stepango.archetype.player.di.lazyInject
 
-val loggerImpl by lazyInject { logger }
+val loggerImpl by lazyInject { logger() }
 
 @Suppress("unused") val Any.logger: Logger
     get() = loggerImpl
