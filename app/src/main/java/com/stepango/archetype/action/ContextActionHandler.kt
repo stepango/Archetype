@@ -28,7 +28,6 @@ class ContextActionHandler(
         logger.d { "Action:: $actionName" }
         val observer = observer(actionName)
         val action = createAction(actionId)
-        //        if (action.keys().isNotEmpty()) args.hasKeysGuarg(*action.keys())
         action.invoke(context, args)
                 .subscribeOn(io())
                 .subscribeWith(observer)

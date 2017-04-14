@@ -1,562 +1,1646 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom"
-     xmlns:content="http://purl.org/rss/1.0/modules/content/"
-     xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
-     xmlns:wfw="http://wellformedweb.org/CommentAPI/"
-     version="2.0"
->
-
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
     <channel>
-        <title>Подкасты Android Dev</title>
-        <atom:link href="http://androiddev.apptractor.ru/feed/" rel="self"
-                   type="application/rss+xml"/>
-        <link>http://androiddev.apptractor.ru</link>
-        <description>Android Dev - подкаст о разработке под Android и всем, что с этим связано
+        <title>Android Dev Подкаст</title>
+        <link>http://apptractor.ru/AndroidDev/</link>
+        <description>Android Dev - подкаст о разработке под Android и всем, что с этим связано.
+            Гости программы - разработчики с большим опытом и стажем, которые помнят Android, когда
+            он еще был версии 1.5, и за годы написали приложения для миллионов пользователей по
+            всему миру. В подкасте мы говорим о разработке во всех ее аспектах, от нарезки дизайна
+            до сборки собственных прошивок. Каждый выпуск посвящен не только последним новостям из
+            мира Android разработчиков, но и определенной теме, с которой сталкивается каждый из
+            нас, в процессе создания приложений.
         </description>
-        <lastBuildDate>Thu, 23 Mar 2017 18:32:02 +0000</lastBuildDate>
-        <language>ru-RU</language>
-        <sy:updatePeriod>hourly</sy:updatePeriod>
-        <sy:updateFrequency>1</sy:updateFrequency>
-        <generator>https://wordpress.org/?v=4.7.3</generator>
-        <item>
-            <title>Интересные материалы для Android-разработчика #63</title>
-            <link>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-63/
-            </link>
-            <comments>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-63/#respond
-            </comments>
-            <pubDate>Mon, 20 Mar 2017 18:47:21 +0000</pubDate>
-            <dc:creator><![CDATA[AppTractor]]></dc:creator>
-            <category><![CDATA[Новости]]></category>
-            <category><![CDATA[дайджест]]></category>
+        <lastBuildDate>Tue, 04 Apr 2017 21:01:24 +0300</lastBuildDate>
+        <generator>Денис Неклюдов</generator>
 
-            <guid isPermaLink="false">http://androiddev.apptractor.ru/?p=483</guid>
-            <description><![CDATA[<p><img width="1139" height="854" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-e-WMgW5PyG90-EpaQ95zog.jpeg" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-e-WMgW5PyG90-EpaQ95zog.jpeg 1139w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-e-WMgW5PyG90-EpaQ95zog-300x225.jpeg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-e-WMgW5PyG90-EpaQ95zog-768x576.jpeg 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-e-WMgW5PyG90-EpaQ95zog-1024x768.jpeg 1024w" sizes="(max-width: 1139px) 100vw, 1139px" />20 марта: Как создать продукт, любимый миллионами и купленный Google: история Firebase Как подписать ваше гибридное мобильное приложение для размещения в Google Play Android Dev Sources: ресурсы по Android-разработке Аутентификация по отпечатку пальца 21 марта: Вышел Android O Developer Preview Видео Google Device Day Почему надо Kotlin-изировать вашу Android-разработку Android O функции и API Android Studio 2.4 [&#8230;]</p>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-63/">Интересные материалы для Android-разработчика #63</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></description>
-            <content:encoded><![CDATA[<img width="1139" height="854" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-e-WMgW5PyG90-EpaQ95zog.jpeg" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-e-WMgW5PyG90-EpaQ95zog.jpeg 1139w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-e-WMgW5PyG90-EpaQ95zog-300x225.jpeg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-e-WMgW5PyG90-EpaQ95zog-768x576.jpeg 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-e-WMgW5PyG90-EpaQ95zog-1024x768.jpeg 1024w" sizes="(max-width: 1139px) 100vw, 1139px" /><h3>20 марта:</h3>
-<ul>
-<li><a href="https://hackernoon.com/how-to-build-a-product-loved-by-millions-and-get-acquired-by-google-the-firebase-story-82dab4e3e80c#.fm6n14m44">Как создать продукт, любимый миллионами и купленный Google: история Firebase</a></li>
-<li><a href="https://habrahabr.ru/post/324350/">Как подписать ваше гибридное мобильное приложение для размещения в Google Play</a></li>
-<li><a href="https://github.com/ParaskP7/android-dev-sources">Android Dev Sources: ресурсы по Android-разработке</a></li>
-<li><a href="http://josiassena.com/android-fingerprint-authentication/">Аутентификация по отпечатку пальца</a></li>
-</ul>
-<h3>21 марта:</h3>
-<ul>
-<li><a href="http://apptractor.ru/info/news/vyishel-android-o-developer-preview.html">Вышел Android O Developer Preview</a></li>
-<li><a href="https://habrahabr.ru/company/google/blog/324468/">Видео Google Device Day</a></li>
-<li><a href="https://android.jlelse.eu/why-kotlin-ize-your-android-development-96daece20c1d#.xra99okal">Почему надо Kotlin-изировать вашу Android-разработку</a></li>
-<li><a href="https://developer.android.com/preview/api-overview.html">Android O функции и API</a></li>
-<li><a href="https://androidstudio.googleblog.com/2017/03/android-studio-24-preview-3-is-now.html">Android Studio 2.4 Preview 3</a></li>
-</ul>
-<h3>22 марта:</h3>
-<ul>
-<li><a href="https://android.jlelse.eu/memory-leak-patterns-in-android-4741a7fcb570?source=reading_list---------7-1---------">Модели утечки памяти в Android</a></li>
-<li><a href="https://medium.com/exploring-android/exploring-android-o-notification-channels-94cd274f604c?source=reading_list---------17-2---------">Исследуем Android O: каналы уведомлений</a></li>
-<li><a href="https://www.reddit.com/r/androiddev/comments/60hrpm/the_eng_team_for_android_studio_the_official/">АМА с разработчиками Android Studio</a></li>
-<li><a href="https://androidsrc.wordpress.com/2017/03/22/fastest-way-for-creating-recyclerview-adapter/">Самый быстрый способ создать RecyclerView Adapter </a></li>
-<li><a href="https://developer.android.com/preview/features/autosizing-textview.html">Авторазмер TextViews</a></li>
-</ul>
-<h3>23 марта:</h3>
-<ul>
-<li><a href="https://habrahabr.ru/post/324728/">Шейдер меха на WebGL 2</a></li>
-<li><a href="https://habrahabr.ru/post/323794/">GUID-подобные первичные ключи в SQLite на Android</a></li>
-<li><a href="https://github.com/lurbas/ListItemView">List Item: реализация в материальном дизайне</a></li>
-</ul>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-63/">Интересные материалы для Android-разработчика #63</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></content:encoded>
-            <wfw:commentRss>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-63/feed/
-            </wfw:commentRss>
-            <slash:comments>0</slash:comments>
-        </item>
+
+        <image>
+            <url>http://apptractor.ru/wp-content/uploads/2016/09/AndroidDev.jpg</url>
+            <width>946</width>
+            <height>946</height>
+        </image>
+        <itunes:image>
+            <url>http://apptractor.ru/wp-content/uploads/2016/09/AndroidDev.jpg</url>
+        </itunes:image>
+        <itunes:link rel="image" type="image/jpeg"
+                     href="http://apptractor.ru/wp-content/uploads/2016/09/AndroidDev.jpg"/>
+
+
+        <itunes:explicit>No</itunes:explicit>
+        <itunes:summary>Android Dev - подкаст о разработке под Android и всем, что с этим связано.
+            Гости программы - разработчики с большим опытом и стажем, которые помнят Android, когда
+            он еще был версии 1.5, и за годы написали приложения для миллионов пользователей по
+            всему миру. В подкасте мы говорим о разработке во всех ее аспектах, от нарезки дизайна
+            до сборки собственных прошивок. Каждый выпуск посвящен не только последним новостям из
+            мира Android разработчиков, но и определенной теме, с которой сталкивается каждый из
+            нас, в процессе создания приложений.
+        </itunes:summary>
+        <itunes:subtitle>Android Dev - подкаст о разработке под Android и всем, что с этим
+            связано.
+        </itunes:subtitle>
+        <itunes:author>Денис Неклюдов</itunes:author>
+
+        <itunes:owner>
+            <itunes:email>nekdenis@gmail.com</itunes:email>
+            <itunes:name>Денис Неклюдов</itunes:name>
+        </itunes:owner>
+        <itunes:category text="Technology"/>
+
         <item>
-            <title>Android Dev Подкаст. Выпуск 29. Прощаемся с Jack и бесплатно едем на Google I/O
-                17
-            </title>
+            <title>My Title</title>
+            <link>http://androiddev.apptractor.ru/android-dev-podkast-30/</link>
+            <guid>http://androiddev.apptractor.ru/android-dev-podkast-30/</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Tue, 04 Apr 2017 21:01:24 +0300</pubDate>
+            <description>Динамично меняющийся состав ведущих во время выпуска собрался, чтобы
+                обсудить немного JUnit 5, экраны 16:10, как стать Android-разработчиком.
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Динамично меняющийся состав ведущих во время выпуска собрался, чтобы
+                обсудить немного JUnit 5, экраны 16:10, как стать Android-разработчиком.
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>My Summary</itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>69:39</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="https://my.url" length="50150086" type="my/type"/>
+            <content:encoded><![CDATA[My Content]]></content:encoded>
+        </item>
+
+        <item>
+            <title>Выпуск 29. Прощаемся с Jack и бесплатно едем на Google I/O 17</title>
             <link>http://androiddev.apptractor.ru/android-dev-podkast-29/</link>
-            <comments>http://androiddev.apptractor.ru/android-dev-podkast-29/#comments</comments>
-            <pubDate>Mon, 20 Mar 2017 18:41:14 +0000</pubDate>
-            <dc:creator><![CDATA[AppTractor]]></dc:creator>
-            <category><![CDATA[Подкаст]]></category>
-            <category><![CDATA[I/O]]></category>
-            <category><![CDATA[TensorFlow]]></category>
-            <category><![CDATA[интернет вещей]]></category>
-
-            <guid isPermaLink="false">http://androiddev.apptractor.ru/?p=480</guid>
-            <description><![CDATA[<p><img width="2500" height="1667" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/time.jpg" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/time.jpg 2500w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/time-300x200.jpg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/time-768x512.jpg 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/time-1024x683.jpg 1024w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/time-370x247.jpg 370w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/time-1200x800.jpg 1200w" sizes="(max-width: 2500px) 100vw, 2500px" />Поговорили о свежих релизах, проблемах технических конференций, Firebase, нужно ли получать сертификат Android и уметь пилить backend.</p>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/android-dev-podkast-29/">Android Dev Подкаст. Выпуск 29. Прощаемся с Jack и бесплатно едем на Google I/O 17</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></description>
-            <content:encoded><![CDATA[<img width="2500" height="1667" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/time.jpg" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/time.jpg 2500w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/time-300x200.jpg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/time-768x512.jpg 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/time-1024x683.jpg 1024w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/time-370x247.jpg 370w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/time-1200x800.jpg 1200w" sizes="(max-width: 2500px) 100vw, 2500px" /><p>Поговорили о свежих релизах, проблемах технических конференций, Firebase, нужно ли получать сертификат Android и уметь пилить backend.</p>
-<h2>Содержание</h2>
-<ul>
-<li><a href="https://android-developers.googleblog.com/2017/03/future-of-java-8-language-feature.html"> Отказ от Jack</a></li>
-<li><a href="http://tools.android.com/recent/androidstudio24preview1isnowavailable"> Android Studio 2.4</a></li>
-<li><a href="https://developer.android.com/topic/libraries/support-library/revisions.html#25-3-0"> Новый саппорт</a></li>
-<li><a href="https://www.philosophicalhacker.com/post/why-android-testing-is-so-hard-historical-edition/"> Сложности жизни разработчкика под Android</a></li>
-<li><a href="https://medium.com/@erikhellman/the-rise-of-the-full-stack-native-mobile-app-developer-a0757388bc1b#.78ribl3p3"> Хельман о том, зачем нам знать бэкэнд</a></li>
-<li><a href="https://www.scala-lang.org/blog/2017/03/14/scala-native-0.1-is-here.html"> Новость о Scala Native, а также Kotlin Native</a></li>
-<li><a href="https://www.youtube.com/playlist?list=PLOU2XLYxmsIKGc_NBoIhTn2Qhraji53cv"> Видео с TensorFlow Summit</a></li>
-<li><a href="https://habrahabr.ru/post/316426/">О сертификации разработчиков Android</a></li>
-<li><a href="http://apptractor.ru/learn/kak-proyti-ekzamen-na-assotsiirovannogo-android-razrabotchika.html"> Кратко о сертификации</a></li>
-<li><a href="https://experimentschallenge.withgoogle.com/">Конкурс экспериментов на I/O</a></li>
-</ul>
-<h3>Подрубрика IoT мирок:</h3>
-<ul>
-<li><a href="https://github.com/amitshekhariitbhu/awesome-android-things"> Сборник полезных ссылок</a></li>
-<li><a href="https://github.com/euler2dot7/android_things_robot">Простой и интересный робот-машина</a></li>
-<li><a href="https://github.com/androidthings/sample-tensorflow-imageclassifier"> TensorFlow на Android Things</a></li>
-</ul>
-<p><iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/313469525&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe></p>
-<h2>Ведущие</h2>
-<div class="vc_row wpb_row row-fluid"><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner "><div class="wpb_wrapper"></p>
-<p style="text-align: center;"><img class="alignnone wp-image-44 size-thumbnail aligncenter" src="http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-150x150.jpg" alt="denis-1" width="150" height="150" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-150x150.jpg 150w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-300x300.jpg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-32x32.jpg 32w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-50x50.jpg 50w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-64x64.jpg 64w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-96x96.jpg 96w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-128x128.jpg 128w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-266x266.jpg 266w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-115x115.jpg 115w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-100x100.jpg 100w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1.jpg 302w" sizes="(max-width: 150px) 100vw, 150px" /></p>
-<p style="text-align: center;">Денис Неклюдов<br />
-GDE</p>
-<p></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner "><div class="wpb_wrapper"></p>
-<p style="text-align: center;"><img src="http://androiddev.apptractor.ru/wp-content/uploads/2016/10/Image1-150x150.jpg" /></p>
-<p style="text-align: center;">Александр Ефременков<br />
-Яндекс</p>
-<p></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner "><div class="wpb_wrapper"></p>
-<p style="text-align: center;"><img class="alignnone size-thumbnail wp-image-99" src="http://androiddev.apptractor.ru/wp-content/uploads/2016/02/dudakov-150x150.jpg" alt="cap-dudakov" width="150" height="150" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2016/02/dudakov-150x150.jpg 150w, http://androiddev.apptractor.ru/wp-content/uploads/2016/02/dudakov-300x300.jpg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2016/02/dudakov.jpg 301w" sizes="(max-width: 150px) 100vw, 150px" /></p>
-<p style="text-align: center;">Антон Дудаков<br />
-Яндекс</p>
-<p></div></div></div></div>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/android-dev-podkast-29/">Android Dev Подкаст. Выпуск 29. Прощаемся с Jack и бесплатно едем на Google I/O 17</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></content:encoded>
-            <wfw:commentRss>http://androiddev.apptractor.ru/android-dev-podkast-29/feed/
-            </wfw:commentRss>
-            <slash:comments>1</slash:comments>
+            <guid>http://androiddev.apptractor.ru/android-dev-podkast-29/</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Mon, 20 Mar 2017 21:24:47 +0300</pubDate>
+            <description>Поговорили о свежих релизах, проблемах технических конференций, Firebase,
+                нужно ли получать сертификат Android и уметь пилить backend.
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Поговорили о свежих релизах, проблемах технических конференций,
+                Firebase, нужно ли получать сертификат Android и уметь пилить backend.
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Поговорили о свежих релизах, проблемах технических конференций,
+                Firebase, нужно ли получать сертификат Android и уметь пилить backend.
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>67:58</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="https://apptractor-podcast.podster.fm/133/download/audio.mp3"
+                       length="48930063" type="audio/mpeg"/>
+            <content:encoded>
+                <![CDATA[<p>Поговорили о свежих релизах, проблемах технических конференций, Firebase, нужно ли получать сертификат Android и уметь пилить backend.</p>
+			<h2>Содержание</h2>
+			<ul>
+				<li><a href="https://android-developers.googleblog.com/2017/03/future-of-java-8-language-feature.html"> Отказ от Jack</a></li>
+				<li><a href="http://tools.android.com/recent/androidstudio24preview1isnowavailable"> Android Studio 2.4</a></li>
+				<li><a href="https://developer.android.com/topic/libraries/support-library/revisions.html#25-3-0"> Новый саппорт</a></li>
+				<li><a href="https://www.philosophicalhacker.com/post/why-android-testing-is-so-hard-historical-edition/"> Сложности жизни разработчкика под Android</a></li>
+				<li><a href="https://medium.com/@erikhellman/the-rise-of-the-full-stack-native-mobile-app-developer-a0757388bc1b#.78ribl3p3"> Хельман о том, зачем нам знать бэкэнд</a></li>
+				<li><a href="https://www.scala-lang.org/blog/2017/03/14/scala-native-0.1-is-here.html"> Новость о Scala Native, а также Kotlin Native</a></li>
+				<li><a href="https://www.youtube.com/playlist?list=PLOU2XLYxmsIKGc_NBoIhTn2Qhraji53cv"> Видео с TensorFlow Summit</a></li>
+				<li><a href="https://habrahabr.ru/post/316426/">О сертификации разработчиков Android</a></li>
+				<li><a href="http://apptractor.ru/learn/kak-proyti-ekzamen-na-assotsiirovannogo-android-razrabotchika.html"> Кратко о сертификации</a></li>
+				<li><a href="https://experimentschallenge.withgoogle.com/">Конкурс экспериментов на I/O</a></li>
+			</ul>
+			<h3>Подрубрика IoT мирок:</h3>
+			<ul>
+				<li><a href="https://github.com/amitshekhariitbhu/awesome-android-things"> Сборник полезных ссылок</a></li>
+				<li><a href="https://github.com/euler2dot7/android_things_robot">Простой и интересный робот-машина</a></li>
+				<li><a href="https://github.com/androidthings/sample-tensorflow-imageclassifier"> TensorFlow на Android Things</a></li>
+			</ul>
+	]]>
+            </content:encoded>
         </item>
-        <item>
-            <title>Android в Лицах: Clean Architecture: Евгений Мацюк</title>
-            <link>
-                http://androiddev.apptractor.ru/android-v-litsah-clean-architecture-evgeniy-matsyuk/
-            </link>
-            <comments>
-                http://androiddev.apptractor.ru/android-v-litsah-clean-architecture-evgeniy-matsyuk/#respond
-            </comments>
-            <pubDate>Tue, 14 Mar 2017 17:38:29 +0000</pubDate>
-            <dc:creator><![CDATA[AppTractor]]></dc:creator>
-            <category><![CDATA[Новости]]></category>
-            <category><![CDATA[архитектура]]></category>
-            <category><![CDATA[видео]]></category>
 
-            <guid isPermaLink="false">http://androiddev.apptractor.ru/?p=471</guid>
-            <description><![CDATA[<p><img width="2560" height="1600" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/clean_architecture_none_Wallpaper-HD_2560x1600_www.paperhi.com_.jpg" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/clean_architecture_none_Wallpaper-HD_2560x1600_www.paperhi.com_.jpg 2560w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/clean_architecture_none_Wallpaper-HD_2560x1600_www.paperhi.com_-300x188.jpg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/clean_architecture_none_Wallpaper-HD_2560x1600_www.paperhi.com_-768x480.jpg 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/clean_architecture_none_Wallpaper-HD_2560x1600_www.paperhi.com_-1024x640.jpg 1024w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/clean_architecture_none_Wallpaper-HD_2560x1600_www.paperhi.com_-350x220.jpg 350w" sizes="(max-width: 2560px) 100vw, 2560px" />Сегодня в выпуске Евгений Мацюк расскажет, что такое Clean Architecture на Android и как её готовить так, чтобы проблем оставалось как можно меньше.</p>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/android-v-litsah-clean-architecture-evgeniy-matsyuk/">Android в Лицах: Clean Architecture: Евгений Мацюк</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></description>
-            <content:encoded><![CDATA[<img width="2560" height="1600" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/clean_architecture_none_Wallpaper-HD_2560x1600_www.paperhi.com_.jpg" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/clean_architecture_none_Wallpaper-HD_2560x1600_www.paperhi.com_.jpg 2560w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/clean_architecture_none_Wallpaper-HD_2560x1600_www.paperhi.com_-300x188.jpg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/clean_architecture_none_Wallpaper-HD_2560x1600_www.paperhi.com_-768x480.jpg 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/clean_architecture_none_Wallpaper-HD_2560x1600_www.paperhi.com_-1024x640.jpg 1024w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/clean_architecture_none_Wallpaper-HD_2560x1600_www.paperhi.com_-350x220.jpg 350w" sizes="(max-width: 2560px) 100vw, 2560px" /><p>Про архитектуру приложений в Android говорят уже много лет, да никак все не выговорят. Проекты растут, спектр задач расширяется, запаса прочности и заложенных векторов изменений не хватает. Следовательно, опять говорим об архитектуре и опять её совершенствуем. В новом выпуске Евгений Мацюк рассказывает, что такое Clean Architecture на Android и как её готовить так, чтобы проблем оставалось как можно меньше.</p>
-<p><iframe width="770" height="433" src="https://www.youtube.com/embed/mm5oQE3NPSg?feature=oembed" frameborder="0" allowfullscreen></iframe></p>
-<h3>Материалы:</h3>
-<ul>
-<li><a href="http://bit.ly/2lUyHeg">The Clean Architecture от дядюшки Боба</a></li>
-<li><a href="http://bit.ly/2nhh7ld">Fernando Cejas о том, как готовить Clean на Android</a></li>
-<li><a href="http://bit.ly/2mFvo9G">Android Dev Подкаст. Выпуск 2. У меня AsyncTasks и нет MVP</a></li>
-<li><a href="http://bit.ly/2mkTL9Z">Упрощаем навигацию в приложении с Cicerone</a></li>
-<li><a href="http://bit.ly/2nxFSWh">Доклад от Евгения Мацюка – Пишем тестируемый код</a></li>
-<li><a href="http://bit.ly/2nxI5Rz">Доклад от Fernando Cejas – Culture of a good programmer</a></li>
-<li><a href="http://bit.ly/2mmmhHj">Чат в Телеграме об архитектуре в Android</a></li>
-</ul>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/android-v-litsah-clean-architecture-evgeniy-matsyuk/">Android в Лицах: Clean Architecture: Евгений Мацюк</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></content:encoded>
-            <wfw:commentRss>
-                http://androiddev.apptractor.ru/android-v-litsah-clean-architecture-evgeniy-matsyuk/feed/
-            </wfw:commentRss>
-            <slash:comments>0</slash:comments>
-        </item>
         <item>
-            <title>Интересные материалы для Android-разработчика #62</title>
-            <link>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-62/
-            </link>
-            <comments>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-62/#respond
-            </comments>
-            <pubDate>Mon, 13 Mar 2017 17:56:21 +0000</pubDate>
-            <dc:creator><![CDATA[AppTractor]]></dc:creator>
-            <category><![CDATA[Новости]]></category>
-
-            <guid isPermaLink="false">http://androiddev.apptractor.ru/?p=465</guid>
-            <description><![CDATA[<p><img width="2000" height="1333" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-ZefqQ5wVQbT1lAd_1e6VBA.jpeg" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-ZefqQ5wVQbT1lAd_1e6VBA.jpeg 2000w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-ZefqQ5wVQbT1lAd_1e6VBA-300x200.jpeg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-ZefqQ5wVQbT1lAd_1e6VBA-768x512.jpeg 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-ZefqQ5wVQbT1lAd_1e6VBA-1024x682.jpeg 1024w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-ZefqQ5wVQbT1lAd_1e6VBA-370x247.jpeg 370w" sizes="(max-width: 2000px) 100vw, 2000px" />13 марта: Подробности App Shortcuts Конфигурирование Android-проекта &#8211; инструменты статического анализа кода Android-разработка: ресурсы для начинающих Bubble Scroll: красивый скрол для таблицы Fragmenter: простая работа с Фрагментами Sensey: работа с жестами 14 марта: Легкая работа со списками — RendererRecyclerViewAdapter eMule на Android Android Data Binding 15 марта: Аутентификация и идентификация по голосу с помощью когнитивных сервисов [&#8230;]</p>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-62/">Интересные материалы для Android-разработчика #62</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></description>
-            <content:encoded><![CDATA[<img width="2000" height="1333" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-ZefqQ5wVQbT1lAd_1e6VBA.jpeg" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-ZefqQ5wVQbT1lAd_1e6VBA.jpeg 2000w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-ZefqQ5wVQbT1lAd_1e6VBA-300x200.jpeg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-ZefqQ5wVQbT1lAd_1e6VBA-768x512.jpeg 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-ZefqQ5wVQbT1lAd_1e6VBA-1024x682.jpeg 1024w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-ZefqQ5wVQbT1lAd_1e6VBA-370x247.jpeg 370w" sizes="(max-width: 2000px) 100vw, 2000px" /><h3>13 марта:</h3>
-<ul>
-<li><a href="https://android.jlelse.eu/app-shortcuts-in-details-afc1059485a7">Подробности App Shortcuts</a></li>
-<li><a href="https://hackernoon.com/configuring-android-project-static-code-analysis-tools-b6dd83282921?source=reading_list---------5-1---------">Конфигурирование Android-проекта &#8211; инструменты статического анализа кода</a></li>
-<li><a href="https://hackernoon.com/android-development-awesome-resources-for-beginners-46e4b6c2fabe">Android-разработка: ресурсы для начинающих</a></li>
-<li><a href="https://github.com/cdflynn/bubble-scroll">Bubble Scroll: красивый скрол для таблицы</a></li>
-<li><a href="https://github.com/dilpreet96/fragmenter">Fragmenter: простая работа с Фрагментами</a></li>
-<li><a href="https://github.com/nisrulz/sensey">Sensey: работа с жестами</a></li>
-</ul>
-<h3>14 марта:</h3>
-<ul>
-<li><a href="https://habrahabr.ru/post/323862/">Легкая работа со списками — RendererRecyclerViewAdapter</a></li>
-<li><a href="https://habrahabr.ru/post/323834/">eMule на Android</a></li>
-<li><a href="https://android.jlelse.eu/android-data-binding-8d0eb34b9bad">Android Data Binding</a></li>
-</ul>
-<h3>15 марта:</h3>
-<ul>
-<li><a href="https://habrahabr.ru/post/323312/">Аутентификация и идентификация по голосу с помощью когнитивных сервисов Microsoft</a></li>
-<li><a href="https://android.jlelse.eu/android-card-view-edb905e67cd6#.qjumrsj1b">Android: Card View</a></li>
-<li><a href="http://saulmm.github.io/from-design-to-android-part1">От дизайна до Android: Часть 1</a></li>
-<li><a href="http://tools.android.com/recent">Android Studio 2.4 Preview 1</a></li>
-<li><a href="https://developer.android.com/topic/libraries/support-library/revisions.html#25-3-0">Support Library Revisions 25.3.0</a></li>
-</ul>
-<h3>16 марта:</h3>
-<ul>
-<li><a href="https://habrahabr.ru/post/324040/">Уязвимость карты Подорожник: бесплатные поездки в наземном транспорте Санкт-Петербурга</a></li>
-<li><a href="https://android.jlelse.eu/dependency-injection-into-views-in-android-with-declex-5e7b6537c3a2">Инъекция зависимостей во View в Android с помощью DecleX</a></li>
-<li><a href="https://medium.com/@mateusz_bartos/write-ios-apps-in-java-along-with-android-900d6013f83f#.wdezo9qtl">Пишем iOS-приложения на Java</a></li>
-<li><a href="http://www.thecodedself.com/Android-Development-Through-the-Eyes-of-an-iOS-Developer/">Android-разработка глазами iOS-разработчика</a></li>
-</ul>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-62/">Интересные материалы для Android-разработчика #62</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></content:encoded>
-            <wfw:commentRss>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-62/feed/
-            </wfw:commentRss>
-            <slash:comments>0</slash:comments>
-        </item>
-        <item>
-            <title>Android в Лицах: Moxy: Александр Блинов</title>
-            <link>http://androiddev.apptractor.ru/android-v-litsah-moxy-aleksandr-blinov/</link>
-            <comments>
-                http://androiddev.apptractor.ru/android-v-litsah-moxy-aleksandr-blinov/#respond
-            </comments>
-            <pubDate>Mon, 13 Mar 2017 17:31:03 +0000</pubDate>
-            <dc:creator><![CDATA[AppTractor]]></dc:creator>
-            <category><![CDATA[Новости]]></category>
-            <category><![CDATA[Moxy]]></category>
-            <category><![CDATA[видео]]></category>
-
-            <guid isPermaLink="false">http://androiddev.apptractor.ru/?p=462</guid>
-            <description><![CDATA[<p><img width="1000" height="658" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/25de57e0cac34bae94fec80e3e562d5b.jpg" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/25de57e0cac34bae94fec80e3e562d5b.jpg 1000w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/25de57e0cac34bae94fec80e3e562d5b-300x197.jpg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/25de57e0cac34bae94fec80e3e562d5b-768x505.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px" />В этом выпуске обсуждается устройство MVP фреймворка Moxy, который разработали парни из РФ. Основные его компоненты, пути развития и проблемы которые возникают у пользователей. Вскользь делается сравнение с конкурентами.</p>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/android-v-litsah-moxy-aleksandr-blinov/">Android в Лицах: Moxy: Александр Блинов</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></description>
-            <content:encoded><![CDATA[<img width="1000" height="658" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/25de57e0cac34bae94fec80e3e562d5b.jpg" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/25de57e0cac34bae94fec80e3e562d5b.jpg 1000w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/25de57e0cac34bae94fec80e3e562d5b-300x197.jpg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/25de57e0cac34bae94fec80e3e562d5b-768x505.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px" /><p>В этом выпуске обсуждается устройство MVP фреймворка Moxy, который разработали парни из РФ. Основные его компоненты, пути развития и проблемы которые возникают у пользователей. Вскользь делается сравнение с конкурентами.</p>
-<p><iframe width="770" height="433" src="https://www.youtube.com/embed/eZyoJkmxGHE?feature=oembed" frameborder="0" allowfullscreen></iframe></p>
-<p>Упоминания:</p>
-<ul>
-<li><a href="http://bit.ly/2kL4Nsg">Github репозиторий проекта</a></li>
-<li><a href="http://bit.ly/2l6Vr6x">Шаблоны для Moxy</a></li>
-<li><a href="http://bit.ly/2mbn5jB">Быстрое ревью Мокси (Eng)</a></li>
-<li><a href="http://bit.ly/2mkUesv">Github шаблоны</a></li>
-<li><a href="http://bit.ly/2lul3uZ">Устройство Мокси</a></li>
-<li><a href="http://bit.ly/2ln9Gqh">Moxy: как правильно использовать</a></li>
-<li><a href="http://bit.ly/2kYL83A">Moxy-чат в Telegram (ru)</a></li>
-<li><a href="http://bit.ly/2kL2h5u">Moxy-чат в Telegram (en)</a></li>
-<li><a href="http://bit.ly/2lzFzua">MVP library ThirtyInches</a></li>
-<li><a href="http://bit.ly/2lzwgud">MVP library Mosby</a></li>
-<li><a href="http://bit.ly/2lzOrAa">MVP library Nucleus</a></li>
-<li><a href="http://bit.ly/2ldnnpg">MVP library EasyMVP</a></li>
-</ul>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/android-v-litsah-moxy-aleksandr-blinov/">Android в Лицах: Moxy: Александр Блинов</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></content:encoded>
-            <wfw:commentRss>
-                http://androiddev.apptractor.ru/android-v-litsah-moxy-aleksandr-blinov/feed/
-            </wfw:commentRss>
-            <slash:comments>0</slash:comments>
-        </item>
-        <item>
-            <title>Интересные материалы для Android-разработчика #61</title>
-            <link>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-61/
-            </link>
-            <comments>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-61/#respond
-            </comments>
-            <pubDate>Mon, 06 Mar 2017 20:36:36 +0000</pubDate>
-            <dc:creator><![CDATA[AppTractor]]></dc:creator>
-            <category><![CDATA[Новости]]></category>
-            <category><![CDATA[дайджест]]></category>
-
-            <guid isPermaLink="false">http://androiddev.apptractor.ru/?p=452</guid>
-            <description><![CDATA[<p><img width="1000" height="619" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-BfqwDsS3mt2pOslSQnFKCw.png" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-BfqwDsS3mt2pOslSQnFKCw.png 1000w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-BfqwDsS3mt2pOslSQnFKCw-300x186.png 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-BfqwDsS3mt2pOslSQnFKCw-768x475.png 768w" sizes="(max-width: 1000px) 100vw, 1000px" />06 марта: Конфигурирование проекта Android – имя версии и кода Чтобы я хотел знать до того, как создавать Android SDK/библиотеку Управляем изменением ориентации в Android 07 марта: Gradle: как управлять зависимостями Robolectric: фреймворк юнит-тестирования для Android Правильный сплэш-скрин для Android ProtractorView: полукруг ввода 09 марта: Java Full Stack на практике &#8211; создание мобильного стартапа Миграция на Android Studio 2.3 [&#8230;]</p>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-61/">Интересные материалы для Android-разработчика #61</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></description>
-            <content:encoded><![CDATA[<img width="1000" height="619" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-BfqwDsS3mt2pOslSQnFKCw.png" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-BfqwDsS3mt2pOslSQnFKCw.png 1000w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-BfqwDsS3mt2pOslSQnFKCw-300x186.png 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/1-BfqwDsS3mt2pOslSQnFKCw-768x475.png 768w" sizes="(max-width: 1000px) 100vw, 1000px" /><h3>06 марта:</h3>
-<ul>
-<li><a href="https://medium.com/@dmytrodanylyk/configuring-android-project-version-name-code-b168952f3323#.7kcistjr4">Конфигурирование проекта Android – имя версии и кода</a></li>
-<li><a href="https://android.jlelse.eu/things-i-wish-i-knew-when-i-started-building-android-sdk-libraries-dba1a524d619#.7thgnf89e">Чтобы я хотел знать до того, как создавать Android SDK/библиотеку</a></li>
-<li><a href="https://android.jlelse.eu/handling-orientation-changes-in-android-7072958c442a#.7ugo7mifg">Управляем изменением ориентации в Android</a></li>
-</ul>
-<h3>07 марта:</h3>
-<ul>
-<li id="32a4" class="graf graf--h3 graf--leading graf--title"><a href="https://android.jlelse.eu/gradle-how-to-manage-dependencies-8177a48d3c84#.l70nnwib5">Gradle: как управлять зависимостями</a></li>
-<li class="graf graf--h3 graf--leading graf--title"><a href="https://android.jlelse.eu/robolectric-unit-testing-framework-for-android-b78ebac0b411#.1d04mldzq">Robolectric: фреймворк юнит-тестирования для Android</a></li>
-<li class="graf graf--h3 graf--leading graf--title"><a href="https://android.jlelse.eu/launch-screen-in-android-the-right-way-aca7e8c31f52#.urrdpp1h5">Правильный сплэш-скрин для Android</a></li>
-<li class="graf graf--h3 graf--leading graf--title"><a href="https://github.com/GoodieBag/ProtractorView">ProtractorView: полукруг ввода</a></li>
-</ul>
-<h3>09 марта:</h3>
-<ul>
-<li><a href="https://hackernoon.com/java-full-stack-in-practice-building-a-mobile-startup-8c1bca975c4e#.ak3i61q33">Java Full Stack на практике &#8211; создание мобильного стартапа</a></li>
-<li><a href="https://android.jlelse.eu/migrate-to-android-studio-2-3-a9a1d69f0f44#.4fqvithhx">Миграция на Android Studio 2.3</a></li>
-<li><a href="https://medium.com/exploring-android/exploring-firebase-on-android-dynamic-links-7364def74808#.pju6n0yd5">Исследуем Firebase на Android: динамические ссылки</a></li>
-<li><a href="https://android.jlelse.eu/the-ultimate-android-development-framework-f4382677e0c6#.4gyrgduej">Declex: совершенный фреймворк для Android-разработки</a></li>
-<li><a href="https://android.jlelse.eu/top-10-testing-platforms-for-android-app-developers-f0ca9993517e">Топ-10 платформ тестирования</a></li>
-<li><a href="https://blog.aritraroy.in/why-you-should-start-using-kotlin-to-supercharge-your-android-development-in-2017-61db1f11d666#.41qokh76w">Почему надо использовать Kotlin для ускорения разработки</a></li>
-<li><a href="https://www.thedroidsonroids.com/blog/workcation-app-part-2-animating-markers-with-mapoverlaylayout/">Анимация маркеров с помощью MapOverlayLayout</a></li>
-</ul>
-<h3>10 марта:</h3>
-<ul>
-<li><a href="https://habrahabr.ru/post/323656/">NeoQuest 2017: Реверс андроид приложения в задании «Почини вождя!»</a></li>
-<li><a href="https://habrahabr.ru/post/323594/">Локализация Unity-игры на хинди</a></li>
-<li><a href="https://github.com/flavioarfaria/KenBurnsView">KenBurnsView: эффект Кена Бернса для ImageView</a></li>
-<li><a href="https://github.com/yarolegovich/DiscreteScrollView">DiscreteScrollView: скроллируемый горизонтальными свайпами RecyclerView</a></li>
-<li><a href="https://www.toptal.com/android/android-threading-all-you-need-to-know?utm_campaign=blog_post_android_threading_all_you_need_to_know&amp;utm_medium=email&amp;utm_source=blog_subscribers">Потоки в Android: все, что вам надо знать</a></li>
-</ul>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-61/">Интересные материалы для Android-разработчика #61</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></content:encoded>
-            <wfw:commentRss>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-61/feed/
-            </wfw:commentRss>
-            <slash:comments>0</slash:comments>
-        </item>
-        <item>
-            <title>Android Dev Подкаст. Выпуск 28. Gradle. Dagger.</title>
+            <title>Выпуск 28. Gradle. Dagger.</title>
             <link>http://androiddev.apptractor.ru/android-dev-podkast-28/</link>
-            <comments>http://androiddev.apptractor.ru/android-dev-podkast-28/#respond</comments>
-            <pubDate>Thu, 02 Mar 2017 07:12:55 +0000</pubDate>
-            <dc:creator><![CDATA[AppTractor]]></dc:creator>
-            <category><![CDATA[Подкаст]]></category>
-            <category><![CDATA[Dagger]]></category>
-            <category><![CDATA[Gradle]]></category>
-
-            <guid isPermaLink="false">http://androiddev.apptractor.ru/?p=440</guid>
-            <description><![CDATA[<p><img width="1600" height="1080" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/https-2F2Fcdn.evbuc_.com2Fimages2F284330502F1803360281572F12Foriginal-1.png" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/https-2F2Fcdn.evbuc_.com2Fimages2F284330502F1803360281572F12Foriginal-1.png 1600w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/https-2F2Fcdn.evbuc_.com2Fimages2F284330502F1803360281572F12Foriginal-1-300x203.png 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/https-2F2Fcdn.evbuc_.com2Fimages2F284330502F1803360281572F12Foriginal-1-768x518.png 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/https-2F2Fcdn.evbuc_.com2Fimages2F284330502F1803360281572F12Foriginal-1-1024x691.png 1024w" sizes="(max-width: 1600px) 100vw, 1600px" />Мы записали очень большой выпуск о системе сборке Gradle и Dependency Injection в мире Android. А еще повели итоги конкурса.</p>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/android-dev-podkast-28/">Android Dev Подкаст. Выпуск 28. Gradle. Dagger.</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></description>
-            <content:encoded><![CDATA[<img width="1600" height="1080" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/https-2F2Fcdn.evbuc_.com2Fimages2F284330502F1803360281572F12Foriginal-1.png" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/https-2F2Fcdn.evbuc_.com2Fimages2F284330502F1803360281572F12Foriginal-1.png 1600w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/https-2F2Fcdn.evbuc_.com2Fimages2F284330502F1803360281572F12Foriginal-1-300x203.png 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/https-2F2Fcdn.evbuc_.com2Fimages2F284330502F1803360281572F12Foriginal-1-768x518.png 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/03/https-2F2Fcdn.evbuc_.com2Fimages2F284330502F1803360281572F12Foriginal-1-1024x691.png 1024w" sizes="(max-width: 1600px) 100vw, 1600px" /><p>Мы записали очень большой выпуск о системе сборке Gradle и Dependency Injection в мире Android. А еще повели итоги конкурса.</p>
-<h2>Содержание</h2>
-<ul>
-<li><a href="https://developers.google.com/android/guides/releases#february_2017_-_v102"> 2.3 deprecated в GPlS</a></li>
-<li><a href="https://sites.google.com/a/android.com/tools/recent/constraintlayout10isnowavailable"> Dagger 2.9</a></li>
-<li><a href="https://docs.gradle.org/release-candidate/release-notes.html"> Новый Gradle</a></li>
-</ul>
-<p><b>Где учиться как правильно настраивать:</b></p>
-<ul>
-<li><a href="https://developer.android.com/studio/build/index.html"> https://developer.android.com/studio/build/index.html</a></li>
-<li><a href="https://developer.android.com/studio/build/gradle-tips.html"> https://developer.android.com/studio/build/gradle-tips.html</a></li>
-</ul>
-<p><b>И чуть сложнее:</b></p>
-<ul>
-<li><a href="https://docs.gradle.org/3.4/userguide/userguide.html"> https://docs.gradle.org/3.4/userguide/userguide.html</a></li>
-</ul>
-<h2>Победители новогоднего конкурса</h2>
-<p>Popalay за <a href="https://github.com/Popalay/Tutors">Tutors</a> и Siarhei Luskanau за то, что не обломался и попробовал Android Things в действии и даже запланировал большой проект.</p>
-<p><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/310283110&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true" width="100%" height="450" frameborder="no" scrolling="no"></iframe></p>
-<h2>Ведущие</h2>
-<div class="vc_row wpb_row row-fluid"><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner "><div class="wpb_wrapper"></p>
-<p style="text-align: center;"><img class="alignnone wp-image-44 size-thumbnail aligncenter" src="http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-150x150.jpg" alt="denis-1" width="150" height="150" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-150x150.jpg 150w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-300x300.jpg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-32x32.jpg 32w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-50x50.jpg 50w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-64x64.jpg 64w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-96x96.jpg 96w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-128x128.jpg 128w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-266x266.jpg 266w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-115x115.jpg 115w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1-100x100.jpg 100w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/denis-1.jpg 302w" sizes="(max-width: 150px) 100vw, 150px" /></p>
-<p style="text-align: center;">Денис Неклюдов<br />
-GDE</p>
-<p></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner "><div class="wpb_wrapper"></p>
-<p style="text-align: center;"><img class="alignnone wp-image-47 size-thumbnail" src="http://androiddev.apptractor.ru/wp-content/uploads/2016/10/365x365-1-150x150.jpg" alt="365x365-1" width="150" height="150" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2016/10/365x365-1-150x150.jpg 150w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/365x365-1-300x300.jpg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/365x365-1-32x32.jpg 32w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/365x365-1-50x50.jpg 50w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/365x365-1-64x64.jpg 64w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/365x365-1-96x96.jpg 96w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/365x365-1-128x128.jpg 128w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/365x365-1-266x266.jpg 266w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/365x365-1-100x100.jpg 100w, http://androiddev.apptractor.ru/wp-content/uploads/2016/10/365x365-1.jpg 338w" sizes="(max-width: 150px) 100vw, 150px" /></p>
-<p style="text-align: center;">Дмитрий Полищук<br />
-Яндекс.Такси</p>
-<p></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner "><div class="wpb_wrapper"></p>
-<p style="text-align: center;"><img src="http://androiddev.apptractor.ru/wp-content/uploads/2016/10/Image1-150x150.jpg" /></p>
-<p style="text-align: center;">Александр Ефременков<br />
-Яндекс</p>
-<p></div></div></div></div><br />
-<div class="vc_row wpb_row row-fluid"><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner "><div class="wpb_wrapper"></p>
-<p style="text-align: center;"><img class="alignnone size-thumbnail wp-image-99" src="http://androiddev.apptractor.ru/wp-content/uploads/2016/02/dudakov-150x150.jpg" alt="cap-dudakov" width="150" height="150" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2016/02/dudakov-150x150.jpg 150w, http://androiddev.apptractor.ru/wp-content/uploads/2016/02/dudakov-300x300.jpg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2016/02/dudakov.jpg 301w" sizes="(max-width: 150px) 100vw, 150px" /></p>
-<p style="text-align: center;">Антон Дудаков<br />
-Яндекс</p>
-<p></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner "><div class="wpb_wrapper"></p>
-<p style="text-align: center;"><img class="alignnone size-thumbnail wp-image-107" src="http://androiddev.apptractor.ru/wp-content/uploads/2016/03/eug-150x150.jpg" alt="eug" width="150" height="150" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2016/03/eug-150x150.jpg 150w, http://androiddev.apptractor.ru/wp-content/uploads/2016/03/eug.jpg 300w" sizes="(max-width: 150px) 100vw, 150px" /></p>
-<p style="text-align: center;">Евгений Мацюк<br />
-Kaspersky Lab</p>
-<p></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner "><div class="wpb_wrapper"></p>
-<p style="text-align: center;"><img src="http://androiddev.apptractor.ru/wp-content/uploads/2017/03/rounded_corners-1-150x150.jpg" alt="" width="150" height="150" /></p>
-<p style="text-align: center;">Владимир Тагаков
-</p>
-<p></div></div></div></div>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/android-dev-podkast-28/">Android Dev Подкаст. Выпуск 28. Gradle. Dagger.</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></content:encoded>
-            <wfw:commentRss>http://androiddev.apptractor.ru/android-dev-podkast-28/feed/
-            </wfw:commentRss>
-            <slash:comments>0</slash:comments>
+            <guid>http://androiddev.apptractor.ru/android-dev-podkast-28/</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Thu, 02 Mar 2017 10:18:36 +0300</pubDate>
+            <description>Мы записали очень большой выпуск о системе сборке Gradle и Dependency
+                Injection в мире Android. А еще повели итоги конкурса.
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Мы записали очень большой выпуск о системе сборке Gradle и Dependency
+                Injection в мире Android. А еще повели итоги конкурса.
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Мы записали очень большой выпуск о системе сборке Gradle и Dependency
+                Injection в мире Android. А еще повели итоги конкурса.
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>130:03</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="https://apptractor-podcast.podster.fm/129/download/audio.mp3"
+                       length="93637694" type="audio/mpeg"/>
+            <content:encoded>
+                <![CDATA[<p>Мы записали очень большой выпуск о системе сборке Gradle и Dependency
+		Injection в мире Android. А еще повели итоги конкурса.</p>
+		<h2>Содержание</h2>
+		<ul>
+			<li>
+			<a href="https://developers.google.com/android/guides/releases#february_2017_-_v102">
+			2.3 deprecated в GPlS</a></li>
+			<li>
+			<a href="https://sites.google.com/a/android.com/tools/recent/constraintlayout10isnowavailable">
+			Dagger 2.9</a></li>
+			<li><a href="https://docs.gradle.org/release-candidate/release-notes.html">
+			Новый Gradle</a></li>
+		</ul>
+		<p><b>Где учиться как правильно настраивать:</b></p>
+		<ul>
+			<li><a href="https://developer.android.com/studio/build/index.html">
+			https://developer.android.com/studio/build/index.html</a></li>
+			<li><a href="https://developer.android.com/studio/build/gradle-tips.html">
+			https://developer.android.com/studio/build/gradle-tips.html</a> </li>
+		</ul>
+		<p><b>И чуть сложнее:</b></p>
+		<ul>
+			<li><a href="https://docs.gradle.org/3.4/userguide/userguide.html">
+			https://docs.gradle.org/3.4/userguide/userguide.html</a></li>
+		</ul>
+		<h2>Победители новогоднего конкурса</h2>
+		<p>Popalay за <a href="https://github.com/Popalay/Tutors">Tutors</a> и Siarhei
+		Luskanau за то, что не обломался и попробовал Android Things в действии и даже
+		запланировал большой проект.</p>
+	]]>
+            </content:encoded>
         </item>
+
         <item>
-            <title>Интересные материалы для Android-разработчика #60</title>
-            <link>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-60/
-            </link>
-            <comments>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-60/#respond
-            </comments>
-            <pubDate>Mon, 27 Feb 2017 18:57:37 +0000</pubDate>
-            <dc:creator><![CDATA[AppTractor]]></dc:creator>
-            <category><![CDATA[Новости]]></category>
-            <category><![CDATA[дайджест]]></category>
-
-            <guid isPermaLink="false">http://androiddev.apptractor.ru/?p=432</guid>
-            <description><![CDATA[<p><img width="1280" height="567" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/02/Image6.png" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/02/Image6.png 1280w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/Image6-300x133.png 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/Image6-768x340.png 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/Image6-1024x454.png 1024w" sizes="(max-width: 1280px) 100vw, 1280px" />27 февраля: CircleMenu: круглое меню с крутыми анимациями Быстрые клавиши Jetbrains IDE Делаем In-App Billing в Android Shuttle:  open source музыкальный плеер CameraKit: библиотека для работы с камерой Функциональное программирование для Android-разработчиков: Часть 2 Nearby Shops: open source приложение для магазинов 28 февраля: SQLScout: управление база данных на устройстве в реальном времени из Android Studio или IntelliJ IDEA HorizontalPicker: горизонтальный [&#8230;]</p>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-60/">Интересные материалы для Android-разработчика #60</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></description>
-            <content:encoded><![CDATA[<img width="1280" height="567" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/02/Image6.png" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/02/Image6.png 1280w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/Image6-300x133.png 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/Image6-768x340.png 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/Image6-1024x454.png 1024w" sizes="(max-width: 1280px) 100vw, 1280px" /><h3>27 февраля:</h3>
-<ul>
-<li><a href="https://github.com/ImangazalievM/CircleMenu">CircleMenu: круглое меню с крутыми анимациями</a></li>
-<li><a href="https://gist.github.com/trent-92/dffe857d26f4c66e66e569cd813d6883">Быстрые клавиши Jetbrains IDE</a></li>
-<li><a href="https://hackernoon.com/implementing-in-app-billing-in-android-4896232c7d6b#.na6k3dh78">Делаем In-App Billing в Android</a></li>
-<li><a href="https://github.com/timusus/Shuttle">Shuttle:  open source музыкальный плеер</a></li>
-<li><a href="https://github.com/flurgle/CameraKit-Android">CameraKit: библиотека для работы с камерой</a></li>
-<li><a href="https://medium.com/@anupcowkur/functional-programming-for-android-developers-part-2-5c0834669d1a#.aw46lj8hc">Функциональное программирование для Android-разработчиков: Часть 2</a></li>
-<li><a href="http://nearbyshops.org/">Nearby Shops: open source приложение для магазинов</a></li>
+            <title>Выпуск 27. Новости, Instant apps, Android Pay и моковые API</title>
+            <link>http://androiddev.apptractor.ru/android-dev-podkast-27/</link>
+            <guid>http://androiddev.apptractor.ru/android-dev-podkast-27/</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Tue, 07 Feb 2017 15:49:19 +0300</pubDate>
+            <description>Собрались, обсудили все новинки, покупку Fabric, обновления документации на
+                сайте Google, чуть-чуть коснулись Android Wear 2.0 и внезапно обсудили Android Pay.
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Собрались, обсудили все новинки, покупку Fabric, обновления
+                документации на сайте Google, чуть-чуть коснулись Android Wear 2.0 и внезапно
+                обсудили Android Pay.
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Собрались, обсудили все новинки, покупку Fabric, обновления документации
+                на сайте Google, чуть-чуть коснулись Android Wear 2.0 и внезапно обсудили Android
+                Pay.
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>66:14</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="https://apptractor-podcast.podster.fm/126/download/audio.mp3"
+                       length="47685903" type="audio/mpeg"/>
+            <content:encoded>
+                <![CDATA[<p>Собрались, обсудили все новинки, покупку Fabric, обновления документации на сайте Google, чуть-чуть коснулись Android Wear 2.0 и внезапно обсудили Android Pay.</p>
+		<h2>Обсуждаемые материалы</h2>
+		<ul>
+	<li>
+	<a href="http://androidbackstage.blogspot.ru/2017/01/episode-61-kernel-panic.html">
+	Energy aware scheduler и A/B System Updates</a></li>
+	<li><a href="https://fabric.io/blog/fabric-joins-google">Монополия</a></li>
+	<li>
+	<a href="https://habrahabr.ru/post/319668/https:/habrahabr.ru/post/319668/">Манифест архитектурной боли:
+	Поможем Евгению</a></li>
+	<li><a href="https://romannurik.github.io/AndroidIconAnimator/">Аниматор
+	векторов</a></li>
+	<li><a href="https://habrahabr.ru/company/dsec/blog/229849/">О mitm атаках</a></li>
+	<li><a href="http://hannesdorfmann.com/android/mosby3-mvi-2">Реактивные
+	приложения с MVI: Вторая часть, раскрывающая суть
+	i</a></li>
+	<li><a href="http://hannesdorfmann.com/android/mosby3-mvi-3">Реактивные
+	приложения с MVI: Третья часть, все запутывающая
+	окончательно</a></li>
+	<li>
+	<a href="https://www.oracle.com/corporate/pressrelease/oracle-buys-apiary-011917.html">
+	Apiary теперь Oracle</a></li>
+	<li><a href="https://github.com/swagger-api">Swagger</a></li>
+	<li><a href="https://paw.cloud">Paw</a></li>
+	<li><a href="https://developer.android.com/topic/instant-apps/prepare.html">
+	Instant apps</a></li>
+	<li><a href="https://developer.android.com/topic/security/index.html">Советы
+	от Google по безопасности в Android</a></li>
+	<li>
+	<a href="https://android-developers.googleblog.com/2017/01/final-android-wear-20-developer-preview.html">
+	Скоро релиз Wear 2.0</a></li>
+	<li><a href="https://habrahabr.ru/company/livetyping/blog/320452/">Редизайн
+	приложения Uber</a></li>
+	<li>
+	<a href="http://greenrobot.org/announcement/introducing-objectbox-beta/">
+	Новая nosql БД от создателей GreenDAO</a></li>
+	<li><a href="https://github.com/ReactiveX/RxJava/releases/tag/v2.0.5">
+	Parallel flowable</a></li>
+	<li>
+	<a href="https://www.novoda.com/blog/downloading-apps-is-emojinal-a-simple-hack-to-get-more-downloads/">
+	Смайлики в описании приложения</a></li>
 </ul>
-<h3>28 февраля:</h3>
-<ul>
-<li><a href="http://www.idescout.com/">SQLScout: управление база данных на устройстве в реальном времени из Android Studio или IntelliJ IDEA</a></li>
-<li><a href="https://github.com/GoodieBag/HorizontalPicker">HorizontalPicker: горизонтальный выбор текста или иконок</a></li>
-<li><a href="https://github.com/garena/dev-alert-android">DevAlert: визуальные предупреждения для разработчиков или QA</a></li>
-</ul>
-<h3>01 марта:</h3>
-<ul>
-<li><a href="https://habrahabr.ru/company/JetBrains/blog/323012/">Встречайте Kotlin 1.1: JavaScript, корутины и многое другое</a></li>
-<li><a href="https://habrahabr.ru/post/322958/">Material UI и A/B тесты устарели — будущее за адаптивными интерфейсами</a></li>
-<li><a href="https://medium.com/@dmytrodanylyk/configuring-android-project-little-things-that-matter-d6a9d34c1ce0">Конфигурирование проекта Android &#8211; мелочи, которые важны</a></li>
-<li><a href="https://android.jlelse.eu/my-experience-implementing-material-design-project-setup-516e02d49866#.21hoyekm3">Мой опыт внедрения материального дизайна &#8211; настройка проекта</a></li>
-<li><a href="https://medium.com/google-developer-experts/android-strings-xml-things-to-remember-c155025bb8bb#.pz4a752n3">Android strings.xml &#8211; что надо помнить</a></li>
-<li><a href="https://github.com/pcqpcq/open-source-android-apps">Список open source приложений и игр для Android</a></li>
-</ul>
-<h3>02 марта:</h3>
-<ul>
-<li><a href="https://habrahabr.ru/post/318020/">Как не писать лишнего. Без магии</a></li>
-<li><a href="https://blog.mindorks.com/rxjava2-demo2-downloading-songs-in-android-2ebf91ac3a9a#.24mxf5t77">RxJava2 Demo2 &#8211; загрузка песен/изображений при помощи Android Download Manager</a></li>
-<li><a href="https://firebase.googleblog.com/2017/03/realtime-analytics-for-everyone.html">Firebase Analytics: в реальном времени для всех</a></li>
-<li><a href="https://sites.google.com/a/android.com/tools/recent/constraintlayout101isnowavailable">ConstraintLayout 1.0.1</a></li>
-<li><a href="https://github.com/AndroidDeveloperLB/AutoFitTextView">AutoFitTextView: TextView, который автоматически уменьшает шрифт под свой размер</a></li>
-</ul>
-<h3>03 марта:</h3>
-<ul>
-<li><a href="https://stories.uplabs.com/best-of-material-design-in-february-2017-8d953c948a3d#.a948asjys">Лучшее из материального дизайн: Февраль 2017</a></li>
-<li><a href="http://apptractor.ru/info/news/vyishla-android-studio-2-3.html">Android Studio 2.3</a></li>
-<li><a href="https://github.com/android-ndk/ndk/wiki/Changelog-r14">Android NDK 14</a></li>
-<li><a href="https://developer.android.com/studio/build/optimize-your-build.html">Оптимизация скорости сборки</a></li>
-</ul>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-60/">Интересные материалы для Android-разработчика #60</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></content:encoded>
-            <wfw:commentRss>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-60/feed/
-            </wfw:commentRss>
-            <slash:comments>0</slash:comments>
+	]]>
+            </content:encoded>
         </item>
+
         <item>
-            <title>Интересные материалы для Android-разработчика: неделя #59</title>
-            <link>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-nedelya-59/
-            </link>
-            <comments>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-nedelya-59/#respond
-            </comments>
-            <pubDate>Mon, 20 Feb 2017 20:07:42 +0000</pubDate>
-            <dc:creator><![CDATA[AppTractor]]></dc:creator>
-            <category><![CDATA[Новости]]></category>
-            <category><![CDATA[дайджест]]></category>
-
-            <guid isPermaLink="false">http://androiddev.apptractor.ru/?p=425</guid>
-            <description><![CDATA[<p><img width="1131" height="1600" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-DCzEYU60hk2pO7WCJj3GoQ.jpeg" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-DCzEYU60hk2pO7WCJj3GoQ.jpeg 1131w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-DCzEYU60hk2pO7WCJj3GoQ-212x300.jpeg 212w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-DCzEYU60hk2pO7WCJj3GoQ-768x1086.jpeg 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-DCzEYU60hk2pO7WCJj3GoQ-724x1024.jpeg 724w" sizes="(max-width: 1131px) 100vw, 1131px" />В этом дайджесте политики конфиденциальности, RxJava, анимации и функциональное программирование.</p>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-nedelya-59/">Интересные материалы для Android-разработчика: неделя #59</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></description>
-            <content:encoded><![CDATA[<img width="1131" height="1600" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-DCzEYU60hk2pO7WCJj3GoQ.jpeg" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-DCzEYU60hk2pO7WCJj3GoQ.jpeg 1131w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-DCzEYU60hk2pO7WCJj3GoQ-212x300.jpeg 212w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-DCzEYU60hk2pO7WCJj3GoQ-768x1086.jpeg 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-DCzEYU60hk2pO7WCJj3GoQ-724x1024.jpeg 724w" sizes="(max-width: 1131px) 100vw, 1131px" /><h3>20 февраля:</h3>
-<ul>
-<li><a href="https://habrahabr.ru/post/318202/">Модификация стоковых прошивок для Android. Часть 5. Революция c Xposed Framework</a></li>
-<li><a href="https://app-privacy-policy-generator.firebaseapp.com/">Генератор политики конфиденциальности</a></li>
-<li><a href="https://docs.gradle.org/current/release-notes.html">Gradle 3.4</a></li>
-<li><a href="https://github.com/tslamic/AndroidDeviceNames/tree/master">Android Device Names: превращает номер модели в имя устройства</a></li>
-<li><a href="https://github.com/0ximDigital/Rx2Animations">Rx2Animations: целостная анимация для rxJava 2</a></li>
-<li><a href="https://medium.com/@anupcowkur/functional-programming-for-android-developers-part-1-a58d40d6e742#.ucnl4u61y">Функциональное программирование для Android-разработчиков</a></li>
-<li><a href="https://riggaroo.co.za/android-things-electricity-monitoring-app/">Android Things: мониторинг наличия электричества</a></li>
-</ul>
-<h3>21 февраля:</h3>
-<ul>
-<li><a href="https://android-developers.googleblog.com/2017/02/build-flexible-layouts-with.html?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+blogspot%2FhsDu+%28Android+Developers+Blog%29">Гибкая разметка с FlexboxLayout</a></li>
-<li><a href="https://stfalcon.com/ru/blog/post/useful-Android-libraries-from-stfalcon-com">Полезные Android-библиотеки от команды stfalcon.com</a></li>
-<li><a href="https://developer.android.com/topic/libraries/support-library/revisions.html#25-2-0">Support Library 25.2.0</a></li>
-<li><a href="https://github.com/alexjlockwood/ShapeShifter">ShapeShifter: веб-приложение для создания SVG-анимации с экспортом в AnimatedVectorDrawable</a></li>
-</ul>
-<h3>22 февраля:</h3>
-<ul>
-<li><a href="https://habrahabr.ru/company/smartengines/blog/322400/">MWC-2017. Новые технологии для мобильного распознавания</a></li>
-<li><a href="https://habrahabr.ru/article/322090/">Мобильная разработка в СберТехе: разговор на бегу</a></li>
-<li><a href="https://medium.cobeisfresh.com/how-we-deal-with-localizing-ios-and-android-apps-4d98b4534483#.n5tsmxnj0">Как мы работаем с локализацией в iOS и Android-приложениях</a></li>
-<li><a href="https://github.com/florent37/ExpectAnim">ExpectAnim: новая библиотека для простого описания анимации</a></li>
-</ul>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-nedelya-59/">Интересные материалы для Android-разработчика: неделя #59</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></content:encoded>
-            <wfw:commentRss>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-nedelya-59/feed/
-            </wfw:commentRss>
-            <slash:comments>0</slash:comments>
+            <title>Выпуск 26. Новости</title>
+            <link>http://androiddev.apptractor.ru/android-dev-podkast-26/</link>
+            <guid>http://androiddev.apptractor.ru/android-dev-podkast-26/</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Wed, 18 Jan 2017 22:53:34 +0300</pubDate>
+            <description>Старые приятели обсуждают последние новости в мире разработки под Android.
+                Особенно мы зацепились за RxJava2 и сборку проектов. Выпуск на сайте:
+                http://androiddev.apptractor.ru/android-dev-podkast-26/
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Старые приятели обсуждают последние новости в мире разработки под
+                Android. Особенно мы зацепились за RxJava2 и сборку проектов. Выпуск на сайте:
+                http://androiddev.apptractor.ru/android-dev-podkast-26/
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Старые приятели обсуждают последние новости в мире разработки под
+                Android. Особенно мы зацепились за RxJava2 и сборку проектов. Выпуск на сайте:
+                http://androiddev.apptractor.ru/android-dev-podkast-26/
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>67:19</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="https://apptractor-podcast.podster.fm/122/download/audio.mp3"
+                       length="48466944" type="audio/mpeg"/>
+            <content:encoded>
+                <![CDATA[<p>Старые приятели обсуждают последние новости в мире разработки под Android. Особенно мы зацепились за RxJava2 и сборку проектов.</p>
+		<h2>Обсуждаемые материалы</h2>
+		<ul>
+			<li><a href="https://telegram.me/androiddevpodcast_news">Паблик канал анонсов подкаста без обсуждений</a></li>
+			<li><a href="https://www.novoda.com/blog/designing-something-solid/"> Solid в картинках</a></li>
+			<li><a href="http://hannesdorfmann.com/android/mosby3-mvi-1">MVI</a></li>
+			<li><a href="https://medium.com/google-developers/recyclerview-prefetch-c2f269075710#.5ghbwnp95"> Recycler View Prefetch</a></li>
+			<li><a href="https://medium.com/@enriquelopezmanas/an-overview-of-polls-for-android-mobile-developers-in-2016-4c41059a47a9#.hxyzkay6q"> Опросы 2016</a></li>
+			<li><a href="http://kotlinlang.slack.com">Slack про Kotlin</a></li>
+			<li><a href="https://github.com/NYTimes/Store">Реализация NYTimes Store</a></li>
+			<li><a href="https://android.jlelse.eu/how-to-set-up-a-continuous-integration-server-for-android-development-ubuntu-jenkins-sonarqube-43c1ed6b08d3#.rde900wuc"> Хороший туториал по настройке CI</a></li>
+			<li><a href="https://tech.just-eat.com/tag/genymotion/">Настройка TeamCity c Genymotion</a></li>
+			<li><a href="https://about.gitlab.com/2016/11/30/setting-up-gitlab-ci-for-android-projects/"> Настройка CI на gitlab</a></li>
+			<li><a href="http://futurice.com/blog/the-next-step-for-reactive-android-programming"> Еще раз про RxJava2</a></li>
+			<li><a href="http://shop.oreilly.com/product/0636920042228.do">Книга о RxJava</a></li>
+			<li><a href="https://github.com/google/hover">Hover от Google</a></li>
+			<li><a href="http://blog.tooploox.com/make-gradle-builds-fast-again-2/"> Ускоряем сборку</a></li>
+			<li><a href="https://github.com/gojuno/mainframer">Сборка проекта удаленно</a></li>
+			<li><a href="http://johnzon.apache.org/">Apache Johnzon</a></li>
+			<li><a href="http://romannurik.github.io/AndroidAssetStudio">Обновленная Asset Studio</a></li>
+			<li><a href="https://source.android.com/devices/tech/debug/native-crash.html"> Native crash analyzing</a></li>
+			<li><a href="https://developer.android.com/studio/build/gradle-tips.html"> Gradle tips</a></li>
+			<li><a href="https://github.com/mozilla/socorro">Сервак по складированию и отображению breakpad крешей</a></li>
+			<li><a href="https://github.com/google/breakpad">Либа по перехватыванию крэша и формированию breakpad крэша</a></li>
+			<li><a href="http://mobiusconf.com">Регистрация на Mobius</a></li>
+		</ul>
+	]]>
+            </content:encoded>
         </item>
+
         <item>
-            <title>Интересные материалы для Android-разработчика: неделя #58</title>
-            <link>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-nedelya-58/
-            </link>
-            <comments>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-nedelya-58/#respond
-            </comments>
-            <pubDate>Mon, 13 Feb 2017 20:39:16 +0000</pubDate>
-            <dc:creator><![CDATA[AppTractor]]></dc:creator>
-            <category><![CDATA[Новости]]></category>
-            <category><![CDATA[дайджест]]></category>
-
-            <guid isPermaLink="false">http://androiddev.apptractor.ru/?p=416</guid>
-            <description><![CDATA[<p><img width="800" height="533" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-pTHyUq31DASTGJrXvy4wqg.jpeg" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-pTHyUq31DASTGJrXvy4wqg.jpeg 800w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-pTHyUq31DASTGJrXvy4wqg-300x200.jpeg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-pTHyUq31DASTGJrXvy4wqg-768x512.jpeg 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-pTHyUq31DASTGJrXvy4wqg-370x247.jpeg 370w" sizes="(max-width: 800px) 100vw, 800px" />13 февраля: Анимированный Custom View через тесты Конкурс дизайна сообщества MaterialUp Я не нашел простую библиотеку для распознавания жестов и сделал ее сам Фишки Android UX: Nested Scrolling без Nested Scrolling Прохождение экзамена Associate Android Developer Интеграция Rx с Simple-Stack Обязательный набор инструментов для Android-разработки InifiniteRecyclerView: бесконечный список в стиле Facebook Dachshund Tab Layout: закладки с кастомной анимацией 14 февраля: [&#8230;]</p>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-nedelya-58/">Интересные материалы для Android-разработчика: неделя #58</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></description>
-            <content:encoded><![CDATA[<img width="800" height="533" src="http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-pTHyUq31DASTGJrXvy4wqg.jpeg" class="attachment- size- wp-post-image" alt="" style="float:left; margin:0 15px 15px 0;" srcset="http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-pTHyUq31DASTGJrXvy4wqg.jpeg 800w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-pTHyUq31DASTGJrXvy4wqg-300x200.jpeg 300w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-pTHyUq31DASTGJrXvy4wqg-768x512.jpeg 768w, http://androiddev.apptractor.ru/wp-content/uploads/2017/02/1-pTHyUq31DASTGJrXvy4wqg-370x247.jpeg 370w" sizes="(max-width: 800px) 100vw, 800px" /><h3>13 февраля:</h3>
-<ul>
-<li><a href="https://android.jlelse.eu/animated-custom-view-driven-by-tests-5f082190acd6#.my8peg6gq">Анимированный Custom View через тесты</a></li>
-<li><a href="https://stories.uplabs.com/announcing-the-first-materialup-challenge-2d93ada87acf#.lhzolg9tm">Конкурс дизайна сообщества MaterialUp</a></li>
-<li><a href="https://android.jlelse.eu/i-could-not-find-a-simple-gesture-detection-android-library-so-i-built-one-334c0a307c16#.ma4zwcj5g">Я не нашел простую библиотеку для распознавания жестов и сделал ее сам</a></li>
-<li><a href="https://medium.com/vscoengineering/android-ux-tricks-nested-scrolling-without-nested-scrolling-2d1c629d58c0#.3xedev9d4">Фишки Android UX: Nested Scrolling без Nested Scrolling</a></li>
-<li><a href="https://hackernoon.com/taking-the-associate-android-developer-exam-c400d8e74363#.kcoiolf2y">Прохождение экзамена Associate Android Developer</a></li>
-<li><a href="https://hackernoon.com/observing-state-changes-in-navigation-integrating-rx-with-simple-stack-b6a3db9ac5e6#.gfvepifdv">Интеграция Rx с Simple-Stack</a></li>
-<li><a href="https://medium.com/@aditlal/must-have-tools-for-android-development-d76ae66f409f#.fdzk9i62q">Обязательный набор инструментов для Android-разработки</a></li>
-<li><a href="https://github.com/10clouds/InifiniteRecyclerView">InifiniteRecyclerView: бесконечный список в стиле Facebook</a></li>
-<li><a href="https://github.com/Andy671/Dachshund-Tab-Layout">Dachshund Tab Layout: закладки с кастомной анимацией</a></li>
-</ul>
-<h3>14 февраля:</h3>
-<ul>
-<li><a href="https://habrahabr.ru/post/321836/">Сбор сообщений ВКонтакте для Samsung Gear</a></li>
-<li><a href="https://habrahabr.ru/post/321792/">Библиотека для тестов с заполнением пропусков</a></li>
-<li><a href="https://medium.com/appaloosa-store-engineering/continuous-integration-with-android-14047096f3de#.s1793o2z5">Continuous Integration с Android</a></li>
-<li><a href="https://medium.com/upday-devs/android-architecture-patterns-part-2-model-view-presenter-8a6faaae14a5#.hba8ytdb4">Архитектурные шаблоны: Model-View-Presenter</a></li>
-<li><a href="https://medium.com/@mmbialas/25-new-android-libraries-which-you-definitely-want-to-try-at-the-beginning-of-2017-45878d5408c0#.f7x664997">25 новых библиотек для Android, которые вы точно захотите попробовать в начале 2017</a></li>
-</ul>
-<h3>15 февраля:</h3>
-<ul>
-<li><a href="https://android.jlelse.eu/how-to-get-android-to-tell-if-your-beer-is-ok-yes-your-beer-a313b6c97a59#.denq5anwc">Как заставить Android распознать пиво</a></li>
-<li><a href="https://android.jlelse.eu/do-you-like-to-adb-fcae3655b9c8#.dn0yp27tt">Любите ли вы ADB?</a></li>
-</ul>
-<h3>16 февраля:</h3>
-<ul>
-<li><a href="https://habrahabr.ru/post/322024/">VectorDrawable — часть третья</a></li>
-<li><a href="https://habrahabr.ru/post/322008/">Создаём развивающее приложение при помощи Android Studio</a></li>
-<li><a href="https://blog.mindorks.com/android-app-performance-metrics-a1176334186e">Метрики быстродействия Android-приложения</a></li>
-<li><a href="https://medium.com/@sergii/practical-challenges-for-rxjava-learners-1821c454de9#.jhb0qp2nt">Практические задачи для изучающих RxJava</a></li>
-<li><a href="https://github.com/MAXDeliveryNG/slideview">SlideView: настраиваемая кнопка-слайдер</a></li>
-<li><a href="https://github.com/Tapadoo/Alerter">Alerter: кастомизируемый Alert</a></li>
-<li><a href="https://developers.google.com/android/guides/releases#february_2017_-_v102">Google Play Services 10.2</a></li>
-</ul>
-<h3>17 февраля:</h3>
-<ul>
-<li><a href="https://habrahabr.ru/post/322070/">Как написать свою клавиатуру для Android</a></li>
-<li><a href="https://github.com/mancj/MaterialSearchBar">MaterialSearchBar: поиск в материальном дизайне</a></li>
-</ul>
-<p>Запись <a rel="nofollow" href="http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-nedelya-58/">Интересные материалы для Android-разработчика: неделя #58</a> впервые появилась <a rel="nofollow" href="http://androiddev.apptractor.ru">Подкасты Android Dev</a>.</p>
-]]></content:encoded>
-            <wfw:commentRss>
-                http://androiddev.apptractor.ru/interesnyie-materialyi-dlya-android-razrabotchika-nedelya-58/feed/
-            </wfw:commentRss>
-            <slash:comments>0</slash:comments>
+            <title>Выпуск 25. Android Things и Weave. Итоги года. Новый конкурс.</title>
+            <link>http://androiddev.apptractor.ru/android-dev-podkast-25/</link>
+            <guid>http://androiddev.apptractor.ru/android-dev-podkast-25/</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Fri, 30 Dec 2016 15:17:46 +0300</pubDate>
+            <description>К нам в гости на новогодний фуршет пришел Звиад, принес Edison, Raspberry 3
+                и nxp’шку, на которых стоит Android Things Developer Preview. Мы крайне обстоятельно
+                прошлись по интернету вещей в контексте того, что нам позволяет Things и Weave.
+                Слушать внимательно и до конца. Ведь в конце, после итогов года, мы открываем новый
+                новогодний конкурс. Конкурс! Мы разыгрываем две лицензии JRebel: одну отдадим за
+                лучший проект на Android Things. Вторую за лучшую библиотечку на Kotlin. Впереди
+                новогодние праздники – самое время для экспериментов! А еще лучшие идеи по IoT, VR,
+                AR могут быть оценены Google и вам будут предоставлены новые устройства для их
+                осуществления, не стесняйтесь, думайте, фантазируйте и пишите нам в чат ваши
+                идеи!Выпуск на сайте: http://androiddev.apptractor.ru/android-dev-podkast-25/
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>К нам в гости на новогодний фуршет пришел Звиад, принес Edison,
+                Raspberry 3 и nxp’шку, на которых стоит Android Things Developer Preview. Мы крайне
+                обстоятельно прошлись по интернету вещей в контексте того, что нам позволяет Things
+                и Weave. Слушать внимательно и до конца. Ведь в конце, после итогов года, мы
+                открываем новый новогодний конкурс. Конкурс! Мы разыгрываем две лицензии JRebel:
+                одну отдадим за лучший проект на Android Things. Вторую за лучшую библиотечку на
+                Kotlin. Впереди новогодние праздники – самое время для экспериментов! А еще лучшие
+                идеи по IoT, VR, AR могут быть оценены Google и вам будут предоставлены новые
+                устройства для их осуществления, не стесняйтесь, думайте, фантазируйте и пишите нам
+                в чат ваши идеи!Выпуск на сайте:
+                http://androiddev.apptractor.ru/android-dev-podkast-25/
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>К нам в гости на новогодний фуршет пришел Звиад, принес Edison,
+                Raspberry 3 и nxp’шку, на которых стоит Android Things Developer Preview. Мы крайне
+                обстоятельно прошлись по интернету вещей в контексте того, что нам позволяет Things
+                и Weave. Слушать внимательно и до конца. Ведь в конце, после итогов года, мы
+                открываем новый новогодний конкурс. Конкурс! Мы разыгрываем две лицензии JRebel:
+                одну отдадим за лучший проект на Android Things. Вторую за лучшую библиотечку на
+                Kotlin. Впереди новогодние праздники – самое время для экспериментов! А еще лучшие
+                идеи по IoT, VR, AR могут быть оценены Google и вам будут предоставлены новые
+                устройства для их осуществления, не стесняйтесь, думайте, фантазируйте и пишите нам
+                в чат ваши идеи!Выпуск на сайте:
+                http://androiddev.apptractor.ru/android-dev-podkast-25/
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>119:01</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="https://apptractor-podcast.podster.fm/120/download/audio.mp3"
+                       length="85686048" type="audio/mpeg"/>
+            <content:encoded>
+                <![CDATA[
+		<p>К нам в гости на новогодний фуршет пришел Звиад, принес Edison, Raspberry 3 и
+		nxp’шку, на которых стоит Android Things Developer Preview. Мы крайне
+		обстоятельно прошлись по интернету вещей в контексте того, что нам позволяет
+		Things и Weave. Слушать внимательно и до конца. Ведь в конце, после итогов года,
+		мы открываем новый новогодний конкурс.</p>
+		<p>Конкурс! Мы разыгрываем две лицензии JRebel: одну отдадим за лучший проект на
+		Android Things. Вторую за лучшую библиотечку на Kotlin. Впереди новогодние
+		праздники – самое время для экспериментов!</p>
+		<p>А еще лучшие идеи по IoT, VR, AR могут быть оценены Google и вам будут
+		предоставлены новые устройства для их осуществления, не стесняйтесь, думайте,
+		фантазируйте и пишите нам в чат ваши идеи! </p>
+		<p><b>Жизнь с Jrebel:</b></p>
+		<p>2.0.30 (December 21, 2016)</p>
+		<ul>
+			<li>JRebel for Android now stores internal files on the device under a
+			separate companion app. This improves startup performance after clearing
+			data (experimental flag only)</li>
+			<li>Library dex files are now cached externally to the project. This
+			improves startup times after cleaning project (experimental flag only)</li>
+			<li>Added support for Android Annotations processor in the incremental
+			compiler</li>
+			<li>Fixed a Gradle build failure if the project had dangling semicolons
+			after import statements</li>
+			<li>Fixed Gradle builds failing with &quot;No dex files to merge&quot; if one Android
+			app module depended on building another Android app module</li>
+			<li>Fixed a crash during startup if the launch activity had the NoDisplay
+			theme</li>
+		</ul>
+		<h2>Обсуждаемые материалы</h2>
+		<ul>
+			<li>
+			<a href="http://stackoverflow.com/questions/35520583/why-there-are-no-constructs-for-concurrency-in-kotlin">
+			Concurrency в Kotlin в ожидании корутин</a></li>
+			<li>
+			<a href="https://developer.android.com/topic/libraries/support-library/revisions.html">
+			Support lib 25.1.0</a></li>
+			<li><a href="https://code.google.com/p/android/issues/detail?id=230415">
+			Измененение поведения Fragments API в
+			Support lib 25.1.0</a></li>
+			<li><a href="https://github.com/kickstarter/android-oss">
+			Kickstarter открывает свое приложение</a></li>
+			<li>
+			<a href="https://techcrunch.com/2016/12/24/cyanogen-failed-to-kill-android-now-it-is-shuttering-its-services-and-os-as-part-of-a-pivot/">
+			Cyanogenmod закрывается</a></li>
+			<li>
+			<a href="http://zeroturnaround.com/rebellabs/using-build-cache-in-android-studio-makes-gradle-build-faster/">
+			Быстрые сборки gradle для Android</a></li>
+			<li>
+			<a href="https://www.androidsecurity.info/2016/12/15/storing-your-secure-information-in-the-ndk/">
+			Хранение секретной информации в NDK</a></li>
+			<li>
+			<a href="https://android-developers.googleblog.com/2016/12/introducing-the-exifinterface-support-library.html">
+			Поддержка exif</a></li>
+			<li>
+			<a href="https://firebase.googleblog.com/2016/12/how-does-firebase-initialize-on-android.html">
+			Как Firebase инициализируется на Android?</a></li>
+			<li>
+			<a href="http://blog.blundellapps.co.uk/testing-android-things-iot-meets-java/">
+			Тестирование Android Things – тесты юнитов и ведоров</a></li>
+		</ul>
+	]]>
+            </content:encoded>
         </item>
+
+        <item>
+            <title>Выпуск 24. Kotlin 1.1</title>
+            <link>http://androiddev.apptractor.ru/android-dev-podkast-24/</link>
+            <guid>http://androiddev.apptractor.ru/android-dev-podkast-24/</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Thu, 22 Dec 2016 10:27:40 +0300</pubDate>
+            <description>Ян и Станислав из JetBrains рассказывают обо всех новинках грядущего
+                релиза. Еще говорим о компиляторе Kotlin, будущих улучшениях, проблемах с kapt, в
+                том числе, почему не вышел специальный форк Dagger для Kotlin. Всем, кто пишет на
+                этом языке, слушать первые две трети, а тем, кто подумывает начать, можно послушать
+                лишь последнюю треть. Выпуск на сайте:
+                http://androiddev.apptractor.ru/android-dev-podkast-24/
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Ян и Станислав из JetBrains рассказывают обо всех новинках грядущего
+                релиза. Еще говорим о компиляторе Kotlin, будущих улучшениях, проблемах с kapt, в
+                том числе, почему не вышел специальный форк Dagger для Kotlin. Всем, кто пишет на
+                этом языке, слушать первые две трети, а тем, кто подумывает начать, можно послушать
+                лишь последнюю треть. Выпуск на сайте:
+                http://androiddev.apptractor.ru/android-dev-podkast-24/
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Ян и Станислав из JetBrains рассказывают обо всех новинках грядущего
+                релиза. Еще говорим о компиляторе Kotlin, будущих улучшениях, проблемах с kapt, в
+                том числе, почему не вышел специальный форк Dagger для Kotlin. Всем, кто пишет на
+                этом языке, слушать первые две трети, а тем, кто подумывает начать, можно послушать
+                лишь последнюю треть. Выпуск на сайте:
+                http://androiddev.apptractor.ru/android-dev-podkast-24/
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>103:28</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="https://apptractor-podcast.podster.fm/117/download/audio.mp3"
+                       length="74499264" type="audio/mpeg"/>
+            <content:encoded>
+                <![CDATA[
+		<p>Ян и Станислав из JetBrains рассказывают обо всех новинках грядущего релиза.
+		Еще говорим о компиляторе Kotlin, будущих улучшениях, проблемах с kapt, в том
+		числе, почему не вышел специальный форк Dagger для Kotlin. Всем, кто пишет на
+		этом языке, слушать первые две трети, а тем, кто подумывает начать, можно
+		послушать лишь последнюю треть.</p>
+		<p><b>Жизнь с Jrebel:</b></p>
+		<p>2.0.28 (December 15, 2016)</p>
+		<ul>
+			<li>Added support for Android Gradle plugin 2.3.0-alpha3</li>
+			<li>Added incremental compilation support for projects using AutoService</li>
+		</ul>
+		<p>2.0.26 (December 13, 2016)</p>
+		<ul>
+			<li>Hotfix: Fixed NoSuchMethodError when starting up with JRebel for Android
+			(introduced in 2.0.24)</li>
+		</ul>
+		<p>2.0.24 (December 13, 2016)</p>
+		<ul>
+			<li>Added support for Android Studio 2.3 Canary 3</li>
+			<li>Improved incremental compilation stability for Dagger 2</li>
+			<li>Fixed an issue where installing a huge app timeouts</li>
+			<li>Fixed Gradle build failure: &quot;Cannot set property 'jrebelVersion' on null
+			object&quot;</li>
+		</ul>
+		<p>@JRebel4Android - official jrebel for android twitter handle.</p>
+		<h2>Обсуждаемые материалы</h2>
+		<ul>
+			<li><a href="http://androiddev.apptractor.ru/android-dev-podkast-7/">Наш
+			прошлый подкаст о Kotlin - введение в тему для новичков</a></li>
+			<li>
+			<a href="https://blog.jetbrains.com/kotlin/2016/07/first-glimpse-of-kotlin-1-1-coroutines-type-aliases-and-more">
+			Новинки в Kotlin 1.1</a></li>
+			<li><a href="https://habrahabr.ru/post/314656/">Погружение в Async Await</a></li>
+			<li><a href="https://github.com/Kotlin/kotlin-coroutines">Design documents
+			and examples for coroutines in Kotlin</a></li>
+			<li><a href="https://github.com/metalabdesign/AsyncAwait">Неофициальный
+			Async Await для Android</a></li>
+			<li><a href="https://www.youtube.com/watch?v=MYaoSELIC_U">Альтернатива
+			Kotlin в виде Scala, поговаривает Матвей, тоже имеет право быть</a></li>
+			<li><a href="https://youtu.be/d6795d1aN3U">Android в лицах о Kotlin с Яном
+			Жулановым</a></li>
+		</ul>
+
+	]]>
+            </content:encoded>
+        </item>
+
+        <item>
+            <title>Выпуск 23. Виртуальная и дополненная реальности в Android</title>
+            <link>http://androiddev.apptractor.ru/android-dev-podkast-23/</link>
+            <guid>http://androiddev.apptractor.ru/android-dev-podkast-23/</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Sun, 11 Dec 2016 11:32:29 +0300</pubDate>
+            <description>Мы пригласили людей, кого не пугают качели в Oculus Rift, и кто способен
+                отобразить МРТ снимки в Google Cardboard. Обсуждение всего, что сейчас известно о
+                разработке VR/AR приложений и контента для Android. Ближе к концу выпуска мы
+                прошлись по последним новостям, а также ЭКСКЛЮЗИВ: срыв покровов фреймворка Flutter,
+                так ли он хорош, как его рекламируют в Google! Выпуск на сайте:
+                http://androiddev.apptractor.ru/android-dev-podkast-23/
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Мы пригласили людей, кого не пугают качели в Oculus Rift, и кто
+                способен отобразить МРТ снимки в Google Cardboard. Обсуждение всего, что сейчас
+                известно о разработке VR/AR приложений и контента для Android. Ближе к концу выпуска
+                мы прошлись по последним новостям, а также ЭКСКЛЮЗИВ: срыв покровов фреймворка
+                Flutter, так ли он хорош, как его рекламируют в Google! Выпуск на сайте:
+                http://androiddev.apptractor.ru/android-dev-podkast-23/
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Мы пригласили людей, кого не пугают качели в Oculus Rift, и кто способен
+                отобразить МРТ снимки в Google Cardboard. Обсуждение всего, что сейчас известно о
+                разработке VR/AR приложений и контента для Android. Ближе к концу выпуска мы
+                прошлись по последним новостям, а также ЭКСКЛЮЗИВ: срыв покровов фреймворка Flutter,
+                так ли он хорош, как его рекламируют в Google! Выпуск на сайте:
+                http://androiddev.apptractor.ru/android-dev-podkast-23/
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>116:39</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="https://apptractor-podcast.podster.fm/114/download/audio.mp3"
+                       length="83984544" type="audio/mpeg"/>
+            <content:encoded>
+                <![CDATA[
+		<p>Мы пригласили людей, кого не пугают качели в Oculus
+		Rift, и кто способен отобразить МРТ снимки в Google
+		Cardboard. Обсуждение всего, что сейчас известно о разработке VR/AR приложений и
+		контента для Android. Ближе к концу выпуска мы прошлись по последним новостям, а
+		также ЭКСКЛЮЗИВ: срыв покровов фреймворка Flutter, так ли он хорош, как его
+		рекламируют в Google!</p>
+		<p><b>Жизнь с JRebel:</b></p>
+		<p>2.0.20 (December 1, 2016)</p>
+		<ul>
+			<li>Fixed JRebel for Android crashing with ArrayIndexOutOfBounds on startup
+			</li>
+		</ul>
+		<p>2.0.18 (November 30, 2016)</p>
+		<ul>
+			<li>Improved the handling of out of memory on the host machine</li>
+			<li>Improved the handling of &quot;could not start AVD&quot;</li>
+			<li>Fixed a NPE during Apply Changes</li>
+			<li>Fixed a NPE in the incremental compiler</li>
+			<li>Fixed an exception during startup where an absolute path was expected</li>
+			<li>Fixed a conflict on the gradle class path with okio library</li>
+			<li>Fixed an incremental compiler issue where dependent classes of changed
+			protected API was not being correctly recompiled</li>
+			<li>Fixed a few corner-case issues where changing kotlin lambda classes
+			caused &quot;Apply Changes&quot; to fail</li>
+			<li>Treat all Vivo devices as unsupported </li>
+		</ul>
+		<h2>Обсуждаемые материалы</h2>
+		<ul>
+			<li><a href="https://developers.google.com/vr/">Все VR
+			SDK от Google</a></li>
+			<li>
+			<a href="https://developer3.oculus.com/documentation/mobilesdk/latest/concepts/mobile-getting-started/">
+			Oculus mobile
+			SDK</a></li>
+			<li>
+			<a href="https://play.google.com/store/apps/details?id=com.google.vr.cyclops">
+			Камера для Cardboard</a></li>
+			<li>
+			<a href="http://android-developers.blogspot.ru/2016/12/welcoming-android-711-nougat.html">
+			Вышел Android 7.1.1</a>
+			</li>
+			<li>
+			<a href="https://developer.android.com/studio/releases/index.html#Revisions">
+			Вышла Android Studio
+			2.2.3</a></li>
+			<li>
+			<a href="http://android-developers.blogspot.ru/2016/12/saving-data-reducing-the-size-of-app-updates-by-65-percent.html">
+			Про новое сжатие</a></li>
+			<li>
+			<a href="https://medium.com/@cesarmcferreira/mastering-the-terminal-side-of-android-development-e7520466c521">
+			Разные утилиты, которые помогают пользоваться терминалом при разработке</a></li>
+			<li>
+			<a href="https://blog.jetbrains.com/idea/2016/11/intellij-idea-2016-3-ga-java-8-and-es6-debugger-and-ui-improvements-and-a-ton-more/">
+			IDEA 2016.3</a></li>
+			<li><a href="https://youtu.be/h10qZGq36DE">Можно ли программировать без
+			интернета (видео-доклад Бобука)</a></li>
+			<li>
+			<a href="http://zeroturnaround.com/rebellabs/java-generics-cheat-sheet/">
+			Шпаргалка по Java Generic</a></li>
+			<li>
+			<a href="https://dzone.com/articles/what-you-need-to-know-about-serialization">
+			Основы сериализации</a></li>
+			<li>
+			<a href="https://medium.com/google-developer-experts/diving-deeper-into-the-java-transient-modifier-3b16eff68f42">
+			Семантика Transient Keyword</a></li>
+			<li>
+			<a href="https://medium.com/google-developer-experts/weakreference-in-android-dd1e66b9be9d">
+			WeakReference в Android</a></li>
+			<li>
+			<a href="https://medium.com/google-developer-experts/on-properly-using-volatile-and-synchronized-702fc05faac2#.244pu799b">
+			Volatile and Synchronized</a></li>
+			<li><a href="https://www.youtube.com/watch?v=kj8HCy7P0rM">Обзор Google Home</a></li>
+			<li>
+			<a href="http://apptractor.ru/info/devices/vedushhie-kompanii-sozdayut-vsemirnuyu-assotsiatsiyu-virtualnoy-realnosti.html">
+			VR ассоциация</a></li>
+			<li><a href="https://habrahabr.ru/post/315590/">«Новогодний VR-Today», 10
+			декабря</a></li>
+		</ul>
+
+	]]>
+            </content:encoded>
+        </item>
+
+
+        <item>
+            <title>Выпуск 22. GDE Summit, Flutter и Gradle</title>
+            <link>http://androiddev.apptractor.ru/android-dev-podkast-22/</link>
+            <guid>http://androiddev.apptractor.ru/android-dev-podkast-22/</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Wed, 23 Nov 2016 21:19:49 +0300</pubDate>
+            <description>У нас уже второй выпуск в режиме прямого эфира, следите за анонсами в чате.
+                Денис только вернулся с GDE Summit, рассказывает немного своих впечатлений.
+                Обсуждаем Dart, а точнее Flutter, новую студию, Gradle, достается и Jack. Приглашаем
+                на девфесты! Выпуск на сайте:
+                http://androiddev.apptractor.ru/android-dev-podkast-22/
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>У нас уже второй выпуск в режиме прямого эфира, следите за анонсами в
+                чате. Денис только вернулся с GDE Summit, рассказывает немного своих впечатлений.
+                Обсуждаем Dart, а точнее Flutter, новую студию, Gradle, достается и Jack. Приглашаем
+                на девфесты! Выпуск на сайте:
+                http://androiddev.apptractor.ru/android-dev-podkast-22/
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>У нас уже второй выпуск в режиме прямого эфира, следите за анонсами в
+                чате. Денис только вернулся с GDE Summit, рассказывает немного своих впечатлений.
+                Обсуждаем Dart, а точнее Flutter, новую студию, Gradle, достается и Jack. Приглашаем
+                на девфесты! Выпуск на сайте:
+                http://androiddev.apptractor.ru/android-dev-podkast-22/
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>72:23</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="https://apptractor-podcast.podster.fm/112/download/audio.mp3"
+                       length="52113345" type="audio/mpeg"/>
+            <content:encoded>
+                <![CDATA[
+		<p>У нас уже второй выпуск в режиме прямого эфира, следите за анонсами в чате.
+		Денис только вернулся с GDE Summit, рассказывает немного своих впечатлений.
+		Обсуждаем Dart, а точнее Flutter,
+		новую студию, Gradle, достается и Jack. Приглашаем на
+		девфесты!</p>
+		<p><b>Жизнь с JRebel:</b></p>
+		<p>2.0.12 (November 15, 2016)</p>
+		<ul>
+			<li>Added support for Android Studio 2.3 preview 1</li>
+			<li>Added support for Android Gradle plugin 2.3.0</li>
+			<li>Added incremental compilation support for projects using Databinding</li>
+			<li>Fixed verification issue on API 21 and 22 with certain methods returning
+			arrays</li>
+			<li>Fixed warnings in logcat for API 24 and later</li>
+		</ul>
+		<p>2.0.10 (November 11, 2016)</p>
+		<ul>
+			<li>Fixed a critical verification issue with Jackson on API 22</li>
+		</ul>
+		<p>2.0.8 (November 10, 2016)</p>
+		<ul>
+			<li>Fixed a case where removing Dagger 2 annotations would result in a build
+			failure</li>
+			<li>Fixed startup failing for projects which had resource shrinking enabled</li>
+			<li>Fixed a rare case where starting with JRebel for Android would throw an
+			UnsatisfiedLinkError</li>
+		</ul>
+		<h2>Обсуждаемые материалы</h2>
+		<ul>
+			<li><a href="https://habrahabr.ru/post/314414/">Уязвимость Account Manager в
+			Android</a></li>
+			<li>Async Await:
+			<a href="https://habrahabr.ru/post/314574/">две</a>
+			<a href="https://habrahabr.ru/post/314656/">статьи</a></li>
+			<li>
+			<a href="https://medium.com/@mmbialas/50-android-studio-tips-tricks-resources-you-should-be-familiar-with-as-an-android-developer-af86e7cf56d2#.vxt8631l3">
+			50 Android Studio Tips, Tricks &amp; Resources you should be familiar with, as
+			an Android Developer</a></li>
+			<li>
+			<a href="https://play.google.com/store/apps/details?id=com.google.android.projection.gearhead">
+			Android Auto на
+			смартфонах</a></li>
+			<li>
+			<a href="https://medium.com/inloop/android-process-kill-and-the-big-implications-for-your-app-1ecbed4921cb#.iiuux9an4">
+			Падение при возврате</a></li>
+			<li><a href="https://flutter.io/">Flutter</a></li>
+			<li><a href="http://Api.ai">Api.ai - умный парсинг
+			команд</a></li>
+			<li><a href="https://github.com/commonsguy/cwac-netsecurity">Бэкпорт network
+			security</a></li>
+			<li><a href="https://aws.amazon.com/marketplace/pp/B01MREUQPU/">Genymotion
+			на AWS</a></li>
+			<li><a href="http://pguardiola.com/blog/darealfragmentation-sensors/">Работа
+			с сенсорами</a></li>
+			<li><a href="https://developers.google.com/android/guides/releases">Отказ от
+			2.3 в будущих Play Services</a></li>
+			<li>
+			<a href="https://blog.jetbrains.com/idea/2016/11/intellij-idea-2016-3-ga-java-8-and-es6-debugger-and-ui-improvements-and-a-ton-more">
+			IDEA 2016.3</a></li>
+			<li><a href="https://github.com/gradle/gradle/releases/tag/v3.2.0">Gradle
+			3.2</a></li>
+			<li><a href="https://cmake.org/cmake/help/v3.7/release/3.7.html#platforms">
+			CMake 3.7: поддержка Android из коробки</a></li>
+			<li>
+			<a href="https://groups.google.com/forum/#!topic/guava-discuss/GqGImaoHHs8">
+			Guava 21 (min sdk 24)</a></li>
+			<li><a href="http://developer.couchbase.com/mobile">Couchbase Mobile</a></li>
+			<li><a href="http://gmsservices.ru/blog/2016/11/18/no-fear-2/">Вторая часть
+			статьи о собеседованиях Android разработчика</a></li>
+			<li><a href="http://devfest.by/">DevFest в Минске 25-26 ноября</a></li>
+			<li><a href="https://gdg.events/devfest/events">Карта девфестов</a></li>
+			<li><a href="https://habrahabr.ru/company/google/blog/309852/">Список
+			девфестов в России</a></li>
+		</ul>
+
+
+	]]>
+            </content:encoded>
+        </item>
+
+
+        <item>
+            <title>Выпуск 21. Firebase Summit</title>
+            <link>http://androiddev.apptractor.ru/android-dev-podkast-21/</link>
+            <guid>http://androiddev.apptractor.ru/android-dev-podkast-21/</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Fri, 11 Nov 2016 14:39:39 +0300</pubDate>
+            <description>Мы решили попробовать себя в режиме прямого эфира. В гостях Звиад и Тимур.
+                Звиад только побывал на Firebase Summit в Берлине и делится своими впечатлениями, а
+                Тимур дополняет его слова своим богатым опытом работы с Firebase на продакшене.
+                Список обсуждаемых материалов и комментарии:
+                http://androiddev.apptractor.ru/android-dev-podkast-21/
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Мы решили попробовать себя в режиме прямого эфира. В гостях Звиад и
+                Тимур. Звиад только побывал на Firebase Summit в Берлине и делится своими
+                впечатлениями, а Тимур дополняет его слова своим богатым опытом работы с Firebase на
+                продакшене. Список обсуждаемых материалов и комментарии:
+                http://androiddev.apptractor.ru/android-dev-podkast-21/
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Мы решили попробовать себя в режиме прямого эфира. В гостях Звиад и
+                Тимур. Звиад только побывал на Firebase Summit в Берлине и делится своими
+                впечатлениями, а Тимур дополняет его слова своим богатым опытом работы с Firebase на
+                продакшене. Список обсуждаемых материалов и комментарии:
+                http://androiddev.apptractor.ru/android-dev-podkast-21/
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>61:09</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="https://apptractor-podcast.podster.fm/108/download/audio.mp3"
+                       length="44024256" type="audio/mpeg"/>
+            <content:encoded>
+                <![CDATA[
+		<p>Мы решили попробовать себя в режиме прямого эфира. В гостях Звиад и Тимур.
+		Звиад только побывал на Firebase Summit в Берлине и делится своими
+		впечатлениями, а Тимур дополняет его слова своим богатым опытом работы с
+		Firebase на продакшене.</p>
+		<h2>Обсуждаемые материалы</h2>
+		<ul>
+			<li><a href="https://www.youtube.com/user/Firebase">Канал с обучающими видео
+			о firebase</a></li>
+			<li>
+			<a href="http://android-developers.blogspot.ru/2016/11/android-dev-preview-in-firebase-test-lab.html">
+			Бесплатный cloud test lab</a></li>
+			<li>
+			<a href="https://events.withgoogle.com/firebaseContest/firebase-contest/">
+			Конкурс приложений с firebase</a></li>
+			<li><a href="https://www.google.com/analytics/data-studio/">Data Studio</a></li>
+			<li><a href="https://firebase.google.com/support/">Поддержка Firebase</a></li>
+		</ul>
+		<h3>Домашнее задание на следующий выпуск - статьи и переводы Максима</h3>
+		<ul>
+			<li><a href="https://habrahabr.ru/post/314414/">Уязвимость Account Manager в
+			Android, о которой необходимо знать</a></li>
+			<li><a href="https://habrahabr.ru/post/314574/">Беглый взгляд на Async-Await
+			в Android</a></li>
+			<li><a href="https://habrahabr.ru/post/314656/">Погружение в Async-Await в
+			Android</a></li>
+		</ul>
+		<h3>Предстоящие мероприятия</h3>
+		<ul>
+			<li><a href="http://mbltdev.ru/ru">MBLTDev 2016</a></li>
+			<li><a href="http://devfest.gdg.org.ru">DevFest Siberia</a></li>
+			<li><a href="https://gdg.events/devfest/events">Карта девфестов</a></li>
+			<li><a href="https://habrahabr.ru/company/google/blog/309852/">Список
+			девфестов в России</a></li>
+		</ul>
+
+	]]>
+            </content:encoded>
+        </item>
+
+        <item>
+            <title>Выпуск 20. Новости с Droidcon London 2016</title>
+            <link>http://androiddev.apptractor.ru/android-dev-podkast-20/</link>
+            <guid>http://androiddev.apptractor.ru/android-dev-podkast-20/</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Wed, 02 Nov 2016 10:44:09 +0300</pubDate>
+            <description>Денис побывал на Дроидконе в Лондоне и рассказывает о своих впечатлениях.
+                Говорим о новинках в Android, новых библиотеках, о замороченности Nick Butcher по
+                анимациям и многом другом! Список обсуждаемых материалов:
+                http://androiddev.apptractor.ru/android-dev-podkast-20/
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Денис побывал на Дроидконе в Лондоне и рассказывает о своих
+                впечатлениях. Говорим о новинках в Android, новых библиотеках, о замороченности Nick
+                Butcher по анимациям и многом другом! Список обсуждаемых материалов:
+                http://androiddev.apptractor.ru/android-dev-podkast-20/
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Денис побывал на Дроидконе в Лондоне и рассказывает о своих
+                впечатлениях. Говорим о новинках в Android, новых библиотеках, о замороченности Nick
+                Butcher по анимациям и многом другом! Список обсуждаемых материалов:
+                http://androiddev.apptractor.ru/android-dev-podkast-20/
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>78:05</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="https://apptractor-podcast.podster.fm/106/download/audio.mp3"
+                       length="60426216" type="audio/mpeg"/>
+            <content:encoded>
+                <![CDATA[
+		<p>Денис побывал на Дроидконе в Лондоне и рассказывает о своих впечатлениях.
+Говорим о новинках в Android, новых библиотеках, о замороченности Nick Butcher
+по анимациям и многом другом! </p>
+<ul>
+	<li><a href="http://androiddev.apptractor.ru/">Новый дом подкастов</a></li>
+	<li>
+	<a href="https://www.youtube.com/channel/UCKTBA2EDIWXkHJaRs99gGVg/videos">
+	Droidcon Moscow 2016 videos</a></li>
+	<li>
+	<a href="https://play.google.com/store/apps/details?id=com.google.android.spotlightstories">
+	VR короткометражки от Google</a></li>
+	<li>
+	<a href="https://skillsmatter.com/conferences/7411-droidcon-london-2016#skillscasts">
+	Droidcon London 2016 videos</a> (Все видео доступны после бесплатной
+	регистрации)</li>
+	<li>
+	<a href="https://skillsmatter.com/skillscasts/8417-designing-the-design-support-library">
+	Крис Бейнс про night mode, theme tinting, nested scrolling</a></li>
+	<li><a href="http://fbinfer.com/">Infer: статический анализатор кода от
+	Facebook</a></li>
+	<li><a href="http://upday.github.io/blog/vector_drawables_optimisation/">
+	Оптимизации vector drawable</a></li>
+	<li>
+	<a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/android">
+	Офлайн TensorFlow на Android</a></li>
+	<li><a href="https://www.bazel.io/">Bazel: система сборки от Google</a></li>
+	<li>
+	<a href="https://skillsmatter.com/skillscasts/8621-really-important-things-about-the-business-of-technology">
+	Забавный доклад от Chat Haase о бизнесе и разработке и их взаимоотношениях</a></li>
+	<li>
+	<a href="https://skillsmatter.com/skillscasts/8414-what-s-new-in-android">
+	Последние новости Android, support lib, Google Play Services</a></li>
+	<li>(еще не выложен) Доклад Spotify об отправке UI
+	компонентов с сервера</li>
+	<li>(еще не выложен) Android linux thread kernel problem</li>
+	<li><a href="https://github.com/Yarikx/reductor">Redux</a></li>
+	<li>(еще не выложен) Доклад про мощное использование RecyclerView</li>
+	<li><a href="https://github.com/nickbutcher/plaid">Plaid: отличные семплы
+	анимаций и переходов от Nick Butcher</a></li>
+	<li>(еще не выложен) Nick Butcher о Plaid</li>
+	<li>(еще не выложен) Jake Wharton о продвинутой настройке Retrofit 2</li>
+	<li>
+	<a href="https://developer.android.com/reference/android/content/pm/ShortcutManager.html">
+	Новые удобные шорткаты в лончере</a></li>
+	<li>
+	<a href="https://developer.android.com/topic/libraries/support-library/revisions.html">
+	Android Support Library, revision 25.0.0 - Android Support Library, revision
+	25.0.0</a></li>
+	<li>
+	<a href="https://medium.com/перо-пушкина/how-to-share-story-on-facebook-on-android-dba9dde9ffc5#.ladxjrpa8">
+	Про кастомные сообщения в Facebook</a></li>
+	<li><a href="https://code.facebook.com/posts/531104390396423">
+	Facebook declarative UI framework</a></li>
+	<li><a href="https://developer.android.com/training/safetynet/index.html">
+	Safety Net API</a></li>
+	<li><a href="https://github.com/ReactiveX/RxJava/releases/tag/v2.0.0">RxJava
+	2.0</a></li>
+	<li>
+	<a href="https://sites.google.com/a/android.com/tools/recent/constraintlayoutbeta2isnowavailable">
+	Constraint Layout beta 2</a></li>
+	<li>
+	<a href="https://github.com/google/gson/blob/master/CHANGELOG.md#version-28">
+	Gson 2.8</a></li>
+	<li>
+	<a href="https://www.youtube.com/watch?v=-03R4Fj79_E&feature=youtu.be&t=3m1s">
+	Flutter for Android and iOS applications (Dart summit)</a></li>
+	<li>
+	<a href="https://groups.google.com/forum/#!topic/flutter-dev/JEzfu0kpmKA">
+	Flutter IDEA plugin</a></li>
+</ul>
+	]]>
+            </content:encoded>
+        </item>
+
+
+        <item>
+            <title>Выпуск 19. Безопасность в Android. Часть вторая</title>
+            <link>http://androiddev.apptractor.ru/android-dev-podkast-19/</link>
+            <guid>http://androiddev.apptractor.ru/android-dev-podkast-19/</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Wed, 19 Oct 2016 15:00:20 +0300</pubDate>
+            <description>Говорим в первую очередь о безопасности при общении приложения по сети.
+                Уходим максимально глубоко в NDK. Даем фантастические советы, которые вряд ли кто-то
+                до конца воплотит в жизнь, но знать их рекомендуется. Также мы не забыли ответить на
+                вопросы слушателей из прошлого выпуска. Список обсуждаемых материалов:
+                http://androiddev.apptractor.ru/android-dev-podkast-19/
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Говорим в первую очередь о безопасности при общении приложения по сети.
+                Уходим максимально глубоко в NDK. Даем фантастические советы, которые вряд ли кто-то
+                до конца воплотит в жизнь, но знать их рекомендуется. Также мы не забыли ответить на
+                вопросы слушателей из прошлого выпуска. Список обсуждаемых материалов:
+                http://androiddev.apptractor.ru/android-dev-podkast-19/
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Говорим в первую очередь о безопасности при общении приложения по сети.
+                Уходим максимально глубоко в NDK. Даем фантастические советы, которые вряд ли кто-то
+                до конца воплотит в жизнь, но знать их рекомендуется. Также мы не забыли ответить на
+                вопросы слушателей из прошлого выпуска. Список обсуждаемых материалов:
+                http://androiddev.apptractor.ru/android-dev-podkast-19/
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>87:30</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/104/download/audio.mp3"
+                       length="67902576" type="audio/mpeg"/>
+            <content:encoded>
+                <![CDATA[
+		Говорим в первую очередь о безопасности при общении приложения по сети. Уходим максимально глубоко в NDK. Даем фантастические советы, которые вряд ли кто-то до конца воплотит в жизнь, но знать их рекомендуется. Также мы не забыли ответить на вопросы слушателей из прошлого выпуска.
+		<h2>Обсуждаемые материалы</h2>
+		<ul>
+			<li><strong>Жизнь с JRebel</strong>:
+		<a href="http://zeroturnaround.com/rebellabs/jrebel-for-android-2-0/">Релиз 2.0</a>
+		You tried JRebel For Android and sure, it was fast. But now we’re <a href="http://mkto-o0074.com/hCh21AM00P000AyFi030WQF">launching version 2.0</a> and it’s even faster! We’ve heard the feedback from those who tried earlier versions and we listened. Hard. Updates include:
+		<ul>
+			<li>More speed - incremental Java compiler with annotation processors support</li>
+			<li>IntelliJ IDEA support</li>
+			<li>Reduced runtime heap overhead 3x</li>
+			<li>Debugger, multidex and JNI linking is now available in the Individual package</li>
+		</ul>
+		Read about v2.0 in more detail in this RebelLabs <a href="http://mkto-o0074.com/s02F0C20FMiR0P0AAh30y0W">blog post</a>.
+		Для скачавших версию 2.0 заново открыт 21-дневный триал!</li>
+			<li><a href="https://twitter.com/iamironz">Twitter аккаунт Александра Ефрéменкова</a></li>
+			<li><a href="http://android-developers.blogspot.ru/2016/10/android-71-developer-preview.html"> Android 7.1 dev perview</a></li>
+			<li><a href="https://www.facebook.com/elegion/posts/1172336706174574">MBLTDev 2016</a></li>
+			<li><a href="https://rambler-digital-solutions.timepad.ru/event/390336/">Митап Рамблера</a></li>
+			<li><a href="https://blog.jetbrains.com/idea/2016/10/intellij-idea-2016-2-5-update-is-available">IDEA 2016.2.5 with Sierra fixes</a></li>
+			<li><a href="https://code.google.com/p/android/issues/detail?id=205714"> Android Studio playground</a></li>
+			<li><a href="http://www.littlerobots.nl/blog/Whats-next-for-android-apt"> Android-apt plugin End Of Life</a></li>
+			<li><a href="http://zeroturnaround.com/rebellabs/git-commands-and-best-practices-cheat-sheet">Git cheet sheet</a></li>
+			<li><a href="https://groups.google.com/forum/#!topic/firebase-talk/5MesKLUBBLY">Firebase uses Netty as backend server</a></li>
+			<li><a href="https://github.com/square/okhttp/wiki/Recipes">OkHttp recipies</a></li>
+			<li><a href="https://github.com/TinkoffCreditSystems/decoro">Маски текста от Тинькофф</a></li>
+			<li><a href="https://youtu.be/nHIwdjgF1iU">Выпуск "Андроид в Лицах" про безопасность</a></li>
+			<li><a href="https://github.com/moritz-wundke/Boost-for-Android">Boost for android</a></li>
+			<li><a href="http://android-developers.blogspot.ru/2015/10/new-in-android-samples-authenticating.html"> Корректная авторизация по fingerprint</a></li>
+			<li><a href="https://www.youtube.com/watch?v=nHIwdjgF1iU">Новый "Android в лицах" про безопасность с А.Кулаковым (RedMadRobot)</a></li>
+			<li><a href="https://www.joeyconway.com/blog/2014/03/29/android-detect-root-access-from-inside-an-app/"> Как определять рутованность девайса</a></li>
+			<li><a href="https://blog.netspi.com/android-root-detection-techniques/">Более теоретический и полный набор возможных проверок на рут</a></li>
+			<li><a href="https://n0where.net/best-android-tools/">Вторая ссылка на набор тулзов для аудита и хакинга в автомитизированном варианте</a></li>
+		</ul>
+	]]>
+            </content:encoded>
+        </item>
+
+
+        <item>
+            <title>Выпуск 18. Безопасность в Android. Часть первая</title>
+            <link>http://apptractor.ru/AndroidDev/podcast18.html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast18.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Thu, 06 Oct 2016 16:20:14 +0300</pubDate>
+            <description>Специальный состав участников, мы пригласили ребят из Сбера, Тинькофф и
+                Splyt. Очень насыщенный разговор обо всем, что касается безопасности. Мы начали с
+                вопросов пользователя, что за страшные последствия могут быть от рутования,
+                установки кастомных ROM’ов и пиратских apk, и дошли до обсуждения перепаковщиков,
+                перехвата пользовательского ввода и шифрованных баз данных.
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Специальный состав участников, мы пригласили ребят из Сбера, Тинькофф и
+                Splyt. Очень насыщенный разговор обо всем, что касается безопасности. Мы начали с
+                вопросов пользователя, что за страшные последствия могут быть от рутования,
+                установки кастомных ROM’ов и пиратских apk, и дошли до обсуждения перепаковщиков,
+                перехвата пользовательского ввода и шифрованных баз данных.
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>
+                Специальный состав участников, мы пригласили ребят из Сбера, Тинькофф и Splyt. Очень
+                насыщенный разговор обо всем, что касается безопасности. Мы начали с вопросов
+                пользователя, что за страшные последствия могут быть от рутования, установки
+                кастомных ROM’ов и пиратских apk, и дошли до обсуждения перепаковщиков, перехвата
+                пользовательского ввода и шифрованных баз данных.
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>95:01</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/101/download/audio.mp3"
+                       length="73225128" type="audio/mpeg"/>
+        </item>
+
+
+        <item>
+            <title>Выпуск 17. Droidcon Moscow 2016, Multi-window, тестирование легаси кода и
+                профилирование производительности
+            </title>
+            <link>http://apptractor.ru/AndroidDev/podcast17.html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast17.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Wed, 28 Sep 2016 14:37:12 +0300</pubDate>
+            <description>Наши впечатления с Droidcon Moscow 2016. Также поговорили про Multi-window,
+                тестирование легаси кода и профилирование производительности.
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Наши впечатления с Droidcon Moscow 2016. Также поговорили про
+                Multi-window, тестирование легаси кода и профилирование производительности.
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>
+                Новости и инструменты:
+                <ul>
+                    <li>
+                        <a href="https://telegram.me/androiddevpodcast">Телеграмм чат с
+                            подписчиками
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/mortenjust/androidtool-mac">Полезность для
+                            QA c маком
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://code.google.com/p/android/issues/detail?id=219085">Mac
+                            OS Sierra IDEA/Studio troubles
+                        </a>
+                        (<a href="ttp://jug.ru/2016/09/sierra-idea-problem/">JUG.ru</a>)
+                    </li>
+                    <li>
+                        <a href="https://code.google.com/p/android/issues/detail?id=215650">
+                            onStop в Multi-window
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://stackoverflow.com/a/39539735/1016367">Превью merge</a>
+                    </li>
+                    <li>
+                        <a href="http://tools.android.com/unofficial-copies-of-android-support-libraries-being-distributed-on-jcenter">
+                            Unofficial android support libs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://medium.com/@corneliu/testing-legacy-code-hidden-dependencies-9b8cd617953f#.5ktutr5bp">
+                            Тестирование legacy code
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://habrahabr.ru/post/306962/">Тоже про тесты legacy</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/NikitaKozlov/Pury">Pury</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/mzule/FantasySlide">FantasySlide: адовый
+                            слайдер китайский
+                        </a>
+                    </li>
+                </ul>
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>56:33</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/99/download/audio.mp3"
+                       length="44119296" type="audio/mpeg"/>
+        </item>
+
+        <item>
+            <title>Выпуск шестнадцатый. Android Studio 2.2, разговор о ConstraintLayout, скорости
+                компиляции Kotlin
+            </title>
+            <link>http://apptractor.ru/AndroidDev/podcast16.html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast16.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Tue, 20 Sep 2016 10:02:16 +0300</pubDate>
+            <description>Android Studio 2.2, разговор о ConstraintLayout, скорости компиляции Kotlin
+                и про сборку нативных проектов. И, конечно, розыгрыш обещанных подарков!
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Android Studio 2.2, разговор о ConstraintLayout, скорости компиляции
+                Kotlin и про сборку нативных проектов. И, конечно, розыгрыш обещанных подарков!
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Android Studio 2.2, разговор о ConstraintLayout, скорости компиляции
+                Kotlin и про сборку нативных проектов. И, конечно, розыгрыш обещанных подарков!
+
+                Новости и инструменты:
+                <ul>
+                    <li>
+                        <b>Жизнь с Jrebel</b>
+                        <br/>
+                        <a href="https://zeroturnaround.com/webinar/jrebel_masterclass/">
+                            ZeroTurnaround Master Class: Introduction to JRebel Date: September
+                            28th, 2016
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.genymotion.com/blog/2-8-0-performance-smoothness-fixes/">
+                            Genymotion 2.8
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://telegram.me/androiddevpodcast">Телеграмм чат с
+                            подписчиками
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://tech.instacart.com/truetime/">TrueTime</a>
+                    </li>
+                    <li>
+                        <a href="https://medium.com/keepsafe-engineering/kotlin-vs-java-compilation-speed-e6c174b39b5d#.98kkgoepo">
+                            Kotlin vs Java compilation speed
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://blog.sqisland.com/2016/09/transactiontoolargeexception-crashes-nougat.html">
+                            TransactionTooLargeException
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://jug.ru/2016/09/completion-stats-collector/">Jetbrains
+                            intelliJ autocomplete macine learning
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://android-developers.blogspot.ru/2016/09/android-studio-2-2.html">
+                            Android Studio 2.2
+                        </a>
+                    </li>
+                </ul>
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>56:45</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/98/download/audio.mp3"
+                       length="43498968" type="audio/mpeg"/>
+        </item>
+
+
+        <item>
+            <title>Выпуск пятнадцатый. Анимации и Material Design</title>
+            <link>http://apptractor.ru/AndroidDev/podcast15.html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast15.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Thu, 08 Sep 2016 12:23:46 +0300</pubDate>
+            <description>Сегодня мы обсуждаем Material Design, немного его философию и в первую
+                очередь реализацию в Android. Посмотрим на него с позиции крупных известных
+                приложений. Во главе обсуждения стоит кастомизация под нужды дизайнеров и
+                производительность на любых устройствах. Внимание! В конце подкаста вы узнаете, как
+                можете получить бесплатно Jrebel for Android Business License на год и как попасть
+                на DroidCon Moscow 22 сентября бесплатно.
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Сегодня мы обсуждаем Material Design, немного его философию и в первую
+                очередь реализацию в Android. Посмотрим на него с позиции крупных известных
+                приложений. Во главе обсуждения стоит кастомизация под нужды дизайнеров и
+                производительность на любых устройствах. Внимание! В конце подкаста вы узнаете, как
+                можете получить бесплатно Jrebel for Android Business License на год и как попасть
+                на DroidCon Moscow 22 сентября бесплатно.
+
+                Новости и инструменты:
+                <ul>
+                    <li>
+                        <a href="https://droidcon.moscow">DroidCon Moscow 2016</a>
+                    </li>
+                    <li>
+                        <a href="https://search.googleblog.com/2016/08/a-new-way-to-search-for-content-in-your.html">
+                            Поиск по приложению из поиска Google
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://sites.google.com/a/android.com/tools/recent/androidstudio22rcisnowavailable">
+                            Android Studio 2.2 RC1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/nisrulz/android-tips-tricks">Android tips
+                            and tricks
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://habrahabr.ru/company/aacidov/blog/308514/">Статья Ивана
+                            Бакаидова &quot;Как узнать какие цветы дарить девушке, если у нее
+                            двигается
+                            только голова и она не может говорить?&quot;</a>
+                    </li>
+                    <li>
+                        <a href="http://disq.us/p/1ajwx8h">Вопрос слушателя про RxLoader</a>
+                    </li>
+                    <li>
+                        <a href="https://blog.jetbrains.com/kotlin/2016/06/kotlin-1-0-3-is-here/">
+                            Kotlin 1.0.3
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://jetbrains.github.io/spek/notes/1.0.html">Spek 1.0</a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=pCg3P7AOtHo 2pt. https://www.youtube.com/watch?v=y5U8uiI2S0I">
+                            Spek showcase at knight: 1pt.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/JakeWharton/butterknife/blob/master/CHANGELOG.md#version-830-2016-08-23/">
+                            Butterknife 8.3.0
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/ReactiveX/RxJava/releases/tag/v1.1.10">
+                            Rxjava 1.1.10
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://developer.android.com/topic/libraries/support-library/revisions.html">
+                            Android Support Library, revision 24.2.0
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/andkulikov/Transitions-Everywhere">Бэкпорт
+                            Transitions API от Андрея Куликова
+                        </a>
+                    </li>
+                </ul>
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Сегодня мы обсуждаем Material Design, немного его философию и в первую
+                очередь реализацию в Android. Посмотрим на него с позиции крупных известных
+                приложений. Во главе обсуждения стоит кастомизация под нужды дизайнеров и
+                производительность на любых устройствах. Внимание! В конце подкаста вы узнаете, как
+                можете получить бесплатно Jrebel for Android Business License на год и как попасть
+                на DroidCon Moscow 22 сентября бесплатно.
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>113:42</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/95/download/audio.mp3"
+                       length="87272429" type="audio/mpeg"/>
+        </item>
+
+        <item>
+            <title>Выпуск четырнадцатый. Android 7.0 Nougat, Jrebel, Kotlin, Gradle</title>
+            <link>http://apptractor.ru/AndroidDev/podcast14.html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast14.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Wed, 24 Aug 2016 16:41:35 +0300</pubDate>
+            <description>
+                <ul>
+                    <li>
+                        <a href="http://zeroturnaround.com/rebellabs/speeding-up-android-builds-with-an-incremental-java-compiler">
+                            Jrebel - новый инкрементальный компилятор
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.android.com/versions/nougat-7-0/">Nougat вышла</a>
+                    </li>
+                    <li>
+                        <a href="https://docs.gradle.org/3.0/release-notes">Вышел gradle 3.0</a>
+                    </li>
+                    <li>
+                        <a href="https://gist.github.com/dodyg/5823184">Шпаргалка по Kotlin</a>
+                    </li>
+                    <li>
+                        <a href="https://gist.github.com/dodyg/5823184">Все три части шпаргалок
+                            по котлину
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.Kotlinweekly.net/">Kotlin weekly</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/shyiko/ktlint">Lint для котлина</a>
+                    </li>
+                    <li>
+                        <a href="http://www2.gradle.com/l/68052/2016-07-05/7mlynp">Gradle book</a>
+                    </li>
+                    <li>
+                        <a href="https://medium.com/stories-from-eyeem/creating-highly-modular-android-apps-933271fbdb7d#.d49jmy9an">
+                            О декораторе
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/googlesamples/android-testing/blob/ed62c450e43f859333b3113d44dd59f75971b529/ui/espresso/IntentsBasicSample/app/src/androidTest/java/com/example/android/testing/espresso/BasicSample/DialerActivityTest.java#L94">
+                            Пример Espresso теста с пермишенами
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://chiuki.github.io/espresso/">Иногда выручает лентяев парсинг
+                            стека
+                            view в Espresso
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/ReactiveX/RxJava/releases/tag/v1.1.9">rxjava
+                            1.1.9
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/artem-zinnatullin/RxJavaV1V2Adapter">RxJava
+                            Adapter
+                        </a>
+                    </li>
+                </ul>
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Android 7.0 Nougat, Jrebel, Kotlin, Gradle.</itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Android 7.0 Nougat, Jrebel, Kotlin, Gradle.</itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>68:52</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/93/download/audio.mp3"
+                       length="57847953" type="audio/mpeg"/>
+        </item>
+
+        <item>
+            <title>Выпуск тринадцатый. Doze, Gradle 3, Dagger 2.6, Protobuf</title>
+            <link>http://apptractor.ru/AndroidDev/podcast13.html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast13.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Tue, 09 Aug 2016 15:49:54 +0300</pubDate>
+            <description>О Doze, Gradle 3, Dagger 2.6, Protobuf-ах и многом другом.</description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>О Doze, Gradle 3, Dagger 2.6, Protobuf-ах и многом другом.
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>О Doze, Gradle 3, Dagger 2.6, Protobuf-ах и многом другом.
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>72:44</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/92/download/audio.mp3"
+                       length="61101562" type="audio/mpeg"/>
+        </item>
+
+        <item>
+            <title>Выпуск двенадцатый. Awarness API, ORM и немножко хакинга</title>
+            <link>http://apptractor.ru/AndroidDev/podcast12.html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast12.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Wed, 27 Jul 2016 10:07:45 +0300</pubDate>
+            <description>Познакомились с Awarness API, прошлись по известным ORM, ушли по самую шею
+                в байткод и даже немного обсудили хакинг.
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Познакомились с Awarness API, прошлись по известным ORM, ушли по самую
+                шею в байткод и даже немного обсудили хакинг.
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Познакомились с Awarness API, прошлись по известным ORM, ушли по самую
+                шею в байткод и даже немного обсудили хакинг.
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>65:09</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/91/download/audio.mp3"
+                       length="156350170" type="audio/mpeg"/>
+        </item>
+
+        <item>
+            <title>Выпуск одиннадцатый. Об Instagram, Facebook, Firebase и новых библиотеках от
+                Джейка Вортона
+            </title>
+            <link>http://apptractor.ru/AndroidDev/podcast11.html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast11.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Wed, 13 Jul 2016 14:56:34 +0300</pubDate>
+            <description>Мы переходим на новый летний часовой формат разговоров за жизнь
+                разработчиков. Об Instagram, Facebook, Firebase и новых библиотеках от Джейка
+                Вортона.
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Мы переходим на новый летний часовой формат разговоров за жизнь
+                разработчиков. Об Instagram, Facebook, Firebase и новых библиотеках от Джейка
+                Вортона.
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Мы переходим на новый летний часовой формат разговоров за жизнь
+                разработчиков. Об Instagram, Facebook, Firebase и новых библиотеках от Джейка
+                Вортона.
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>69:14</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/90/download/audio.mp3"
+                       length="49848842" type="audio/mpeg"/>
+        </item>
+
+        <item>
+            <title>Выпуск десятый. Droidcon Berlin, Android N DP4, новые библиотеки и насущные
+                вопросы
+            </title>
+            <link>http://apptractor.ru/AndroidDev/podcast10.html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast10.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Mon, 27 Jun 2016 10:08:29 +0300</pubDate>
+            <description>Мы переходим на новый летний часовой формат разговоров за жизнь
+                разработчиков. Сегодня обсудим Droidcon Berlin, Android N DP4, новые библиотеки и
+                насущные вопросы.
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Мы переходим на новый летний часовой формат разговоров за жизнь
+                разработчиков. Сегодня обсудим Droidcon Berlin, Android N DP4, новые библиотеки и
+                насущные вопросы.
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Мы переходим на новый летний часовой формат разговоров за жизнь
+                разработчиков. Сегодня обсудим Droidcon Berlin, Android N DP4, новые библиотеки и
+                насущные вопросы.
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>59:47</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/88/download/audio.mp3"
+                       length="43043422" type="audio/mpeg"/>
+        </item>
+
+        <item>
+            <title>Выпуск девятый. I/O</title>
+            <link>http://apptractor.ru/AndroidDev/podcast9.html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast9.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Mon, 30 May 2016 09:15:56 +0300</pubDate>
+            <description>В новом подкасте мы обсуждаем конференцию Google I/O 2016 и все ее
+                новинки.
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>В новом подкасте мы обсуждаем конференцию Google I/O 2016 и все ее
+                новинки.
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>В новом подкасте мы обсуждаем конференцию Google I/O 2016 и все ее
+                новинки.
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>58:12</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/84/download/audio.mp3"
+                       length="139693684" type="audio/mpeg"/>
+        </item>
+
+        <item>
+            <title>Выпуск восьмой. NDK</title>
+            <link>http://apptractor.ru/AndroidDev/podcast8.html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast8.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Fri, 22 Apr 2016 21:11:30 +0300</pubDate>
+            <description>Как мы работаем с нативным кодом, какие плюшки, какие проблемы. Стоит ли
+                выносить часть логики в нативный код.
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Как мы работаем с нативным кодом, какие плюшки, какие проблемы. Стоит
+                ли выносить часть логики в нативный код.
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Как мы работаем с нативным кодом, какие плюшки, какие проблемы. Стоит ли
+                выносить часть логики в нативный код.
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>103:07</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/81/download/audio.mp3"
+                       length="64978056" type="audio/mpeg"/>
+        </item>
+
+
+        <item>
+            <title>Выпуск седьмой. Kotlin</title>
+            <link>http://apptractor.ru/AndroidDev/podcast7.html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast7.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Thu, 07 Apr 2016 10:11:30 +0300</pubDate>
+            <description>Разговор о Kotlin с разработчиком самого Kotlin и парнями, кто давно его
+                использует. Пришло время перемыть ему косточки и понять, можно ли с ним идти в
+                продакшн. Значит ли релиз, что теперь в нем нет багов и проблем?
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Разговор о Kotlin с разработчиком самого Kotlin и парнями, кто давно
+                его использует. Пришло время перемыть ему косточки и понять, можно ли с ним идти в
+                продакшн. Значит ли релиз, что теперь в нем нет багов и проблем?
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Разговор о Kotlin с разработчиком самого Kotlin и парнями, кто давно его
+                использует. Пришло время перемыть ему косточки и понять, можно ли с ним идти в
+                продакшн. Значит ли релиз, что теперь в нем нет багов и проблем?
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>94:17</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/78/download/audio.mp3"
+                       length="60676633" type="audio/mpeg"/>
+        </item>
+
+
+        <item>
+            <title>Выпуск шестой. Android N</title>
+            <link>http://apptractor.ru/AndroidDev/podcast6.html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast6.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Wed, 23 Mar 2016 22:59:21 +0300</pubDate>
+            <description>Настало время поговорить про управление зависимостями и решить, быть Dagger
+                2 в нашем проекте или же можно ограничиться более простым Dependency Injection
+                инструментом. Но мы посовещались и решили, что каждый сам для себя решит этот
+                вопрос. К тому же вышел превью Android N, а это повод для большого разговора. Во
+                второй половине выпуска мы покритиковали и подкорректировали статью о 33-х советах
+                от разработчика Android.
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Настало время поговорить про управление зависимостями и решить, быть
+                Dagger 2 в нашем проекте или же можно ограничиться более простым Dependency
+                Injection инструментом. Но мы посовещались и решили, что каждый сам для себя решит
+                этот вопрос. К тому же вышел превью Android N, а это повод для большого разговора.
+                Во второй половине выпуска мы покритиковали и подкорректировали статью о 33-х
+                советах от разработчика Android.
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Настало время поговорить про управление зависимостями и решить, быть
+                Dagger 2 в нашем проекте или же можно ограничиться более простым Dependency
+                Injection инструментом. Но мы посовещались и решили, что каждый сам для себя решит
+                этот вопрос. К тому же вышел превью Android N, а это повод для большого разговора.
+                Во второй половине выпуска мы покритиковали и подкорректировали статью о 33-х
+                советах от разработчика Android.
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>93:12</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/75/download/audio.mp3"
+                       length="64828056" type="audio/mpeg"/>
+        </item>
+
+        <item>
+            <title>Выпуск пятый. RXJava</title>
+            <link>http://apptractor.ru/AndroidDev/podcast5.html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast5.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Thu, 10 Mar 2016 10:11:30 +0300</pubDate>
+            <description>Серьезный разговор о реактивном программировании. Ответы на самые главные
+                вопросы: Зачем? С чего начать? И как же прикрутить к жизненному циклу? Участники
+                выпуска - матерые реактивщики, за плечами которых не только полное внедрение подхода
+                в мобильные проекты, но и свои реактивные библиотеки.
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Серьезный разговор о реактивном программировании. Ответы на самые
+                главные вопросы: Зачем? С чего начать? И как же прикрутить к жизненному циклу?
+                Участники выпуска - матерые реактивщики, за плечами которых не только полное
+                внедрение подхода в мобильные проекты, но и свои реактивные библиотеки.
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Серьезный разговор о реактивном программировании. Ответы на самые
+                главные вопросы: Зачем? С чего начать? И как же прикрутить к жизненному циклу?
+                Участники выпуска - матерые реактивщики, за плечами которых не только полное
+                внедрение подхода в мобильные проекты, но и свои реактивные библиотеки.
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>97:09</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/72/download/audio.mp3"
+                       length="65991449" type="audio/mpeg"/>
+        </item>
+
+        <item>
+            <title>Выпуск четвертый. Тесты. Вся правда из первых уст</title>
+            <link>http://apptractor.ru/AndroidDev/podcast4html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast4.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Wed, 24 Feb 2016 21:30:38 +0300</pubDate>
+            <description>Мы поговорим обо всех аспектах тестирования в Android. И, самое главное, мы
+                расскажем, что TDD не просто возможен, а он обязателен в современной мобильной
+                разработке!
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Мы поговорим обо всех аспектах тестирования в Android. И, самое
+                главное, мы расскажем, что TDD не просто возможен, а он обязателен в современной
+                мобильной разработке!
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Мы поговорим обо всех аспектах тестирования в Android. И, самое главное,
+                мы расскажем, что TDD не просто возможен, а он обязателен в современной мобильной
+                разработке!
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>94:26</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/69/download/audio.mp3"
+                       length="65992015" type="audio/mpeg"/>
+        </item>
+
+
+        <item>
+            <title>Выпуск третий. Gitflow, CI, QA, которые пишут UI Тесты, и другие аббревиатуры
+            </title>
+            <link>http://apptractor.ru/AndroidDev/podcast3.html</link>
+            <guid>http://apptractor.ru/AndroidDev/podcast3.html</guid>
+            <author>Денис Неклюдов</author>
+            <pubDate>Tue, 09 Feb 2016 22:17:51 +0300</pubDate>
+            <description>Взрослый подход к большим проектам в инфраструктурных вопросах и вопросах
+                тестирования. Поделимся опытом адаптации gitflow к реалиям динамичной разработки
+                мобильных приложений. Построим самый удобный Continuous Integration сервер.
+                Пройдемся по Continuous Delivery и даже Continuous Translations И запустим на нем
+                все тесты, которые только можно сделать, чтобы постоянно проверять наш код.
+            </description>
+            <itunes:explicit>No</itunes:explicit>
+            <itunes:subtitle>Взрослый подход к большим проектам в инфраструктурных вопросах и
+                вопросах тестирования. Поделимся опытом адаптации gitflow к реалиям динамичной
+                разработки мобильных приложений. Построим самый удобный Continuous Integration
+                сервер. Пройдемся по Continuous Delivery и даже Continuous Translations И запустим
+                на нем все тесты, которые только можно сделать, чтобы постоянно проверять наш код.
+            </itunes:subtitle>
+            <itunes:author>Денис Неклюдов</itunes:author>
+            <itunes:summary>Взрослый подход к большим проектам в инфраструктурных вопросах и
+                вопросах тестирования. Поделимся опытом адаптации gitflow к реалиям динамичной
+                разработки мобильных приложений. Построим самый удобный Continuous Integration
+                сервер. Пройдемся по Continuous Delivery и даже Continuous Translations И запустим
+                на нем все тесты, которые только можно сделать, чтобы постоянно проверять наш код.
+            </itunes:summary>
+            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:duration>85:35</itunes:duration>
+            <bitrate>112</bitrate>
+            <enclosure url="http://apptractor-podcast.podster.fm/67/download/audio.mp3"
+                       length="61619575" type="audio/mpeg"/>
+        </item>
+
+
     </channel>
 </rss>

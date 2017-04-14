@@ -106,19 +106,5 @@ class ViewModelImpl(
         observe(Event.SAVE_INSTANCE_STATE).bindSubscribe(onNext = { it.putState(state) })
     }
 
-    companion object {
-        operator fun invoke(naviComponent: NaviComponent)
-                = ViewModelImpl(naviComponent = naviComponent)
-
-        operator fun invoke(naviComponent: NaviComponent, args: Args)
-                = ViewModelImpl(naviComponent = naviComponent, args = args)
-
-        operator fun invoke(naviComponent: NaviComponent, event: Event<*>)
-                = ViewModelImpl(naviComponent = naviComponent, event = event)
-
-        operator fun invoke(naviComponent: NaviComponent, event: Event<*>, state: Parcelable)
-                = ViewModelImpl(naviComponent = naviComponent, event = event, state = state)
-    }
+    fun <T : Any> NaviComponent.observe(event: Event<T>) = RxNavi.observe(this, event)
 }
-
-fun <T : Any> NaviComponent.observe(event: Event<T>) = RxNavi.observe(this, event)

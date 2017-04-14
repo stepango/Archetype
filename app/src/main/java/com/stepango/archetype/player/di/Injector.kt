@@ -23,6 +23,8 @@ import com.stepango.archetype.player.network.get.Api
 import com.stepango.archetype.player.network.get.BASE_URL
 import com.stepango.archetype.player.network.get.WEB_SERVICE_TIMEOUT
 import com.stepango.archetype.player.ui.additional.MockToaster
+import com.stepango.archetype.player.ui.episodes.EpisodesComponent
+import com.stepango.archetype.player.ui.episodes.EpisodesComponentImpl
 import com.stepango.archetype.player.ui.player.PlayerComponent
 import com.stepango.archetype.player.ui.player.PlayerComponentImpl
 import com.stepango.archetype.player.ui.player.ShowEpisodeAction
@@ -58,6 +60,10 @@ interface Injector {
 
     //region repositories
     fun episodesRepo(): EpisodesModelRepo
+    //endregion
+
+    //region components
+    fun episodesComponent(): EpisodesComponent
     //endregion
 
     //region network
@@ -97,6 +103,10 @@ class InjectorImpl(val app: App) : Injector {
     private val episodesRepo: EpisodesModelRepo by lazy { InMemoryEpisodesRepo() }
 
     override fun episodesRepo(): EpisodesModelRepo = episodesRepo
+    //endregion
+
+    //region components
+    override fun episodesComponent(): EpisodesComponent = EpisodesComponentImpl()
     //endregion
 
     //region network

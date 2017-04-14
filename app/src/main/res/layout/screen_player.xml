@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/toolbar"
             bind:useDefaults="@{true}"
-            bind:loadData="@{vm.episode.description}"
+            bind:loadData="@{vm.episode.content}"
             />
 
         <Button

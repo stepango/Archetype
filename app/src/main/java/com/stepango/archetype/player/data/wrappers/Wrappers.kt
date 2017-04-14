@@ -5,12 +5,16 @@ import com.stepango.archetype.action.Args
 import com.stepango.archetype.action.argsOf
 import com.stepango.archetype.player.data.db.model.EpisodesModel
 import com.stepango.archetype.player.episodeId
+import com.stepango.archetype.util.firstLine
+import com.stepango.archetype.util.linesCount
+import io.mironov.smuggler.AutoParcelable
 
-class EpisodesWrapper(model: EpisodesModel) : StableId, ArgsHolder {
+data class EpisodesWrapper(private val model: EpisodesModel) : StableId, ArgsHolder, AutoParcelable {
     override val stableId: Long = model.id
     val name: String = model.name
-    val description: String = model.description
-    override fun args() = argsOf { episodeId { stableId } }
+    val summary: String = model.summary.run { if (this.linesCount() > 1) this.firstLine() else this }
+    val content: String = model.content ?: model.summary.run { if (this.linesCount() > 1) this else "" }
+    override fun args(): Args = argsOf { episodeId { stableId } }
 }
 
 

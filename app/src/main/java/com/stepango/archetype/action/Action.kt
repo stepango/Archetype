@@ -13,8 +13,6 @@ interface ContextAction : Action<Context> {
 
     val id: Number
 
-    fun keys(): Array<String> = arrayOf()
-
     /**
      * Action should perform with [Context]
      */

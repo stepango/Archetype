@@ -55,9 +55,13 @@ class FeedResponseParsingTest {
         val call = service!!.get()
         val response = call.execute()
         val body = response.body()
-        Assert.assertEquals("Подкасты Android Dev", body.channel.title)
+        Assert.assertEquals("Android Dev Подкаст", body.channel.title)
         val item = body.channel.item[0]
-        Assert.assertEquals("Интересные материалы для Android-разработчика #63", item.title)
+        Assert.assertEquals("My Title", item.title)
+        Assert.assertEquals("My Summary", item.summary)
+        Assert.assertEquals("My Content", item.content)
+        Assert.assertEquals("https://my.url", item.enclosure.url)
+        Assert.assertEquals("my/type", item.enclosure.type)
     }
 
     @Throws(IOException::class)

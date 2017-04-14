@@ -2,7 +2,7 @@
 
 buildscript {
 
-    ext.androidPluginVersion = "2.3.0"
+    ext.androidPluginVersion = "2.3.1"
     ext.kotlin_version = '1.1.1'
     ext.smugglerVersion = "0.12.10"
     ext.supportLibVersion = "25.3.0"

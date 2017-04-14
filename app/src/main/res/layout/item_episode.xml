@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         bind:performAction="@{R.id.action_show_episode}"
-        bind:actionData="@{item.args()}"
+        bind:actionData="@{item::args}"
         >
 
         <TextView

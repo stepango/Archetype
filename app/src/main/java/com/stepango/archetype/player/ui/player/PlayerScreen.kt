@@ -32,7 +32,7 @@ class PlayerFragment : BaseFragment<ScreenPlayerBinding>() {
 class PlayerViewModel(
         naviComponent: NaviComponent,
         arguments: Args
-) : ViewModel by ViewModelImpl(naviComponent, arguments) {
+) : ViewModel by ViewModelImpl(naviComponent = naviComponent, args = arguments) {
 
     val episodesRepo by lazyInject { episodesRepo() }
 
@@ -42,8 +42,8 @@ class PlayerViewModel(
 
     init {
         episodesRepo.observe(args().episodeId())
-                .map { it.map(::EpisodesWrapper) }
                 .filterNonEmpty()
+                .map(::EpisodesWrapper)
                 .setTo(episode)
                 .bindSubscribe()
     }

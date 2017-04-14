@@ -5,14 +5,14 @@ import android.databinding.ObservableField
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import com.github.nitrico.lastadapter.LastAdapter
+import com.github.nitrico.lastadapter.Type
 import com.stepango.archetype.R
 import com.stepango.archetype.activity.BaseActivity
+import com.stepango.archetype.databinding.ItemEpisodeBinding
 import com.stepango.archetype.databinding.ScreenEpisodesBinding
 import com.stepango.archetype.fragment.BaseFragment
-import com.stepango.archetype.lastadapter.episodeItemType
 import com.stepango.archetype.player.data.wrappers.EpisodesWrapper
 import com.stepango.archetype.player.di.lazyInject
-import com.stepango.archetype.rx.filterNotEmpty
 import com.stepango.archetype.ui.swap
 import com.stepango.archetype.ui.with
 import com.stepango.archetype.viewmodel.ViewModel
@@ -35,23 +35,22 @@ class EpisodesFragment : BaseFragment<ScreenEpisodesBinding>() {
 
 class EpisodesViewModel(
         naviComponent: NaviComponent
-) : ViewModel by ViewModelImpl(naviComponent) {
+) :
+        ViewModel by ViewModelImpl(naviComponent = naviComponent) {
 
-    val episodesRepo by lazyInject { episodesRepo() }
-
-    val episodes = ObservableField<List<EpisodesWrapper>>(listOf())
+    val episodesComponent by lazyInject { episodesComponent() }
+    val episodes: ObservableField<List<EpisodesWrapper>> = ObservableField(listOf())
 
     init {
-        episodesRepo.observeAll()
-                .filterNotEmpty()
-                .map { it.map(::EpisodesWrapper) }
-                .setTo(episodes) { it }
+        episodesComponent.observeEpisodes()
+                .setTo(episodes)
                 .bindSubscribe()
+
         refreshItems()
     }
 
     private fun refreshItems() {
-        episodesRepo.pull()
+        episodesComponent.updateEpisodes()
                 .bindSubscribe(
                         onError = { toaster.showError(it, R.string.episodes_error_loading) }
                 )
@@ -61,6 +60,6 @@ class EpisodesViewModel(
 @BindingAdapter("episodesAdapter")
 fun episodesAdapter(view: RecyclerView, list: List<EpisodesWrapper>) {
     LastAdapter.with(list)
-            .type { episodeItemType }
+            .type { Type<ItemEpisodeBinding>(R.layout.item_episode) }
             .swap(view)
 }

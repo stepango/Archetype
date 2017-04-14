@@ -9,14 +9,7 @@ import com.stepango.archetype.logger.logError
 
 class SimpleToaster(val ctx: Activity) : Toaster {
 
-    //        override fun showError(msg: String) = showToast(msg)
-
     override fun showError(@StringRes id: Int) = showToast(id)
-
-    //        override fun showError(t: Throwable, msg: String) {
-    //            t.logError { "Show error to user" }
-    //            showError(msg)
-    //        }
 
     override fun showError(t: Throwable, @StringRes id: Int) {
         t.logError { "Show error to user" }

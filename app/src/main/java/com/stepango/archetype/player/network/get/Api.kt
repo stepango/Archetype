@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface Api {
 
-    @GET("feed")
+    @GET("Podcast/android.xml")
     fun feed(): Single<Rss>
 }

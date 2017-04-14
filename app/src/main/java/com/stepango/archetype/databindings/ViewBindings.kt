@@ -6,9 +6,7 @@ import com.stepango.archetype.ui.visible
 
 @BindingAdapter("visible")
 fun visible(v: View, visible: Boolean) {
-    synchronized(v) {
-        v.visible = visible
-    }
+    v.visible = visible
 }
 
 @BindingAdapter("requestFocus")
