@@ -63,7 +63,7 @@
             </itunes:subtitle>
             <itunes:author>Денис Неклюдов</itunes:author>
             <itunes:summary>My Summary</itunes:summary>
-            <itunes:image href="http://apptractor.ru/Podcast/Android.png"/>
+            <itunes:image href="http://image.png"/>
             <itunes:duration>69:39</itunes:duration>
             <bitrate>112</bitrate>
             <enclosure url="https://my.url" length="50150086" type="my/type"/>

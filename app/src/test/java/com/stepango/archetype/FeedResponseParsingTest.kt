@@ -62,6 +62,7 @@ class FeedResponseParsingTest {
         Assert.assertEquals("My Content", item.content)
         Assert.assertEquals("https://my.url", item.enclosure.url)
         Assert.assertEquals("my/type", item.enclosure.type)
+        Assert.assertEquals("http://image.png", item.image)
     }
 
     @Throws(IOException::class)

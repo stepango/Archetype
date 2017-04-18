@@ -11,7 +11,7 @@ import com.stepango.archetype.activity.BaseActivity
 import com.stepango.archetype.databinding.ItemEpisodeBinding
 import com.stepango.archetype.databinding.ScreenEpisodesBinding
 import com.stepango.archetype.fragment.BaseFragment
-import com.stepango.archetype.player.data.wrappers.EpisodesWrapper
+import com.stepango.archetype.player.data.wrappers.EpisodeListItemWrapper
 import com.stepango.archetype.player.di.lazyInject
 import com.stepango.archetype.ui.swap
 import com.stepango.archetype.ui.with
@@ -39,7 +39,7 @@ class EpisodesViewModel(
         ViewModel by ViewModelImpl(naviComponent = naviComponent) {
 
     val episodesComponent by lazyInject { episodesComponent() }
-    val episodes: ObservableField<List<EpisodesWrapper>> = ObservableField(listOf())
+    val episodes: ObservableField<List<EpisodeListItemWrapper>> = ObservableField(listOf())
 
     init {
         episodesComponent.observeEpisodes()
@@ -58,7 +58,7 @@ class EpisodesViewModel(
 }
 
 @BindingAdapter("episodesAdapter")
-fun episodesAdapter(view: RecyclerView, list: List<EpisodesWrapper>) {
+fun episodesAdapter(view: RecyclerView, list: List<EpisodeListItemWrapper>) {
     LastAdapter.with(list)
             .type { Type<ItemEpisodeBinding>(R.layout.item_episode) }
             .swap(view)

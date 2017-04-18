@@ -27,18 +27,20 @@
         <WebView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/play"
             android:layout_below="@id/toolbar"
-            bind:useDefaults="@{true}"
             bind:loadData="@{vm.episode.content}"
+            bind:useDefaults="@{true}"
             />
 
         <Button
+            android:id="@id/play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="32dp"
-            android:onClick="@{() -> vm.player.play()}"
+            android:onClick="@{() -> vm.play()}"
             />
 
     </RelativeLayout>

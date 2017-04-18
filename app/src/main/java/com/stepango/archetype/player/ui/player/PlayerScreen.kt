@@ -7,10 +7,9 @@ import com.stepango.archetype.action.Args
 import com.stepango.archetype.activity.BaseActivity
 import com.stepango.archetype.databinding.ScreenPlayerBinding
 import com.stepango.archetype.fragment.BaseFragment
-import com.stepango.archetype.player.data.wrappers.EpisodesWrapper
+import com.stepango.archetype.player.data.wrappers.EpisodeWrapper
 import com.stepango.archetype.player.di.lazyInject
 import com.stepango.archetype.player.episodeId
-import com.stepango.archetype.rx.filterNonEmpty
 import com.stepango.archetype.viewmodel.ViewModel
 import com.stepango.archetype.viewmodel.ViewModelImpl
 import com.stepango.rxdatabindings.setTo
@@ -34,18 +33,19 @@ class PlayerViewModel(
         arguments: Args
 ) : ViewModel by ViewModelImpl(naviComponent = naviComponent, args = arguments) {
 
-    val episodesRepo by lazyInject { episodesRepo() }
-
+    val episodeComponent by lazyInject { episodesComponent() }
     val player by lazyInject { player() }
 
-    val episode = ObservableField<EpisodesWrapper>()
+    val episode = ObservableField<EpisodeWrapper>()
 
     init {
-        episodesRepo.observe(args().episodeId())
-                .filterNonEmpty()
-                .map(::EpisodesWrapper)
+        episodeComponent.observeEpisode(args().episodeId())
                 .setTo(episode)
                 .bindSubscribe()
+    }
+
+    fun play() {
+        player.play(episode.get().audioUrl)
     }
 
 }

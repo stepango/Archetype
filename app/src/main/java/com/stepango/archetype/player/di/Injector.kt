@@ -89,7 +89,7 @@ class InjectorImpl(val app: App) : Injector {
     override fun intentMaker() = IntentMakerImpl()
 
     //region media
-    override fun player() = PlayerComponentImpl()
+    override fun player() = PlayerComponentImpl(app)
     //endregion
 
     //region ui

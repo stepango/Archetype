@@ -11,7 +11,7 @@
 
         <variable
             name="item"
-            type="com.stepango.archetype.player.data.wrappers.EpisodesWrapper"
+            type="com.stepango.archetype.player.data.wrappers.EpisodeListItemWrapper"
             />
 
     </data>
@@ -19,16 +19,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        bind:performAction="@{R.id.action_show_episode}"
+        android:orientation="horizontal"
         bind:actionData="@{item::args}"
+        bind:performAction="@{R.id.action_show_episode}"
         >
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:padding="16dp"
+            bind:imageUrl="@{item.imageUrl}"
+            />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:textSize="16sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="16dp"
+            android:textColor="#212121"
+            android:textSize="18sp"
             bind:text="@{item.name}"
             tools:text="Name"
             />

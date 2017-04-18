@@ -22,6 +22,10 @@ public class Item {
     @Element(name = "summary")
     public String summary;
 
+    @Namespace(prefix = "itunes")
     @Element(name = "enclosure")
     public Enclosure enclosure;
+
+    @Element(name = "image")
+    public Image image;
 }
