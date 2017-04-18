@@ -5,16 +5,6 @@ import android.os.Parcelable
 import com.stepango.archetype.logger.d
 import com.stepango.archetype.logger.logger
 
-interface BundleFactory {
-    fun newBundle(): Bundle
-    fun emptyBundle(): Bundle
-}
-
-class BundleFactoryImpl : BundleFactory {
-    override fun newBundle(): Bundle = Bundle()
-    override fun emptyBundle(): Bundle = Bundle.EMPTY
-}
-
 inline fun <reified T : Parcelable> Bundle?.extract(defaultValueProducer: () -> T): T {
     this ?: return defaultValueProducer()
     val key = T::class.java.name
