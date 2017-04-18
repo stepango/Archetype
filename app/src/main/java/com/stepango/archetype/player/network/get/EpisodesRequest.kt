@@ -18,6 +18,8 @@ class EpisodesRequest {
             = EpisodesModel(
             feedItem.title,
             feedItem.summary,
+            feedItem.image.href,
+            feedItem.enclosure.url,
             feedItem.content)
 
 }
