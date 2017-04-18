@@ -1,18 +1,17 @@
 package com.stepango.archetype.player.ui.episodes
 
-import com.stepango.archetype.player.data.db.model.EpisodesModel
 import com.stepango.archetype.player.data.wrappers.EpisodeListItemWrapper
 import com.stepango.archetype.player.data.wrappers.EpisodeWrapper
 import com.stepango.archetype.player.di.lazyInject
 import com.stepango.archetype.rx.filterNonEmpty
 import com.stepango.archetype.rx.filterNotEmpty
+import io.reactivex.Completable
 import io.reactivex.Observable
-import io.reactivex.Single
 
 interface EpisodesComponent {
     fun observeEpisodes(): Observable<List<EpisodeListItemWrapper>>
     fun observeEpisode(id: Long): Observable<EpisodeWrapper>
-    fun updateEpisodes(): Single<List<EpisodesModel>>
+    fun updateEpisodes(): Completable
 }
 
 class EpisodesComponentImpl : EpisodesComponent {
@@ -28,6 +27,6 @@ class EpisodesComponentImpl : EpisodesComponent {
             .filterNonEmpty()
             .map(::EpisodeWrapper)
 
-    override fun updateEpisodes(): Single<List<EpisodesModel>>
+    override fun updateEpisodes(): Completable
             = episodesRepo.pull()
 }

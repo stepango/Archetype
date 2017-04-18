@@ -8,9 +8,12 @@ import com.stepango.archetype.BuildConfig
 import com.stepango.archetype.R
 import com.stepango.archetype.action.ActionHandler
 import com.stepango.archetype.action.ActionProducer
-import com.stepango.archetype.action.ActionProducerImpl
+import com.stepango.archetype.action.ApiAction
+import com.stepango.archetype.action.ApiActionHandler
+import com.stepango.archetype.action.ApiActionProducer
 import com.stepango.archetype.action.ContextAction
 import com.stepango.archetype.action.ContextActionHandler
+import com.stepango.archetype.action.ContextActionProducer
 import com.stepango.archetype.action.IdleAction
 import com.stepango.archetype.action.IntentMaker
 import com.stepango.archetype.action.IntentMakerImpl
@@ -19,8 +22,9 @@ import com.stepango.archetype.image.ImageLoader
 import com.stepango.archetype.logger.Logger
 import com.stepango.archetype.player.data.db.EpisodesModelRepo
 import com.stepango.archetype.player.data.db.memory.InMemoryEpisodesRepo
-import com.stepango.archetype.player.network.get.Api
+import com.stepango.archetype.player.network.Api
 import com.stepango.archetype.player.network.get.BASE_URL
+import com.stepango.archetype.player.network.get.GetEpisodesAction
 import com.stepango.archetype.player.network.get.WEB_SERVICE_TIMEOUT
 import com.stepango.archetype.player.ui.additional.MockToaster
 import com.stepango.archetype.player.ui.episodes.EpisodesComponent
@@ -68,6 +72,9 @@ interface Injector {
 
     //region network
     fun apiService(): Api
+
+    fun apiActionsHandler(): ActionHandler<Api>
+    fun apiActionsProducer(): ActionProducer<ApiAction>
     //endregion
 
 
@@ -77,6 +84,9 @@ interface Injector {
 }
 
 class InjectorImpl(val app: App) : Injector {
+    override fun apiActionsHandler(): ActionHandler<Api> = ApiActionHandler(apiActionsProducer())
+
+    override fun apiActionsProducer(): ActionProducer<ApiAction> = ApiActionProducer(apiService(), apiActions)
 
     private object logger : Logger by SimpleLogger()
 
@@ -84,7 +94,7 @@ class InjectorImpl(val app: App) : Injector {
 
     override fun contextActionsHandler() = ContextActionHandler(contextActionsProducer())
 
-    override fun contextActionsProducer(): ActionProducer<@JvmSuppressWildcards ContextAction> = ActionProducerImpl(app, actions)
+    override fun contextActionsProducer(): ActionProducer<@JvmSuppressWildcards ContextAction> = ContextActionProducer(app, contextActions)
 
     override fun intentMaker() = IntentMakerImpl()
 
@@ -141,7 +151,11 @@ class InjectorImpl(val app: App) : Injector {
     //endregion
 }
 
-val actions = SparseArray<ContextAction>().apply {
+val contextActions = SparseArray<ContextAction>().apply {
     put(R.id.action_idle, IdleAction())
     put(R.id.action_show_episode, ShowEpisodeAction())
+}
+
+val apiActions = SparseArray<ApiAction>().apply {
+   put(R.id.action_get_episodes, GetEpisodesAction())
 }

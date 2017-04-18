@@ -1,4 +1,4 @@
-package com.stepango.archetype.player.network.get
+package com.stepango.archetype.player.network
 
 import com.stepango.archetype.player.data.db.response.feed.Rss
 import io.reactivex.Single
