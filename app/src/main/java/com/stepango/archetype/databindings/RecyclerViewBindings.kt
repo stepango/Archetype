@@ -9,15 +9,8 @@ import android.support.v7.widget.RecyclerView
 import com.stepango.archetype.R
 import com.stepango.archetype.ui.SpaceItemDecoration
 
-@BindingAdapter(
-        "useDefaults",
-        "compact",
-        requireAll = false)
-fun useDefaults(
-        view: RecyclerView,
-        useDefaults: Boolean,
-        compact: Boolean?
-) {
+@BindingAdapter("useDefaults")
+fun useDefaults(view: RecyclerView, useDefaults: Boolean) {
     if (!useDefaults) return
     view.clipToPadding = false
     view.apply {

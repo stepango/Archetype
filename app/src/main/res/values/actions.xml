@@ -4,4 +4,6 @@
     <item name="action_idle" type="id"/>
     <item name="action_show_episode" type="id"/>
 
+    <item name="action_get_episodes" type="id"/>
+
 </resources>

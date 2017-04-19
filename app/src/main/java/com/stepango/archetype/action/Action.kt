@@ -1,7 +1,7 @@
 package com.stepango.archetype.action
 
 import android.content.Context
-import com.stepango.archetype.R
+import com.stepango.archetype.player.network.Api
 import io.reactivex.Completable
 
 interface Action<in T> {
@@ -11,8 +11,6 @@ interface Action<in T> {
 
 interface ContextAction : Action<Context> {
 
-    val id: Number
-
     /**
      * Action should perform with [Context]
      */
@@ -20,10 +18,8 @@ interface ContextAction : Action<Context> {
 
 }
 
+interface ApiAction : Action<Api>
+
 class IdleAction : ContextAction {
-
-    override val id = R.id.action_idle
-
     override fun invoke(context: Context, args: Args): Completable = Completable.complete()
-
 }

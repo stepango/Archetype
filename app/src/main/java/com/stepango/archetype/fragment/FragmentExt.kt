@@ -1,6 +1,5 @@
 package com.stepango.archetype.fragment
 
-import android.R
 import android.app.Activity
 import android.app.Fragment
 import android.app.FragmentManager
@@ -11,7 +10,7 @@ import com.stepango.archetype.action.argsOf
 
 fun Fragment.replaceIn(
         activity: Activity,
-        @IdRes containerId: Int = R.id.content,
+        @IdRes containerId: Int = android.R.id.content,
         map: Args = argsOf()
 ) {
     replace(activity.intent?.extras?.apply { putAll(map) }, containerId, activity.fragmentManager)

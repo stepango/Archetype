@@ -23,7 +23,7 @@ abstract class BaseFragment<T : ViewDataBinding> : NaviFragment() {
     var onBackPressedHandler: (activity: Activity) -> Boolean = { false }
 
     val actionHandler: BaseActionHandler = object : BaseActionHandler {
-        override fun handleAction(actionId: Number, args: Args) {
+        override fun handleAction(actionId: Int, args: Args) {
             injector.contextActionsHandler().handleAction(this@BaseFragment.activity, actionId, args)
         }
     }

@@ -18,25 +18,21 @@ interface IntentMaker {
 
 class IntentMakerImpl : IntentMaker
 
-interface IntentMakerHolder {
-    val intentMaker: IntentMaker
-}
-
-inline fun <reified T : Activity> IntentMakerHolder.intent(
+inline fun <reified T : Activity> IntentMaker.intent(
         context: Context, args: Args = argsOf()
 ): Intent {
     val cls = T::class
     return intent(cls, context, args)
 }
 
-fun <T : Activity> IntentMakerHolder.intent(cls: KClass<T>, context: Context, args: Args)
-        = intentMaker.make(context, cls).apply { args.let { putExtras(it) } }
+fun <T : Activity> IntentMaker.intent(cls: KClass<T>, context: Context, args: Args)
+        = make(context, cls).apply { args.let { putExtras(it) } }
 
-inline fun <reified T : Activity> IntentMakerHolder.startIntent(
+inline fun <reified T : Activity> IntentMaker.startIntent(
         context: Context, args: Args = argsOf(), requestCode: Int? = null, options: Bundle? = Bundle.EMPTY
 ) = intent<T>(context, args).start(context, requestCode, options)
 
-fun <T : Activity> IntentMakerHolder.startIntent(
+fun <T : Activity> IntentMaker.startIntent(
         cls: KClass<T>, context: Context, map: Args = argsOf(), requestCode: Int? = null, options: Bundle? = Bundle.EMPTY
 ) = intent(cls, context, map).start(context, requestCode, options)
 

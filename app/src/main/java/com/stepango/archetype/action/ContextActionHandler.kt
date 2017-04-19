@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.SparseArray
 import com.stepango.archetype.logger.d
 import com.stepango.archetype.logger.logger
+import com.stepango.archetype.player.network.Api
 import com.stepango.archetype.rx.CompositeDisposableComponent
 import com.stepango.archetype.rx.CompositeDisposableComponentImpl
 import com.stepango.archetype.util.name
@@ -23,7 +24,7 @@ class ContextActionHandler(
         resetCompositeDisposable()
     }
 
-    override fun handleAction(context: Context, actionId: Number, args: Args) {
+    override fun handleAction(context: Context, actionId: Int, args: Args) {
         val actionName = actionId.name(context)
         logger.d { "Action:: $actionName" }
         val observer = observer(actionName)
@@ -52,7 +53,12 @@ class ContextActionHandler(
     }
 }
 
-class ActionProducerImpl(val context: Context, val actions: SparseArray<ContextAction>) : ActionProducer<ContextAction> {
-    override fun createAction(actionId: Number)
-            = actions[actionId.toInt()] ?: throw IllegalArgumentException("${actionId.name(context)} not found")
+class ContextActionProducer(val context: Context, val actions: SparseArray<ContextAction>) : ActionProducer<ContextAction> {
+    override fun createAction(actionId: Int)
+            = actions[actionId] ?: throw IllegalArgumentException("Action ${actionId.name(context)} not found")
+}
+
+class ApiActionProducer(val context: Api, val actions: SparseArray<ApiAction>) : ActionProducer<ApiAction> {
+    override fun createAction(actionId: Int)
+            = actions[actionId] ?: throw IllegalArgumentException("Action $actionId not found")
 }
