@@ -3,6 +3,8 @@ Badass MVVM architecture.
 
 At the moment Archetype contains implementation of Android Dev podcast player. 
 
+Official Telegram chat https://t.me/archetype_android
+
 More info about this architecture approach could be found here https://mobiusconf.com/en/talks/a-modern-approach-to-the-architecture-of-android-app-rxjava-kotlin-mvvm/
 
 # Main libraries and concepts
