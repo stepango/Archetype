@@ -9,7 +9,6 @@ More info about this architecture approach could be found here https://mobiuscon
 - Android SDK, JDK 1.8 and [Kotlin](https://kotlinlang.org/)
 - [Reactive programming](http://reactivex.io/) with [RxJava2](https://github.com/ReactiveX/RxJava) for asynchronous tasks
 - [Retrofit](https://github.com/square/retrofit) - for simple REST implementation
-- [Dagger 2](http://github.com/google/dagger) - for dependency injection
 
 ## Build
 Project uses Gradle as build system. You can find main gradle config for Android app module here: `app/build.gradle`
