@@ -42,16 +42,18 @@ class EpisodesViewModel(
     val episodes: ObservableField<List<EpisodeListItemWrapper>> = ObservableField(listOf())
 
     init {
+        refresh()
+
         episodesComponent.observeEpisodes()
                 .setTo(episodes)
                 .bindSubscribe()
 
-        refreshItems()
     }
 
-    private fun refreshItems() {
+    fun refresh() {
         episodesComponent.updateEpisodes()
                 .bindSubscribe(
+                        onComplete = { hideLoader() },
                         onError = { toaster.showError(it, R.string.episodes_error_loading) }
                 )
     }
