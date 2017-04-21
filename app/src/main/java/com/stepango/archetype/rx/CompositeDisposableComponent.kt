@@ -4,22 +4,15 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
 interface CompositeDisposableComponent {
-    var composite: CompositeDisposable
+    val composite: CompositeDisposable
 
-    fun Disposable.bind(): Unit
+    fun Disposable.bind() = composite.add(this)
 
     fun resetCompositeDisposable() {
-        synchronized(this) {
-            composite.clear()
-            composite = CompositeDisposable()
-        }
+        composite.clear()
     }
 }
 
 class CompositeDisposableComponentImpl : CompositeDisposableComponent {
     override var composite = CompositeDisposable()
-
-    override fun Disposable.bind() {
-        composite.add(this)
-    }
 }

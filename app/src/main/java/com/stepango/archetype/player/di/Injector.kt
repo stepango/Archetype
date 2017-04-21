@@ -110,7 +110,7 @@ class InjectorImpl(val app: App) : Injector {
     //endregion
 
     //region repositories
-    private val episodesRepo: EpisodesModelRepo by lazy { InMemoryEpisodesRepo() }
+    private val episodesRepo: EpisodesModelRepo by lazy { InMemoryEpisodesRepo(apiActionsProducer(), apiService()) }
 
     override fun episodesRepo(): EpisodesModelRepo = episodesRepo
     //endregion

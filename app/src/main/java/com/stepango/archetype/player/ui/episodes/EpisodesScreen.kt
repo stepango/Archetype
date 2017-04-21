@@ -43,11 +43,13 @@ class EpisodesViewModel(
 
     init {
         refresh()
+        display()
+    }
 
+    private fun display() {
         episodesComponent.observeEpisodes()
                 .setTo(episodes)
                 .bindSubscribe()
-
     }
 
     fun refresh() {
