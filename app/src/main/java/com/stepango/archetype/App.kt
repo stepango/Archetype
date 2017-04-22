@@ -2,7 +2,7 @@ package com.stepango.archetype
 
 import android.app.Application
 
-class App : Application() {
+open class App : Application() {
 
     companion object {
         lateinit var instance: App

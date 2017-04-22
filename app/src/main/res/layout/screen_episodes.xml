@@ -24,13 +24,21 @@
             bind:title="@{@string/episodes_title}"
             />
 
-        <android.support.v7.widget.RecyclerView
+        <android.support.v4.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            bind:episodesAdapter="@{vm.episodes}"
-            bind:setHasFixedSize="@{true}"
-            bind:useDefaults="@{true}"
-            />
+            bind:onRefreshListener="@{vm::refresh}"
+            bind:refreshing="@{vm.showLoader}"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                bind:episodesAdapter="@{vm.episodes}"
+                bind:setHasFixedSize="@{true}"
+                bind:useDefaults="@{true}"
+                />
+        </android.support.v4.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 </layout>

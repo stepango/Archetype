@@ -110,7 +110,7 @@ class InjectorImpl(val app: App) : Injector {
     //endregion
 
     //region repositories
-    private val episodesRepo: EpisodesModelRepo by lazy { InMemoryEpisodesRepo() }
+    private val episodesRepo: EpisodesModelRepo by lazy { InMemoryEpisodesRepo(apiActionsProducer(), apiService()) }
 
     override fun episodesRepo(): EpisodesModelRepo = episodesRepo
     //endregion
@@ -157,5 +157,5 @@ val contextActions = SparseArray<ContextAction>().apply {
 }
 
 val apiActions = SparseArray<ApiAction>().apply {
-   put(R.id.action_get_episodes, GetEpisodesAction())
+    put(R.id.action_get_episodes, GetEpisodesAction())
 }

@@ -2,12 +2,11 @@ package com.stepango.archetype.viewmodel
 
 import android.databinding.ObservableBoolean
 import android.os.Parcelable
+import android.support.annotation.VisibleForTesting
 import com.stepango.archetype.action.Args
 import com.stepango.archetype.action.argsOf
 import com.stepango.archetype.bundle.putState
-import com.stepango.archetype.logger.logger
 import com.stepango.archetype.player.data.wrappers.ArgsHolder
-import com.stepango.archetype.player.di.Injector
 import com.stepango.archetype.player.di.lazyInject
 import com.stepango.archetype.rx.CompositeDisposableComponent
 import com.stepango.archetype.rx.CompositeDisposableComponentImpl
@@ -23,10 +22,6 @@ import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers.io
-
-private val onNextStub: (Any) -> Unit = {}
-private val onErrorStub: (Throwable) -> Unit = { Injector().logger.e(it, "On error not implemented") }
-private val onCompleteStub: () -> Unit = {}
 
 interface ViewModel : NaviComponent, ArgsHolder, CompositeDisposableComponent, LoaderHolder {
     val toaster: Toaster
@@ -89,7 +84,7 @@ class LoaderHolderImpl(
 
 class ViewModelImpl(
         naviComponent: NaviComponent,
-        event: Event<*> = Event.DETACH,
+        val event: Event<*> = Event.DETACH,
         inline val args: Args = argsOf(),
         inline val state: Parcelable = object : AutoParcelable {}
 ) :
@@ -102,9 +97,13 @@ class ViewModelImpl(
     override fun args(): Args = args
 
     init {
-        observe(event).bindSubscribe(onNext = { resetCompositeDisposable() })
-        observe(Event.SAVE_INSTANCE_STATE).bindSubscribe(onNext = { it.putState(state) })
+        onTerminalEventObserver().bindSubscribe(onNext = { resetCompositeDisposable() })
+        saveInstantStateObserver().bindSubscribe(onNext = { it.putState(state) })
     }
+
+    @VisibleForTesting fun saveInstantStateObserver() = observe(Event.SAVE_INSTANCE_STATE)
+
+    @VisibleForTesting fun onTerminalEventObserver() = observe(event)
 
     fun <T : Any> NaviComponent.observe(event: Event<T>) = RxNavi.observe(this, event)
 }
