@@ -157,5 +157,5 @@ val contextActions = SparseArray<ContextAction>().apply {
 }
 
 val apiActions = SparseArray<ApiAction>().apply {
-   put(R.id.action_get_episodes, GetEpisodesAction())
+    put(R.id.action_get_episodes, GetEpisodesAction())
 }

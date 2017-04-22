@@ -1,8 +1,9 @@
 package com.stepango.archetype.player.ui.episodes
 
+import com.stepango.archetype.player.data.db.EpisodesModelRepo
 import com.stepango.archetype.player.data.wrappers.EpisodeListItemWrapper
 import com.stepango.archetype.player.data.wrappers.EpisodeWrapper
-import com.stepango.archetype.player.di.lazyInject
+import com.stepango.archetype.player.di.Injector
 import com.stepango.archetype.rx.filterNonEmpty
 import com.stepango.archetype.rx.filterNotEmpty
 import io.reactivex.Completable
@@ -14,8 +15,7 @@ interface EpisodesComponent {
     fun updateEpisodes(): Completable
 }
 
-class EpisodesComponentImpl : EpisodesComponent {
-    private val episodesRepo by lazyInject { episodesRepo() }
+class EpisodesComponentImpl(val episodesRepo:EpisodesModelRepo = Injector().episodesRepo()) : EpisodesComponent {
 
     override fun observeEpisodes(): Observable<List<EpisodeListItemWrapper>>
             = episodesRepo.observeAll()

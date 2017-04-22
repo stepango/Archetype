@@ -49,7 +49,7 @@ class FeedResponseParsingTest {
 
     @Test
     @Throws(IOException::class)
-    fun testExchangeRatesResponseParser() {
+    fun testResponseParser() {
         server.enqueue(MockResponse().setBody(getStringFromResources("feed_response.xml")))
 
         val call = service!!.get()
@@ -62,7 +62,7 @@ class FeedResponseParsingTest {
         Assert.assertEquals("My Content", item.content)
         Assert.assertEquals("https://my.url", item.enclosure.url)
         Assert.assertEquals("my/type", item.enclosure.type)
-        Assert.assertEquals("http://image.png", item.image)
+        Assert.assertEquals("http://image.png", item.image.href)
     }
 
     @Throws(IOException::class)
