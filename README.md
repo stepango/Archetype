@@ -5,7 +5,7 @@ At the moment Archetype contains implementation of Android Dev podcast player.
 
 Official Telegram chat https://t.me/archetype_android
 
-More info about this architecture approach could be found here https://mobiusconf.com/en/talks/a-modern-approach-to-the-architecture-of-android-app-rxjava-kotlin-mvvm/
+Mobius Russia 2017 Talk https://www.youtube.com/watch?v=M3fTMBfmBqU&t=1380s
 
 # Main libraries and concepts
 - Android SDK, JDK 1.8 and [Kotlin](https://kotlinlang.org/)
