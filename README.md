@@ -1,4 +1,6 @@
 # Archetype
+[![codebeat badge](https://codebeat.co/badges/15f6548e-a136-4c0d-9f53-460166070ce6)](https://codebeat.co/projects/github-com-stepango-archetype-master)
+
 Badass MVVM architecture.
 
 At the moment Archetype contains implementation of Android Dev podcast player. 
