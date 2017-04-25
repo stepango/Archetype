@@ -15,14 +15,13 @@ inline fun <Key : Any, reified Value : Any> InMemoryKeyValueRepo(): InMemoryKeyV
 
 class InMemoryKeyValueRepo<Key : Any, Value : Any>(val valClass: KClass<Value>) : KeyValueRepo<Key, Value> {
 
+    private val map = ObservableArrayMap<Key, Value>()
+    private val publisher: BehaviorSubject<Map<Key, Value>> = BehaviorSubject.createDefault(map)
 
     override fun save(key: Key, value: Value): Single<Value> = Single.just(value).doOnSuccess {
         map[key] = value
         triggerObserveAllNotification()
     }
-
-    val map = ObservableArrayMap<Key, Value>()
-    val publisher: BehaviorSubject<Map<Key, Value>> = BehaviorSubject.create()
 
     override fun save(data: Map<Key, Value>): Single<Map<Key, Value>> {
         map.putAll(data)
@@ -60,9 +59,8 @@ class InMemoryKeyValueRepo<Key : Any, Value : Any>(val valClass: KClass<Value>) 
         }
         map.addOnMapChangedCallback(observer)
         s.setCancellable { map.removeOnMapChangedCallback(observer) }
-        map[key]?.let { s.onNext(it.toOptional()) }
+        s.onNext(map[key].toOptional())
     }
-
 
 
     override fun remove(keys: Set<Key>): Completable = Completable.fromAction {
