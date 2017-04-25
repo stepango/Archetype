@@ -1,5 +1,6 @@
 # Archetype
 [![codebeat badge](https://codebeat.co/badges/15f6548e-a136-4c0d-9f53-460166070ce6)](https://codebeat.co/projects/github-com-stepango-archetype-master)
+[![Build Status](https://www.bitrise.io/app/65613de01e0da309.svg?token=6-VjC_AlRy2-0Aq6W-OALw&branch=master)](https://www.bitrise.io/app/65613de01e0da309)
 
 Badass MVVM architecture.
 
