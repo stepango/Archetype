@@ -26,6 +26,7 @@ data class EpisodeWrapper(private val model: EpisodesModel) : AutoParcelable {
     val content: String = model.content ?: model.summary.run { if (this.linesCount() > 1) this else "" }
     val audioUrl: String = model.audioUrl
     val state: EpisodeDownloadState = model.state
+    val file: String? = model.file
     fun downloadButtonVisibility() = if (model.file == null) View.VISIBLE else View.GONE
 }
 
