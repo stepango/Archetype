@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textSize="10sp"
-            android:text="@{item.state.textId}"
+            android:text="@{item.state.textId()}"
             android:visibility="@{item.downloadButtonVisibility()}"
             android:enabled="@{!item.state.isWait()}"
             bind:actionData="@{item::args}"

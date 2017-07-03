@@ -38,5 +38,6 @@ enum class EpisodeDownloadState {
     abstract val action: Int
     abstract val textId: Int
     fun isWait(): Boolean = this == WAIT
+    fun textId(): Int = if (textId != 0) textId else R.id.action_download_episode
 }
 
