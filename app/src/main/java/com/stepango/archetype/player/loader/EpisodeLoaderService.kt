@@ -36,9 +36,6 @@ import java.util.concurrent.TimeUnit
  */
 
 const val CANCEL_DOWNLOAD_ACTION = "cancel_action"
-private fun log(msg: String) {
-    println(Thread.currentThread().name + " | " + msg)
-}
 
 class EpisodeLoaderService : Service() {
 
@@ -73,6 +70,7 @@ class EpisodeLoaderService : Service() {
 class EpisodeLoader(val service: Service) : ProgressUpdateListener {
 
     val repo by lazyInject { episodesRepo() }
+    val toaster by lazyInject { toaster() }
 
     val queueSubject = PublishSubject.create<Long>()!!
     val notificationHelper = NotificationHelper(service, hashCode())
@@ -81,7 +79,6 @@ class EpisodeLoader(val service: Service) : ProgressUpdateListener {
     val dispatcher = queueSubject
             .timeout(10, TimeUnit.MINUTES)
             .observeOn(Schedulers.io())
-            .doOnError { log("error $it") }
             .subscribe(
                     { load(it) },
                     { stopLoading() }
@@ -105,9 +102,7 @@ class EpisodeLoader(val service: Service) : ProgressUpdateListener {
     }
 
     fun queue(id: Long) {
-        log("start queue for $id")
         Observable.just(queueSubject)
-                .doOnNext { log("queue for $id") }
                 .doOnNext { updateEpisodeState(id, EpisodeDownloadState.WAIT) }
                 .doOnNext { waitStack.add(id) }
                 .observeOn(Schedulers.newThread())
@@ -115,15 +110,15 @@ class EpisodeLoader(val service: Service) : ProgressUpdateListener {
     }
 
     fun load(id: Long) {
-        log("load: $id")
         repo.get(id)
                 .doOnSuccess { startForeground() }
                 .doOnSuccess { updateEpisodeState(it, EpisodeDownloadState.CANCEL) }
+                .doOnSuccess { waitStack.remove(id) }
                 .flatMap { startTask(it) }
                 .doAfterTerminate { stopForeground() }
                 .subscribe(
-                        {  },
-                        {log("error with: $it")}
+                        { logger.d("done for episode id: $id") },
+                        { toaster.showToast("error on loading: $it") }
                 )
     }
 
@@ -154,7 +149,6 @@ class EpisodeLoader(val service: Service) : ProgressUpdateListener {
                 .doOnError { file.delete() }
                 .doOnError { updateEpisodeState(episode, EpisodeDownloadState.RETRY) }
                 .doOnSuccess { updateEpisodeFile(episode, it) }
-                .doOnSuccess { waitStack.remove(episode.id) }
     }
 
     override fun onProgressUpdate(current: Long, total: Long, done: Boolean) {
