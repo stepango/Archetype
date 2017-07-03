@@ -6,22 +6,15 @@ import com.ninetyseconds.auckland.core.log.SimpleLogger
 import com.stepango.archetype.App
 import com.stepango.archetype.BuildConfig
 import com.stepango.archetype.R
-import com.stepango.archetype.action.ActionHandler
-import com.stepango.archetype.action.ActionProducer
-import com.stepango.archetype.action.ApiAction
-import com.stepango.archetype.action.ApiActionHandler
-import com.stepango.archetype.action.ApiActionProducer
-import com.stepango.archetype.action.ContextAction
-import com.stepango.archetype.action.ContextActionHandler
-import com.stepango.archetype.action.ContextActionProducer
-import com.stepango.archetype.action.IdleAction
-import com.stepango.archetype.action.IntentMaker
-import com.stepango.archetype.action.IntentMakerImpl
+import com.stepango.archetype.action.*
 import com.stepango.archetype.glide.GlideImageLoader
 import com.stepango.archetype.image.ImageLoader
 import com.stepango.archetype.logger.Logger
 import com.stepango.archetype.player.data.db.EpisodesModelRepo
 import com.stepango.archetype.player.data.db.memory.InMemoryEpisodesRepo
+import com.stepango.archetype.player.loader.CancelDownloadEpisodeAction
+import com.stepango.archetype.player.loader.DownloadEpisodeAction
+import com.stepango.archetype.player.loader.RefreshDownloadedFilesAction
 import com.stepango.archetype.player.network.Api
 import com.stepango.archetype.player.network.get.BASE_URL
 import com.stepango.archetype.player.network.get.GetEpisodesAction
@@ -110,7 +103,9 @@ class InjectorImpl(val app: App) : Injector {
     //endregion
 
     //region repositories
-    private val episodesRepo: EpisodesModelRepo by lazy { InMemoryEpisodesRepo(apiActionsProducer(), apiService()) }
+    private val episodesRepo: EpisodesModelRepo by lazy { InMemoryEpisodesRepo(
+            apiActionsProducer(), apiService(),
+            contextActionsProducer(), app) }
 
     override fun episodesRepo(): EpisodesModelRepo = episodesRepo
     //endregion
@@ -154,6 +149,9 @@ class InjectorImpl(val app: App) : Injector {
 val contextActions = SparseArray<ContextAction>().apply {
     put(R.id.action_idle, IdleAction())
     put(R.id.action_show_episode, ShowEpisodeAction())
+    put(R.id.action_download_episode, DownloadEpisodeAction())
+    put(R.id.action_cancel_download_episode, CancelDownloadEpisodeAction())
+    put(R.id.action_refresh_episode_files, RefreshDownloadedFilesAction())
 }
 
 val apiActions = SparseArray<ApiAction>().apply {

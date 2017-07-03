@@ -1,8 +1,10 @@
 package com.stepango.archetype.player.data.wrappers
 
+import android.view.View
 import com.github.nitrico.lastadapter.StableId
 import com.stepango.archetype.action.Args
 import com.stepango.archetype.action.argsOf
+import com.stepango.archetype.player.data.db.model.EpisodeDownloadState
 import com.stepango.archetype.player.data.db.model.EpisodesModel
 import com.stepango.archetype.player.episodeId
 import com.stepango.archetype.util.firstLine
@@ -21,6 +23,8 @@ data class EpisodeWrapper(private val model: EpisodesModel) : AutoParcelable {
     val summary: String = model.summary.run { if (this.linesCount() > 1) this.firstLine() else this }
     val content: String = model.content ?: model.summary.run { if (this.linesCount() > 1) this else "" }
     val audioUrl: String = model.audioUrl
+    val state: EpisodeDownloadState = model.state
+    fun downloadButtonVisibility() = if (model.file == null) View.VISIBLE else View.GONE
 }
 
 interface ArgsHolder {

@@ -3,6 +3,9 @@
 
     <item name="action_idle" type="id"/>
     <item name="action_show_episode" type="id"/>
+    <item name="action_download_episode" type="id"/>
+    <item name="action_cancel_download_episode" type="id"/>
+    <item name="action_refresh_episode_files" type="id"/>
 
     <item name="action_get_episodes" type="id"/>
 

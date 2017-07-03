@@ -23,6 +23,17 @@ class InMemoryKeyValueRepo<Key : Any, Value : Any>(val valClass: KClass<Value>) 
         triggerObserveAllNotification()
     }
 
+    override fun get(key: Key): Single<Value> {
+        return if (map.containsKey(key)) Single.just(map[key]) else Single.error(IllegalArgumentException("key $key not found"))
+    }
+
+    override fun getAll(): Observable<Value> {
+        return Observable.just(map)
+                .map { it.entries }
+                .flatMapIterable { it }
+                .map { it.value }
+    }
+
     override fun save(data: Map<Key, Value>): Single<Map<Key, Value>> {
         map.putAll(data)
         triggerObserveAllNotification()

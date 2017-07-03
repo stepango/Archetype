@@ -9,4 +9,9 @@
     <string name="activity_not_found_error_text">"No suitable Applications found"</string>
     <string name="choose_action">Choose action</string>
 
+    <!--Actions-->
+    <string name="action_download_episode">Download</string>
+    <string name="action_cancel_download_episode">Cancel</string>
+    <string name="action_retry_download_episode">Retry</string>
+
 </resources>

@@ -1,5 +1,6 @@
 package com.stepango.archetype.player.data.db.model
 
+import com.stepango.archetype.R
 import io.mironov.smuggler.AutoParcelable
 
 data class EpisodesModel(
@@ -8,6 +9,28 @@ data class EpisodesModel(
         val iconUrl: String,
         val audioUrl: String,
         val content: String?,
+        var state: EpisodeDownloadState = EpisodeDownloadState.DOWNLOAD,
+        var file: String? = null,
         val id: Long = name.hashCode().toLong()
 ) : AutoParcelable
+
+enum class EpisodeDownloadState {
+    DOWNLOAD {
+        override val action = R.id.action_download_episode
+        override val textId = R.string.action_download_episode
+    },
+
+    CANCEL {
+        override val action = R.id.action_cancel_download_episode
+        override val textId = R.string.action_cancel_download_episode
+    },
+
+    RETRY {
+        override val action = R.id.action_download_episode
+        override val textId = R.string.action_retry_download_episode
+    };
+
+    abstract val action: Int
+    abstract val textId: Int
+}
 

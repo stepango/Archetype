@@ -24,6 +24,8 @@
         </activity>
 
         <activity android:name=".player.ui.episodes.PlayerActivity"/>
+
+        <service android:name="com.stepango.archetype.player.loader.EpisodeLoaderService"/>
     </application>
 
 </manifest>
