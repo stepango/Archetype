@@ -52,6 +52,7 @@
             android:layout_marginBottom="32dp"
             android:text="@{vm.episode.state.textId}"
             android:visibility="@{vm.episode.downloadButtonVisibility()}"
+            android:enabled="@{!vm.episode.state.isWait()}"
             bind:actionData="@{vm::args}"
             bind:performAction="@{vm.episode.state.action}"
             />

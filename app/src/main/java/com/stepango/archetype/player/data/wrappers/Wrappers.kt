@@ -15,7 +15,9 @@ data class EpisodeListItemWrapper(private val model: EpisodesModel) : StableId, 
     override val stableId: Long = model.id
     val name: String = model.name
     val imageUrl: String = model.iconUrl
+    val state: EpisodeDownloadState = model.state
     override fun args(): Args = argsOf { episodeId { stableId } }
+    fun downloadButtonVisibility() = if (model.file == null) View.VISIBLE else View.GONE
 }
 
 data class EpisodeWrapper(private val model: EpisodesModel) : AutoParcelable {

@@ -12,11 +12,13 @@ import android.os.IBinder
 import android.support.v4.app.NotificationCompat
 import com.stepango.archetype.R
 import com.stepango.archetype.action.Args
+import com.stepango.archetype.logger.logger
 import com.stepango.archetype.player.data.db.model.EpisodeDownloadState
 import com.stepango.archetype.player.data.db.model.EpisodesModel
 import com.stepango.archetype.player.di.lazyInject
 import com.stepango.archetype.player.episodeId
 import com.stepango.archetype.util.getFileName
+import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
@@ -75,10 +77,11 @@ class EpisodeLoader(val service: Service) : ProgressUpdateListener {
     val queueSubject = PublishSubject.create<Long>()!!
     val notificationHelper = NotificationHelper(service, hashCode())
     val loader = ProgressOkLoader(this)
+    val waitStack = ArrayList<Long>()
     val dispatcher = queueSubject
-            .timeout(10, TimeUnit.SECONDS)
-            .doOnNext { startForeground() }
+            .timeout(10, TimeUnit.MINUTES)
             .observeOn(Schedulers.io())
+            .doOnError { log("error $it") }
             .subscribe(
                     { load(it) },
                     { stopLoading() }
@@ -88,14 +91,36 @@ class EpisodeLoader(val service: Service) : ProgressUpdateListener {
         service.startForeground(hashCode(), notificationHelper.getNotification())
     }
 
+    fun stopForeground() {
+        service.stopForeground(true)
+    }
+
+    fun clearWaitStack() {
+        Observable
+                .fromIterable(waitStack)
+                .subscribe(
+                        { updateEpisodeState(it, EpisodeDownloadState.DOWNLOAD) },
+                        { logger.e("error $it") }
+                )
+    }
+
     fun queue(id: Long) {
-        queueSubject.onNext(id)
+        log("start queue for $id")
+        Observable.just(queueSubject)
+                .doOnNext { log("queue for $id") }
+                .doOnNext { updateEpisodeState(id, EpisodeDownloadState.WAIT) }
+                .doOnNext { waitStack.add(id) }
+                .observeOn(Schedulers.newThread())
+                .subscribe { it.onNext(id) }
     }
 
     fun load(id: Long) {
+        log("load: $id")
         repo.get(id)
+                .doOnSuccess { startForeground() }
                 .doOnSuccess { updateEpisodeState(it, EpisodeDownloadState.CANCEL) }
                 .flatMap { startTask(it) }
+                .doAfterTerminate { stopForeground() }
                 .subscribe(
                         {  },
                         {log("error with: $it")}
@@ -106,6 +131,10 @@ class EpisodeLoader(val service: Service) : ProgressUpdateListener {
         episode.state = newState
         repo.save(episode.id, episode)
                 .subscribe()
+    }
+
+    fun updateEpisodeState(id: Long, newState: EpisodeDownloadState) {
+        repo.get(id).subscribe( { updateEpisodeState(it, newState) }, { logger.e("error: $it") } )
     }
 
     fun updateEpisodeFile(episode: EpisodesModel, file: File) {
@@ -122,8 +151,10 @@ class EpisodeLoader(val service: Service) : ProgressUpdateListener {
                     episode,
                     file)
                 .execute()
+                .doOnError { file.delete() }
                 .doOnError { updateEpisodeState(episode, EpisodeDownloadState.RETRY) }
                 .doOnSuccess { updateEpisodeFile(episode, it) }
+                .doOnSuccess { waitStack.remove(episode.id) }
     }
 
     override fun onProgressUpdate(current: Long, total: Long, done: Boolean) {
@@ -131,6 +162,7 @@ class EpisodeLoader(val service: Service) : ProgressUpdateListener {
     }
 
     fun stopLoading() {
+        clearWaitStack()
         dispatcher.dispose()
         service.stopForeground(true)
         service.stopSelf()

@@ -11,6 +11,7 @@
 
     <!--Actions-->
     <string name="action_download_episode">Download</string>
+    <string name="action_wait_for_download">Waiting</string>
     <string name="action_cancel_download_episode">Cancel</string>
     <string name="action_retry_download_episode">Retry</string>
 
