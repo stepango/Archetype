@@ -44,16 +44,6 @@ interface KeyValueRepo<Key : Any, Value : Any> {
     fun save(key: Key, value: Value): Single<Value>
 
     /**
-     * Give [value] by [key] on given [io.reactivex.Scheduler]
-     */
-    fun get(key: Key): Single<Value>
-
-    /**
-     * Give all [values] on given [io.reactivex.Scheduler]
-     */
-    fun getAll(): Observable<Value>
-
-    /**
      * Removes value by given [key] if present
      */
     fun remove(key: Key): Completable

@@ -32,7 +32,7 @@ class ProgressResponseBody(
 
     private var bufferedSource: BufferedSource? = null
 
-    override fun contentType() = responseBody.contentType()!!
+    override fun contentType(): MediaType = responseBody.contentType()
 
     override fun source(): BufferedSource {
         if (bufferedSource == null)

@@ -6,10 +6,5 @@ import android.net.Uri
  * Wild, 03.07.2017.
  */
 
-fun getFileName(url: String): String {
-    val uri = Uri.parse(url)
-    var name = ""
-    for (path in uri.pathSegments)
-        name += path
-    return name
-}
+fun getFileName(url: String): String
+        = Uri.parse(url).pathSegments.joinToString(separator = "") { it }

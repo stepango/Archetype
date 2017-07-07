@@ -17,10 +17,18 @@ import com.stepango.archetype.player.data.db.model.EpisodeDownloadState
 import com.stepango.archetype.player.data.db.model.EpisodesModel
 import com.stepango.archetype.player.di.lazyInject
 import com.stepango.archetype.player.episodeId
+import com.stepango.archetype.rx.CompositeDisposableComponent
+import com.stepango.archetype.rx.CompositeDisposableComponentImpl
 import com.stepango.archetype.util.getFileName
+import com.stepango.archetype.viewmodel.onCompleteStub
+import com.stepango.archetype.viewmodel.onErrorStub
+import com.stepango.archetype.viewmodel.onNextStub
+import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import io.reactivex.schedulers.Schedulers.io
 import io.reactivex.subjects.PublishSubject
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -29,6 +37,7 @@ import okio.BufferedSink
 import okio.Okio
 import java.io.File
 import java.io.IOException
+import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
 /**
@@ -55,9 +64,8 @@ class EpisodeLoaderService : Service() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         unregisterReceiver(cancelReceiver)
-        episodeLoader.stopLoading()
+        super.onDestroy()
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
@@ -67,22 +75,48 @@ class EpisodeLoaderService : Service() {
     }
 }
 
-class EpisodeLoader(val service: Service) : ProgressUpdateListener {
+class EpisodeLoader(val service: Service) :
+        ProgressUpdateListener,
+        CompositeDisposableComponent by CompositeDisposableComponentImpl() {
+
+    fun <T : Any> Observable<T>.bindSubscribe(
+            scheduler: Scheduler = io(),
+            onNext: (T) -> Unit = onNextStub,
+            onError: (Throwable) -> Unit = onErrorStub,
+            onComplete: () -> Unit = onCompleteStub
+    ) = subscribeOn(scheduler).subscribe(onNext, onError, onComplete).bind()
+
+    fun <T : Any> Single<T>.bindSubscribe(
+            scheduler: Scheduler = io(),
+            onSuccess: (T) -> Unit = onNextStub,
+            onError: (Throwable) -> Unit = onErrorStub
+    ) = subscribeOn(scheduler).subscribe(onSuccess, onError).bind()
+
+    fun Completable.bindSubscribe(
+            scheduler: Scheduler = io(),
+            onError: (Throwable) -> Unit = onErrorStub,
+            onComplete: () -> Unit = onCompleteStub
+    ) = subscribeOn(scheduler).subscribe(onComplete, onError).bind()
 
     val repo by lazyInject { episodesRepo() }
     val toaster by lazyInject { toaster() }
 
-    val queueSubject = PublishSubject.create<Long>()!!
+    val queueSubject: PublishSubject<Long> = PublishSubject.create<Long>()
     val notificationHelper = NotificationHelper(service, hashCode())
     val loader = ProgressOkLoader(this)
     val waitStack = ArrayList<Long>()
-    val dispatcher = queueSubject
-            .timeout(10, TimeUnit.MINUTES)
-            .observeOn(Schedulers.io())
-            .subscribe(
-                    { load(it) },
-                    { stopLoading() }
-            )!!
+
+    val loadScheduler: Scheduler = Schedulers.from(Executors.newSingleThreadExecutor())
+
+    init {
+        queueSubject
+                .timeout(10, TimeUnit.MINUTES)
+                .observeOn(loadScheduler)
+                .bindSubscribe(
+                        onNext = { load(it) },
+                        onError = { stopLoading() }
+                )
+    }
 
     fun startForeground() {
         service.startForeground(hashCode(), notificationHelper.getNotification())
@@ -92,53 +126,62 @@ class EpisodeLoader(val service: Service) : ProgressUpdateListener {
         service.stopForeground(true)
     }
 
-    fun clearWaitStack() {
-        Observable
-                .fromIterable(waitStack)
-                .subscribe(
-                        { updateEpisodeState(it, EpisodeDownloadState.DOWNLOAD) },
-                        { logger.e("error $it") }
-                )
+    fun clearWaitStack(): Completable {
+        return Observable.fromIterable(waitStack)
+                .flatMapCompletable { updateEpisodeState(it, EpisodeDownloadState.DOWNLOAD).toCompletable() }
     }
 
     fun queue(id: Long) {
-        Observable.just(queueSubject)
-                .doOnNext { updateEpisodeState(id, EpisodeDownloadState.WAIT) }
-                .doOnNext { waitStack.add(id) }
-                .observeOn(Schedulers.newThread())
-                .subscribe { it.onNext(id) }
-    }
-
-    fun load(id: Long) {
-        repo.get(id)
-                .doOnSuccess { startForeground() }
-                .doOnSuccess { updateEpisodeState(it, EpisodeDownloadState.CANCEL) }
-                .doOnSuccess { waitStack.remove(id) }
-                .flatMap { startTask(it) }
-                .doAfterTerminate { stopForeground() }
-                .subscribe(
-                        { logger.d("done for episode id: $id") },
-                        { toaster.showToast("error on loading: $it") }
+        updateEpisodeState(id, EpisodeDownloadState.WAIT)
+                .doOnSuccess { waitStack.add(it.id) }
+                .bindSubscribe(
+                        onSuccess = { queueSubject.onNext(it.id) },
+                        onError = { toaster.showToast("error on queue for episode $id") }
                 )
     }
 
-    fun updateEpisodeState(episode: EpisodesModel, newState: EpisodeDownloadState) {
-        episode.state = newState
-        repo.save(episode.id, episode)
-                .subscribe()
+    fun getEpisodeById(id: Long): Single<EpisodesModel>
+        = repo.observe(id)
+            .take(1)
+            .map { it.get() }
+            .firstOrError()
+
+    fun load(id: Long) {
+        logger.d("start load for $id")
+        getEpisodeById(id)
+                .doOnSuccess { waitStack.remove(it.id) }
+                .doOnSuccess { startForeground() }
+                .flatMap { updateEpisodeState(it, EpisodeDownloadState.CANCEL) }
+                .flatMap { startTask(it) }
+                .doAfterTerminate { stopForeground() }
+                .doOnError { handleLoadErrorFor(id) }
+                .bindSubscribe (
+                        scheduler = loadScheduler,
+                        onSuccess = { logger.d("loading done for $id") },
+                        onError = { toaster.showToast("error on loading $id") }
+                )
     }
 
-    fun updateEpisodeState(id: Long, newState: EpisodeDownloadState) {
-        repo.get(id).subscribe( { updateEpisodeState(it, newState) }, { logger.e("error: $it") } )
+    fun handleLoadErrorFor(id: Long) {
+        updateEpisodeState(id, EpisodeDownloadState.RETRY)
+                .bindSubscribe (
+                        onError = { toaster.showToast("can't set RETRY for episode $id") }
+                )
     }
 
-    fun updateEpisodeFile(episode: EpisodesModel, file: File) {
-        episode.file = file.absolutePath
-        repo.save(episode.id, episode)
-                .subscribe()
-    }
+    fun updateEpisodeState(episode: EpisodesModel, newState: EpisodeDownloadState): Single<EpisodesModel>
+        = repo.save(episode.id, episode.copy(state = newState))
 
-    fun startTask(episode: EpisodesModel): Single<File> {
+    fun updateEpisodeState(id: Long, newState: EpisodeDownloadState): Single<EpisodesModel>
+        = repo.observe(id).take(1)
+                .flatMapSingle { updateEpisodeState(it.get(), newState) }
+                .firstOrError()
+
+    fun updateEpisodeFile(episode: EpisodesModel, file: File): Single<EpisodesModel>
+        = repo.save(episode.id, episode.copy(file = file.absolutePath))
+
+
+    fun startTask(episode: EpisodesModel): Single<EpisodesModel> {
         notificationHelper.text(episode.name)
         val file = File(service.filesDir, getFileName(episode.audioUrl))
         return EpisodeDownloadTask(
@@ -147,8 +190,7 @@ class EpisodeLoader(val service: Service) : ProgressUpdateListener {
                     file)
                 .execute()
                 .doOnError { file.delete() }
-                .doOnError { updateEpisodeState(episode, EpisodeDownloadState.RETRY) }
-                .doOnSuccess { updateEpisodeFile(episode, it) }
+                .flatMap { updateEpisodeFile(episode, it) }
     }
 
     override fun onProgressUpdate(current: Long, total: Long, done: Boolean) {
@@ -157,9 +199,13 @@ class EpisodeLoader(val service: Service) : ProgressUpdateListener {
 
     fun stopLoading() {
         clearWaitStack()
-        dispatcher.dispose()
-        service.stopForeground(true)
-        service.stopSelf()
+                .doAfterTerminate { resetCompositeDisposable() }
+                .bindSubscribe(
+                        onComplete = {
+                            service.stopForeground(true)
+                            service.stopSelf()
+                        }
+                )
     }
 }
 
@@ -169,7 +215,7 @@ class EpisodeDownloadTask(
         val destination: File
 ) {
 
-    fun execute() = Single.fromCallable<File> {
+    fun execute(): Single<File> = Single.fromCallable<File> {
         val request = Request.Builder()
                 .url(episode.audioUrl)
                 .build()
@@ -180,7 +226,7 @@ class EpisodeDownloadTask(
         sink.writeAll(response.body().source())
         sink.close()
         return@fromCallable destination
-    }!!
+    }
 }
 
 class NotificationHelper(context: Context, val id: Int) {
@@ -188,7 +234,7 @@ class NotificationHelper(context: Context, val id: Int) {
     val REQUEST_CANCEL = 0
     val mgr = context.getSystemService(Context.NOTIFICATION_SERVICE)
                 as NotificationManager
-    val builder = NotificationCompat.Builder(context)
+    val builder: NotificationCompat.Builder = NotificationCompat.Builder(context)
             .setContentTitle(context.getString(R.string.app_name))
             .setSmallIcon(android.R.drawable.stat_sys_download)
             .addAction(
@@ -200,7 +246,7 @@ class NotificationHelper(context: Context, val id: Int) {
                             Intent(CANCEL_DOWNLOAD_ACTION),
                             PendingIntent.FLAG_ONE_SHOT
                     )
-            )!!
+            )
     var progress: Int = 0
         set(value) {
             if (field != value) {

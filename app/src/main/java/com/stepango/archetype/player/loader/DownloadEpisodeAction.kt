@@ -1,10 +1,13 @@
 package com.stepango.archetype.player.loader
 
 import android.content.Context
-import com.stepango.archetype.action.*
+import com.stepango.archetype.action.IntentAction
+import com.stepango.archetype.action.ContextAction
+import com.stepango.archetype.action.Args
+import com.stepango.archetype.action.IntentMaker
+import com.stepango.archetype.action.startService
+import com.stepango.archetype.action.startBroadcast
 import com.stepango.archetype.logger.logger
-import com.stepango.archetype.player.data.db.EpisodesModelRepo
-import com.stepango.archetype.player.data.db.model.EpisodesModel
 import com.stepango.archetype.player.di.Injector
 import com.stepango.archetype.player.di.lazyInject
 import com.stepango.archetype.util.getFileName
@@ -21,14 +24,15 @@ class RefreshDownloadedFilesAction : ContextAction {
     val episodesRepo by lazyInject { episodesRepo() }
 
     override fun invoke(context: Context, args: Args): Completable
-            = episodesRepo.getAll()
+            = episodesRepo.observeAll()
+            .take(1)
+            .flatMapIterable { it }
             .subscribeOn(io())
             .flatMapCompletable {
                 val file = File(context.filesDir, getFileName(it.audioUrl))
                 if (file.exists()) {
                     logger.d("file exists for ${it.name}")
-                    it.file = file.absolutePath
-                    return@flatMapCompletable episodesRepo.save(it.id, it).toCompletable()
+                    return@flatMapCompletable episodesRepo.save(it.id, it.copy(file = file.absolutePath)).toCompletable()
                 } else {
                     logger.d("file not found for ${it.name}")
                     return@flatMapCompletable Completable.complete()
