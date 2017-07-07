@@ -19,16 +19,13 @@ import com.stepango.archetype.player.di.lazyInject
 import com.stepango.archetype.player.episodeId
 import com.stepango.archetype.rx.CompositeDisposableComponent
 import com.stepango.archetype.rx.CompositeDisposableComponentImpl
+import com.stepango.archetype.rx.subscribeBy
 import com.stepango.archetype.util.getFileName
-import com.stepango.archetype.viewmodel.onCompleteStub
-import com.stepango.archetype.viewmodel.onErrorStub
-import com.stepango.archetype.viewmodel.onNextStub
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
-import io.reactivex.schedulers.Schedulers.io
 import io.reactivex.subjects.PublishSubject
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -79,25 +76,6 @@ class EpisodeLoader(val service: Service) :
         ProgressUpdateListener,
         CompositeDisposableComponent by CompositeDisposableComponentImpl() {
 
-    fun <T : Any> Observable<T>.bindSubscribe(
-            scheduler: Scheduler = io(),
-            onNext: (T) -> Unit = onNextStub,
-            onError: (Throwable) -> Unit = onErrorStub,
-            onComplete: () -> Unit = onCompleteStub
-    ) = subscribeOn(scheduler).subscribe(onNext, onError, onComplete).bind()
-
-    fun <T : Any> Single<T>.bindSubscribe(
-            scheduler: Scheduler = io(),
-            onSuccess: (T) -> Unit = onNextStub,
-            onError: (Throwable) -> Unit = onErrorStub
-    ) = subscribeOn(scheduler).subscribe(onSuccess, onError).bind()
-
-    fun Completable.bindSubscribe(
-            scheduler: Scheduler = io(),
-            onError: (Throwable) -> Unit = onErrorStub,
-            onComplete: () -> Unit = onCompleteStub
-    ) = subscribeOn(scheduler).subscribe(onComplete, onError).bind()
-
     val repo by lazyInject { episodesRepo() }
     val toaster by lazyInject { toaster() }
 
@@ -112,10 +90,11 @@ class EpisodeLoader(val service: Service) :
         queueSubject
                 .timeout(10, TimeUnit.MINUTES)
                 .observeOn(loadScheduler)
-                .bindSubscribe(
+                .subscribeBy(
                         onNext = { load(it) },
                         onError = { stopLoading() }
                 )
+                .bind()
     }
 
     fun startForeground() {
@@ -134,10 +113,10 @@ class EpisodeLoader(val service: Service) :
     fun queue(id: Long) {
         updateEpisodeState(id, EpisodeDownloadState.WAIT)
                 .doOnSuccess { waitStack.add(it.id) }
-                .bindSubscribe(
+                .subscribeBy(
                         onSuccess = { queueSubject.onNext(it.id) },
                         onError = { toaster.showToast("error on queue for episode $id") }
-                )
+                ).bind()
     }
 
     fun getEpisodeById(id: Long): Single<EpisodesModel>
@@ -155,18 +134,18 @@ class EpisodeLoader(val service: Service) :
                 .flatMap { startTask(it) }
                 .doAfterTerminate { stopForeground() }
                 .doOnError { handleLoadErrorFor(id) }
-                .bindSubscribe (
+                .subscribeBy (
                         scheduler = loadScheduler,
                         onSuccess = { logger.d("loading done for $id") },
                         onError = { toaster.showToast("error on loading $id") }
-                )
+                ).bind()
     }
 
     fun handleLoadErrorFor(id: Long) {
         updateEpisodeState(id, EpisodeDownloadState.RETRY)
-                .bindSubscribe (
+                .subscribeBy (
                         onError = { toaster.showToast("can't set RETRY for episode $id") }
-                )
+                ).bind()
     }
 
     fun updateEpisodeState(episode: EpisodesModel, newState: EpisodeDownloadState): Single<EpisodesModel>
@@ -200,12 +179,12 @@ class EpisodeLoader(val service: Service) :
     fun stopLoading() {
         clearWaitStack()
                 .doAfterTerminate { resetCompositeDisposable() }
-                .bindSubscribe(
+                .subscribeBy(
                         onComplete = {
                             service.stopForeground(true)
                             service.stopSelf()
                         }
-                )
+                ).bind()
     }
 }
 

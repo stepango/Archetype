@@ -1,17 +1,14 @@
 package com.stepango.archetype.player.loader
 
 import android.content.Context
-import com.stepango.archetype.action.IntentAction
-import com.stepango.archetype.action.ContextAction
-import com.stepango.archetype.action.Args
-import com.stepango.archetype.action.IntentMaker
-import com.stepango.archetype.action.startService
-import com.stepango.archetype.action.startBroadcast
+import com.stepango.archetype.action.*
 import com.stepango.archetype.logger.logger
+import com.stepango.archetype.player.data.db.model.EpisodesModel
 import com.stepango.archetype.player.di.Injector
 import com.stepango.archetype.player.di.lazyInject
 import com.stepango.archetype.util.getFileName
 import io.reactivex.Completable
+import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers.io
 import java.io.File
 
@@ -23,21 +20,28 @@ class RefreshDownloadedFilesAction : ContextAction {
 
     val episodesRepo by lazyInject { episodesRepo() }
 
-    override fun invoke(context: Context, args: Args): Completable
+    fun getAllEpisodes(): Observable<EpisodesModel>
             = episodesRepo.observeAll()
             .take(1)
             .flatMapIterable { it }
-            .subscribeOn(io())
-            .flatMapCompletable {
-                val file = File(context.filesDir, getFileName(it.audioUrl))
-                if (file.exists()) {
-                    logger.d("file exists for ${it.name}")
-                    return@flatMapCompletable episodesRepo.save(it.id, it.copy(file = file.absolutePath)).toCompletable()
-                } else {
-                    logger.d("file not found for ${it.name}")
-                    return@flatMapCompletable Completable.complete()
+
+    fun checkEpisodeFile(episode: EpisodesModel, file: File): Completable {
+        if (!file.exists())
+            return Completable.complete()
+
+        return episodesRepo
+                .save(episode.id, episode.copy(file = file.absolutePath))
+                .toCompletable()
+    }
+
+    override fun invoke(context: Context, args: Args): Completable {
+        return getAllEpisodes()
+                .subscribeOn(io())
+                .flatMapCompletable {
+                    val file = File(context.filesDir, getFileName(it.audioUrl))
+                    return@flatMapCompletable checkEpisodeFile(it, file)
                 }
-            }
+    }
 }
 
 class DownloadEpisodeAction : IntentAction, IntentMaker by Injector().intentMaker() {

@@ -10,17 +10,13 @@ import com.stepango.archetype.player.data.wrappers.ArgsHolder
 import com.stepango.archetype.player.di.lazyInject
 import com.stepango.archetype.rx.CompositeDisposableComponent
 import com.stepango.archetype.rx.CompositeDisposableComponentImpl
+import com.stepango.archetype.rx.subscribeBy
 import com.stepango.archetype.ui.Toaster
 import com.trello.navi2.Event
 import com.trello.navi2.NaviComponent
 import com.trello.navi2.rx.RxNavi
 import io.mironov.smuggler.AutoParcelable
-import io.reactivex.Completable
-import io.reactivex.Flowable
-import io.reactivex.Maybe
-import io.reactivex.Observable
-import io.reactivex.Scheduler
-import io.reactivex.Single
+import io.reactivex.*
 import io.reactivex.schedulers.Schedulers.io
 
 interface ViewModel : NaviComponent, ArgsHolder, CompositeDisposableComponent, LoaderHolder {
@@ -33,33 +29,33 @@ interface ViewModel : NaviComponent, ArgsHolder, CompositeDisposableComponent, L
             onNext: (T) -> Unit = onNextStub,
             onError: (Throwable) -> Unit = onErrorStub,
             onComplete: () -> Unit = onCompleteStub
-    ) = subscribeOn(scheduler).subscribe(onNext, onError, onComplete).bind()
+    ) = subscribeBy(scheduler, onNext, onError, onComplete).bind()
 
     fun <T : Any> Flowable<T>.bindSubscribe(
             scheduler: Scheduler = io(),
             onNext: (T) -> Unit = onNextStub,
             onError: (Throwable) -> Unit = onErrorStub,
             onComplete: () -> Unit = onCompleteStub
-    ) = subscribeOn(scheduler).subscribe(onNext, onError, onComplete).bind()
+    ) = subscribeBy(scheduler, onNext, onError, onComplete).bind()
 
     fun <T : Any> Single<T>.bindSubscribe(
             scheduler: Scheduler = io(),
             onSuccess: (T) -> Unit = onNextStub,
             onError: (Throwable) -> Unit = onErrorStub
-    ) = subscribeOn(scheduler).subscribe(onSuccess, onError).bind()
+    ) = subscribeBy(scheduler, onSuccess, onError).bind()
 
     fun <T : Any> Maybe<T>.bindSubscribe(
             scheduler: Scheduler = io(),
             onSuccess: (T) -> Unit = onNextStub,
             onError: (Throwable) -> Unit = onErrorStub,
             onComplete: () -> Unit = onCompleteStub
-    ) = subscribeOn(scheduler).subscribe(onSuccess, onError, onComplete).bind()
+    ) = subscribeBy(scheduler, onSuccess, onError, onComplete).bind()
 
     fun Completable.bindSubscribe(
             scheduler: Scheduler = io(),
             onComplete: () -> Unit = onCompleteStub,
             onError: (Throwable) -> Unit = onErrorStub
-    ) = subscribeOn(scheduler).subscribe(onComplete, onError).bind()
+    ) = subscribeBy(scheduler, onComplete, onError).bind()
 
 }
 
