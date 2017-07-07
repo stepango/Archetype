@@ -1,6 +1,5 @@
 package com.stepango.archetype.player.data.wrappers
 
-import android.view.View
 import com.github.nitrico.lastadapter.StableId
 import com.stepango.archetype.action.Args
 import com.stepango.archetype.action.argsOf
@@ -17,7 +16,7 @@ data class EpisodeListItemWrapper(private val model: EpisodesModel) : StableId, 
     val imageUrl: String = model.iconUrl
     val state: EpisodeDownloadState = model.state
     override fun args(): Args = argsOf { episodeId { stableId } }
-    fun downloadButtonVisibility(): Int = if (model.file == null) View.VISIBLE else View.INVISIBLE
+    val isDownloaded: Boolean = model.file != null
 }
 
 data class EpisodeWrapper(private val model: EpisodesModel) : AutoParcelable {
@@ -27,7 +26,7 @@ data class EpisodeWrapper(private val model: EpisodesModel) : AutoParcelable {
     val audioUrl: String = model.audioUrl
     val state: EpisodeDownloadState = model.state
     val file: String? = model.file
-    fun downloadButtonVisibility(): Int = if (model.file == null) View.VISIBLE else View.INVISIBLE
+    val isDownloaded: Boolean = model.file != null
 }
 
 interface ArgsHolder {
