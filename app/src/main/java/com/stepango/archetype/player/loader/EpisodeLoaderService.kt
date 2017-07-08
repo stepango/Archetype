@@ -76,8 +76,8 @@ class EpisodeLoader(val service: Service) :
         ProgressUpdateListener,
         CompositeDisposableComponent by CompositeDisposableComponentImpl() {
 
-    val repo by lazyInject { episodesRepo() }
     val toaster by lazyInject { toaster() }
+    val episodes by lazy { Episodes() }
 
     val queueSubject: PublishSubject<Long> = PublishSubject.create<Long>()
     val notificationHelper = NotificationHelper(service, hashCode())
@@ -107,13 +107,11 @@ class EpisodeLoader(val service: Service) :
 
     fun clearWaitStack(): Completable {
         return Observable.fromIterable(waitStack)
-                .flatMapSingle { getEpisodeById(it) }
-                .flatMapCompletable { updateEpisodeState(it, EpisodeDownloadState.DOWNLOAD).toCompletable() }
+                .flatMapCompletable { episodes.updateState(it, EpisodeDownloadState.DOWNLOAD).toCompletable() }
     }
 
     fun queue(id: Long) {
-        getEpisodeById(id)
-                .flatMap { updateEpisodeState(it, EpisodeDownloadState.WAIT) }
+        episodes.updateState(id, EpisodeDownloadState.WAIT)
                 .doOnSuccess { waitStack.add(it.id) }
                 .subscribeOn(Schedulers.io())
                 .subscribeBy(
@@ -122,15 +120,9 @@ class EpisodeLoader(val service: Service) :
                 ).bind()
     }
 
-    fun getEpisodeById(id: Long): Single<EpisodesModel>
-        = repo.observe(id)
-            .take(1)
-            .map { it.get() }
-            .firstOrError()
-
     fun load(id: Long) {
         logger.d("start load for $id")
-        getEpisodeById(id)
+        episodes.getById(id)
                 .flatMap { loadEpisode(it) }
                 .subscribeOn(loadScheduler)
                 .subscribeBy (
@@ -147,26 +139,18 @@ class EpisodeLoader(val service: Service) :
     }
 
     fun prepareEpisode(episode: EpisodesModel): Single<EpisodesModel> {
-        return updateEpisodeState(episode, EpisodeDownloadState.CANCEL)
+        return episodes.updateState(episode, EpisodeDownloadState.CANCEL)
                 .doOnSuccess { waitStack.remove(it.id) }
                 .doOnSuccess { startForeground() }
     }
 
     fun handleLoadErrorFor(id: Long) {
-        getEpisodeById(id)
-                .flatMap { updateEpisodeState(it, EpisodeDownloadState.RETRY) }
+        episodes.updateState(id, EpisodeDownloadState.RETRY)
                 .subscribeOn(Schedulers.io())
                 .subscribeBy (
                         onError = { toaster.showToast("can't set RETRY for episode $id") }
                 ).bind()
     }
-
-    fun updateEpisodeState(episode: EpisodesModel, newState: EpisodeDownloadState): Single<EpisodesModel>
-        = repo.save(episode.id, episode.copy(state = newState))
-
-    fun updateEpisodeFile(episode: EpisodesModel, file: File): Single<EpisodesModel>
-        = repo.save(episode.id, episode.copy(file = file.absolutePath))
-
 
     fun startTask(episode: EpisodesModel): Single<EpisodesModel> {
         notificationHelper.text(episode.name)
@@ -177,7 +161,7 @@ class EpisodeLoader(val service: Service) :
                     file)
                 .execute()
                 .doOnError { file.delete() }
-                .flatMap { updateEpisodeFile(episode, it) }
+                .flatMap { episodes.updateFile(episode, it) }
     }
 
     override fun onProgressUpdate(current: Long, total: Long, done: Boolean) {
@@ -195,6 +179,25 @@ class EpisodeLoader(val service: Service) :
                         }
                 ).bind()
     }
+}
+
+class Episodes {
+    val repo by lazyInject { episodesRepo() }
+
+    fun updateState(id: Long, newState: EpisodeDownloadState): Single<EpisodesModel>
+            = getById(id).flatMap { updateState(it, newState) }
+
+    fun updateState(episode: EpisodesModel, newState: EpisodeDownloadState): Single<EpisodesModel>
+            = repo.save(episode.id, episode.copy(state = newState))
+
+    fun updateFile(episode: EpisodesModel, file: File): Single<EpisodesModel>
+            = repo.save(episode.id, episode.copy(file = file.absolutePath))
+
+    fun getById(id: Long): Single<EpisodesModel>
+            = repo.observe(id)
+            .take(1)
+            .map { it.get() }
+            .firstOrError()
 }
 
 class EpisodeDownloadTask(
