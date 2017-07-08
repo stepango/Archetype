@@ -107,11 +107,13 @@ class EpisodeLoader(val service: Service) :
 
     fun clearWaitStack(): Completable {
         return Observable.fromIterable(waitStack)
+                .flatMapSingle { getEpisodeById(it) }
                 .flatMapCompletable { updateEpisodeState(it, EpisodeDownloadState.DOWNLOAD).toCompletable() }
     }
 
     fun queue(id: Long) {
-        updateEpisodeState(id, EpisodeDownloadState.WAIT)
+        getEpisodeById(id)
+                .flatMap { updateEpisodeState(it, EpisodeDownloadState.WAIT) }
                 .doOnSuccess { waitStack.add(it.id) }
                 .subscribeOn(Schedulers.io())
                 .subscribeBy(
@@ -151,7 +153,8 @@ class EpisodeLoader(val service: Service) :
     }
 
     fun handleLoadErrorFor(id: Long) {
-        updateEpisodeState(id, EpisodeDownloadState.RETRY)
+        getEpisodeById(id)
+                .flatMap { updateEpisodeState(it, EpisodeDownloadState.RETRY) }
                 .subscribeOn(Schedulers.io())
                 .subscribeBy (
                         onError = { toaster.showToast("can't set RETRY for episode $id") }
@@ -160,11 +163,6 @@ class EpisodeLoader(val service: Service) :
 
     fun updateEpisodeState(episode: EpisodesModel, newState: EpisodeDownloadState): Single<EpisodesModel>
         = repo.save(episode.id, episode.copy(state = newState))
-
-    fun updateEpisodeState(id: Long, newState: EpisodeDownloadState): Single<EpisodesModel>
-        = repo.observe(id).take(1)
-                .flatMapSingle { updateEpisodeState(it.get(), newState) }
-                .firstOrError()
 
     fun updateEpisodeFile(episode: EpisodesModel, file: File): Single<EpisodesModel>
         = repo.save(episode.id, episode.copy(file = file.absolutePath))
