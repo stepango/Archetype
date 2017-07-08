@@ -137,13 +137,18 @@ class EpisodeLoader(val service: Service) :
                 ).bind()
     }
 
-    fun loadEpisode(episode: EpisodesModel): Single<EpisodesModel>
-        = updateEpisodeState(episode, EpisodeDownloadState.CANCEL)
-            .doOnSuccess { waitStack.remove(it.id) }
-            .doOnSuccess { startForeground() }
-            .flatMap { startTask(it) }
-            .doAfterTerminate { stopForeground() }
-            .doOnError { handleLoadErrorFor(episode.id) }
+    fun loadEpisode(episode: EpisodesModel): Single<EpisodesModel> {
+        return prepareEpisode(episode)
+                .flatMap { startTask(it) }
+                .doAfterTerminate { stopForeground() }
+                .doOnError { handleLoadErrorFor(episode.id) }
+    }
+
+    fun prepareEpisode(episode: EpisodesModel): Single<EpisodesModel> {
+        return updateEpisodeState(episode, EpisodeDownloadState.CANCEL)
+                .doOnSuccess { waitStack.remove(it.id) }
+                .doOnSuccess { startForeground() }
+    }
 
     fun handleLoadErrorFor(id: Long) {
         updateEpisodeState(id, EpisodeDownloadState.RETRY)
