@@ -31,10 +31,10 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import okio.BufferedSink
+import okio.BufferedSource
 import okio.Okio
 import java.io.File
 import java.io.IOException
-import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
 /**
@@ -84,7 +84,7 @@ class EpisodeLoader(val service: Service) :
     val loader = ProgressOkLoader(this)
     val waitStack = ArrayList<Long>()
 
-    val loadScheduler: Scheduler = Schedulers.from(Executors.newSingleThreadExecutor())
+    val loadScheduler: Scheduler = Schedulers.single()
 
     init {
         queueSubject
@@ -113,6 +113,7 @@ class EpisodeLoader(val service: Service) :
     fun queue(id: Long) {
         updateEpisodeState(id, EpisodeDownloadState.WAIT)
                 .doOnSuccess { waitStack.add(it.id) }
+                .subscribeOn(Schedulers.io())
                 .subscribeBy(
                         onSuccess = { queueSubject.onNext(it.id) },
                         onError = { toaster.showToast("error on queue for episode $id") }
@@ -134,8 +135,8 @@ class EpisodeLoader(val service: Service) :
                 .flatMap { startTask(it) }
                 .doAfterTerminate { stopForeground() }
                 .doOnError { handleLoadErrorFor(id) }
+                .subscribeOn(loadScheduler)
                 .subscribeBy (
-                        scheduler = loadScheduler,
                         onSuccess = { logger.d("loading done for $id") },
                         onError = { toaster.showToast("error on loading $id") }
                 ).bind()
@@ -143,6 +144,7 @@ class EpisodeLoader(val service: Service) :
 
     fun handleLoadErrorFor(id: Long) {
         updateEpisodeState(id, EpisodeDownloadState.RETRY)
+                .subscribeOn(Schedulers.io())
                 .subscribeBy (
                         onError = { toaster.showToast("can't set RETRY for episode $id") }
                 ).bind()
@@ -179,6 +181,7 @@ class EpisodeLoader(val service: Service) :
     fun stopLoading() {
         clearWaitStack()
                 .doAfterTerminate { resetCompositeDisposable() }
+                .subscribeOn(Schedulers.io())
                 .subscribeBy(
                         onComplete = {
                             service.stopForeground(true)
@@ -195,16 +198,19 @@ class EpisodeDownloadTask(
 ) {
 
     fun execute(): Single<File> = Single.fromCallable<File> {
-        val request = Request.Builder()
-                .url(episode.audioUrl)
-                .build()
-
+        val request: Request = createRequest(episode.audioUrl)
         val response: Response = client.newCall(request).execute()
+
         if (!response.isSuccessful) throw IOException("Unexpected code $response")
-        val sink: BufferedSink = Okio.buffer(Okio.sink(destination))
-        sink.writeAll(response.body().source())
-        sink.close()
+        saveToFile(response.body().source())
         return@fromCallable destination
+    }
+
+    fun createRequest(url: String): Request = Request.Builder().url(url).build()
+    fun saveToFile(src: BufferedSource) {
+        val sink: BufferedSink = Okio.buffer(Okio.sink(destination))
+        sink.writeAll(src)
+        sink.close()
     }
 }
 

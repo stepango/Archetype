@@ -8,7 +8,6 @@ import io.reactivex.*
 import io.reactivex.Observable.fromIterable
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.BiFunction
-import io.reactivex.schedulers.Schedulers.io
 
 fun <T : Any> Observable<List<T>>.flatten(): Observable<T> = flatMap { fromIterable(it) }
 
@@ -19,34 +18,17 @@ fun <T : Collection<Any>> Observable<T>.filterNotEmpty(): Observable<T> = filter
 fun <T : Any> Observable<out Optional<out T>>.filterNonEmpty(): Observable<T> = filter { it.isPresent }.map { it.get() }
 
 fun <T : Any> Observable<T>.subscribeBy(
-        scheduler: Scheduler = io(),
         onNext: (T) -> Unit = onNextStub,
         onError: (Throwable) -> Unit = onErrorStub,
         onComplete: () -> Unit = onCompleteStub
-): Disposable = subscribeOn(scheduler).subscribe(onNext, onError, onComplete)
-
-fun <T : Any> Flowable<T>.subscribeBy(
-        scheduler: Scheduler = io(),
-        onNext: (T) -> Unit = onNextStub,
-        onError: (Throwable) -> Unit = onErrorStub,
-        onComplete: () -> Unit = onCompleteStub
-): Disposable = subscribeOn(scheduler).subscribe(onNext, onError, onComplete)
+): Disposable = subscribe(onNext, onError, onComplete)
 
 fun <T : Any> Single<T>.subscribeBy(
-        scheduler: Scheduler = io(),
         onSuccess: (T) -> Unit = onNextStub,
         onError: (Throwable) -> Unit = onErrorStub
-): Disposable = subscribeOn(scheduler).subscribe(onSuccess, onError)
-
-fun <T : Any> Maybe<T>.subscribeBy(
-        scheduler: Scheduler = io(),
-        onSuccess: (T) -> Unit = onNextStub,
-        onError: (Throwable) -> Unit = onErrorStub,
-        onComplete: () -> Unit = onCompleteStub
-): Disposable = subscribeOn(scheduler).subscribe(onSuccess, onError, onComplete)
+): Disposable = subscribe(onSuccess, onError)
 
 fun Completable.subscribeBy(
-        scheduler: Scheduler = io(),
         onComplete: () -> Unit = onCompleteStub,
         onError: (Throwable) -> Unit = onErrorStub
-): Disposable = subscribeOn(scheduler).subscribe(onComplete, onError)
+): Disposable = subscribe(onComplete, onError)
