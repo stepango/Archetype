@@ -129,18 +129,21 @@ class EpisodeLoader(val service: Service) :
     fun load(id: Long) {
         logger.d("start load for $id")
         getEpisodeById(id)
-                .doOnSuccess { waitStack.remove(it.id) }
-                .doOnSuccess { startForeground() }
-                .flatMap { updateEpisodeState(it, EpisodeDownloadState.CANCEL) }
-                .flatMap { startTask(it) }
-                .doAfterTerminate { stopForeground() }
-                .doOnError { handleLoadErrorFor(id) }
+                .flatMap { loadEpisode(it) }
                 .subscribeOn(loadScheduler)
                 .subscribeBy (
                         onSuccess = { logger.d("loading done for $id") },
                         onError = { toaster.showToast("error on loading $id") }
                 ).bind()
     }
+
+    fun loadEpisode(episode: EpisodesModel): Single<EpisodesModel>
+        = updateEpisodeState(episode, EpisodeDownloadState.CANCEL)
+            .doOnSuccess { waitStack.remove(it.id) }
+            .doOnSuccess { startForeground() }
+            .flatMap { startTask(it) }
+            .doAfterTerminate { stopForeground() }
+            .doOnError { handleLoadErrorFor(episode.id) }
 
     fun handleLoadErrorFor(id: Long) {
         updateEpisodeState(id, EpisodeDownloadState.RETRY)
