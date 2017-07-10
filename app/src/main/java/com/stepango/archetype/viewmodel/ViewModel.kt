@@ -15,12 +15,7 @@ import com.trello.navi2.Event
 import com.trello.navi2.NaviComponent
 import com.trello.navi2.rx.RxNavi
 import io.mironov.smuggler.AutoParcelable
-import io.reactivex.Completable
-import io.reactivex.Flowable
-import io.reactivex.Maybe
-import io.reactivex.Observable
-import io.reactivex.Scheduler
-import io.reactivex.Single
+import io.reactivex.*
 import io.reactivex.schedulers.Schedulers.io
 
 interface ViewModel : NaviComponent, ArgsHolder, CompositeDisposableComponent, LoaderHolder {

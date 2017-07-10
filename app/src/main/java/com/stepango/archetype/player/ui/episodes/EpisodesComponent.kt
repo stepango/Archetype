@@ -28,5 +28,5 @@ class EpisodesComponentImpl(val episodesRepo:EpisodesModelRepo = Injector().epis
             .map(::EpisodeWrapper)
 
     override fun updateEpisodes(): Completable
-            = episodesRepo.pull()
+            = episodesRepo.pull().concatWith(episodesRepo.refreshFiles())
 }
