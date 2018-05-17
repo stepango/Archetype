@@ -45,10 +45,10 @@ class PlayerViewModel(
     }
 
     fun play() {
-        if (episode.get().file.isNullOrEmpty())
-            player.play(episode.get().audioUrl)
+        if (episode.get()?.file.isNullOrEmpty())
+            player.play(episode.get()?.audioUrl!!)
         else
-            player.play(episode.get().file!!)
+            player.play(episode.get()?.file!!)
     }
 
 }

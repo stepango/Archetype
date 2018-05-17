@@ -40,14 +40,14 @@ class ContextActionHandler(
 
         override fun onComplete() {
             logger.d { "$actionName - completed successfully" }
-            composite.remove(disposable)
+            disposable?.let(composite::remove)
         }
 
         override fun onSubscribe(d: Disposable) {
             disposable = d
         }
 
-        override fun onError(e: Throwable?) {
+        override fun onError(e: Throwable) {
             logger.e(e, "$actionName - completed with error")
         }
     }

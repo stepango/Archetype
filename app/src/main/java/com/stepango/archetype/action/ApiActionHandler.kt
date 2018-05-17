@@ -15,10 +15,9 @@ class ApiActionHandler(
 ) :
         ActionHandler<Api>,
         CompositeDisposableComponent by CompositeDisposableComponentImpl(),
-        ActionProducer<ApiAction> by actionProducer
-{
+        ActionProducer<ApiAction> by actionProducer {
 
-    override fun handleAction(context: Api, actionId: Int, args: Args){
+    override fun handleAction(context: Api, actionId: Int, args: Args) {
         val action = createAction(actionId)
         val observer = observer(action::class.java.simpleName)
         action.invoke(context, args)
@@ -36,14 +35,14 @@ class ApiActionHandler(
 
         override fun onComplete() {
             logger.d { "$actionName - completed successfully" }
-            composite.remove(disposable)
+            disposable?.let(composite::remove)
         }
 
         override fun onSubscribe(d: Disposable) {
             disposable = d
         }
 
-        override fun onError(e: Throwable?) {
+        override fun onError(e: Throwable) {
             logger.e(e, "$actionName - completed with error")
         }
     }

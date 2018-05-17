@@ -36,7 +36,7 @@ abstract class BaseFragment<T : ViewDataBinding> : NaviFragment() {
 
     val activity: BaseActivity get() = super.getActivity() as BaseActivity
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         // Workaround for http://stackoverflow.com/questions/27057449/when-switch-fragment-with-swiperefreshlayout-during-refreshing-fragment-freezes
@@ -44,14 +44,14 @@ abstract class BaseFragment<T : ViewDataBinding> : NaviFragment() {
         else binding.root
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initBinding(binding, savedInstanceState)
     }
 
 }
 
-val Fragment.args: Args get () = arguments
+val Fragment.args: Args get () = arguments ?: Bundle()
 
 inline fun <reified T : BaseFragment<*>> showFragment(
         activity: BaseActivity,
