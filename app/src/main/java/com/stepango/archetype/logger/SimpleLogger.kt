@@ -1,4 +1,4 @@
-package com.ninetyseconds.auckland.core.log
+package com.stepango.archetype.logger
 
 import android.util.Log
 import com.stepango.archetype.BuildConfig

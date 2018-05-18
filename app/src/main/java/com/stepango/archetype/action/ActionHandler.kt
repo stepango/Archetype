@@ -1,17 +1,15 @@
 package com.stepango.archetype.action
 
+import android.content.Context
+import com.stepango.archetype.rx.CompositeDisposableHolder
 import io.reactivex.Completable
 
-interface ActionProducer<out T : Action<*>> {
-    fun createAction(actionId: Int): T
+interface ContextActionHandlerFactory {
+    fun createActionHandler(context: Context, compositeDisposableHolder: CompositeDisposableHolder): ContextActionHandler
 }
 
-interface ActionHandler<in T> {
-    fun handleAction(context: T, actionId: Int, args: Args = argsOf())
+interface ContextActionHandler {
     fun stopActions(): Completable
-}
-
-interface BaseActionHandler {
-    fun handleAction(actionId: Int, args: Args = argsOf()): Unit
-    operator fun invoke(actionId: Int, args: Args = argsOf()) = handleAction(actionId, args)
+    fun <P : Any> handleAction(contextAction: ContextAction<P>, params: P)
+    fun <P : Any> createAction(contextAction: ContextAction<P>, params: P): Completable
 }

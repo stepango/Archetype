@@ -1,27 +1,30 @@
 package com.stepango.archetype.player.loader
 
 import android.content.Context
-import com.stepango.archetype.action.*
-import com.stepango.archetype.logger.logger
+import com.stepango.archetype.action.ContextAction
+import com.stepango.archetype.action.IntentAction
+import com.stepango.archetype.action.IntentMaker
+import com.stepango.archetype.action.startBroadcast
+import com.stepango.archetype.action.startService
 import com.stepango.archetype.player.data.db.model.EpisodesModel
 import com.stepango.archetype.player.di.Injector
 import com.stepango.archetype.player.di.lazyInject
 import com.stepango.archetype.util.getFileName
 import io.reactivex.Completable
 import io.reactivex.Observable
-import io.reactivex.schedulers.Schedulers.io
 import java.io.File
 
 /**
  * Wild, 02.07.2017.
  */
 
-class RefreshDownloadedFilesAction : ContextAction {
+interface RefreshDownloadedAction : ContextAction<Unit>
+
+class RefreshDownloadedFilesActionImpl : RefreshDownloadedAction {
 
     val episodesRepo by lazyInject { episodesRepo() }
 
-    fun getAllEpisodes(): Observable<EpisodesModel>
-            = episodesRepo.observeAll()
+    fun getAllEpisodes(): Observable<EpisodesModel> = episodesRepo.observeAll()
             .take(1)
             .flatMapIterable { it }
 
@@ -34,9 +37,8 @@ class RefreshDownloadedFilesAction : ContextAction {
                 .toCompletable()
     }
 
-    override fun invoke(context: Context, args: Args): Completable {
+    override fun invoke(context: Context, params: Unit): Completable {
         return getAllEpisodes()
-                .subscribeOn(io())
                 .flatMapCompletable {
                     val file = File(context.filesDir, getFileName(it.audioUrl))
                     return@flatMapCompletable checkEpisodeFile(it, file)
@@ -44,16 +46,17 @@ class RefreshDownloadedFilesAction : ContextAction {
     }
 }
 
-class DownloadEpisodeAction : IntentAction, IntentMaker by Injector().intentMaker() {
+interface DownloadEpisodeAction : IntentAction<Unit>
 
-    override fun invoke(context: Context, args: Args): Completable
-            = startService<EpisodeLoaderService>(context, args)
+class DownloadEpisodeActionImpl : DownloadEpisodeAction, IntentMaker by Injector().intentMaker() {
 
+    override fun invoke(context: Context, params: Unit): Completable = startService<EpisodeLoaderService>(context)
 }
 
-class CancelDownloadEpisodeAction : IntentAction, IntentMaker by Injector().intentMaker() {
+interface CancelDownloadEpisodeAction : IntentAction<Unit>
 
-    override fun invoke(context: Context, args: Args): Completable
-            = startBroadcast(context, CANCEL_DOWNLOAD_ACTION)
+class CancelDownloadEpisodeActionImpl : CancelDownloadEpisodeAction, IntentMaker by Injector().intentMaker() {
+
+    override fun invoke(context: Context, params: Unit): Completable = startBroadcast(context, CANCEL_DOWNLOAD_ACTION)
 
 }

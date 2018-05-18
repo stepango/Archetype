@@ -1,38 +1,44 @@
 package com.stepango.archetype.action
 
 import android.content.Context
-import android.util.SparseArray
 import com.stepango.archetype.logger.d
 import com.stepango.archetype.logger.logger
-import com.stepango.archetype.player.network.Api
-import com.stepango.archetype.rx.CompositeDisposableComponent
-import com.stepango.archetype.rx.CompositeDisposableComponentImpl
-import com.stepango.archetype.util.name
+import com.stepango.archetype.rx.CompositeDisposableHolder
+import com.stepango.archetype.rx.actionScheduler
+import com.stepango.archetype.rx.nonDisposableActionScheduler
 import io.reactivex.Completable
 import io.reactivex.CompletableObserver
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers.io
 
-class ContextActionHandler(
-        actionsProducer: ActionProducer<ContextAction>
+class ContextActionHandlerRealFactory : ContextActionHandlerFactory {
+    override fun createActionHandler(context: Context, compositeDisposableHolder: CompositeDisposableHolder): ContextActionHandler = ContextActionHandlerImpl(context, compositeDisposableHolder)
+}
+
+class ContextActionHandlerImpl(
+        val context: Context,
+        val compositeDisposableHolder: CompositeDisposableHolder
 ) :
-        ActionHandler<Context>,
-        ActionProducer<ContextAction> by actionsProducer,
-        CompositeDisposableComponent by CompositeDisposableComponentImpl() {
+        CompositeDisposableHolder by compositeDisposableHolder, ContextActionHandler {
 
     override fun stopActions(): Completable = Completable.fromAction {
         resetCompositeDisposable()
     }
 
-    override fun handleAction(context: Context, actionId: Int, args: Args) {
-        val actionName = actionId.name(context)
-        logger.d { "Action:: $actionName" }
+    inline fun <reified T : Any> ContextActionHandler.execute(data: ActionData<T>) =
+            handleAction(data.action, data.params)
+
+    override fun <P : Any> createAction(contextAction: ContextAction<P>, params: P): Completable =
+            contextAction.invoke(context, params).doOnSubscribe { logger.d { "Action:: createAction ${contextAction::class.java.name}" } }
+
+    override fun <P : Any> handleAction(contextAction: ContextAction<P>, params: P) {
+        val actionName = contextAction::class.java.name
+        logger.d { "Action:: handle $actionName" }
         val observer = observer(actionName)
-        val action = createAction(actionId)
-        action.invoke(context, args)
-                .subscribeOn(io())
+        val isDisposable = contextAction.isDisposable()
+        contextAction.invoke(context, params)
+                .subscribeOn(if (isDisposable) actionScheduler else nonDisposableActionScheduler)
                 .subscribeWith(observer)
-        if (action.isDisposable()) observer.disposable?.bind()
+        if (isDisposable) observer.disposable?.bind()
     }
 
     private fun observer(actionName: String) = object : CompletableObserver {
@@ -40,25 +46,15 @@ class ContextActionHandler(
 
         override fun onComplete() {
             logger.d { "$actionName - completed successfully" }
-            composite.remove(disposable)
+            disposable?.let(composite::remove)
         }
 
         override fun onSubscribe(d: Disposable) {
             disposable = d
         }
 
-        override fun onError(e: Throwable?) {
+        override fun onError(e: Throwable) {
             logger.e(e, "$actionName - completed with error")
         }
     }
-}
-
-class ContextActionProducer(val context: Context, val actions: SparseArray<ContextAction>) : ActionProducer<ContextAction> {
-    override fun createAction(actionId: Int)
-            = actions[actionId] ?: throw IllegalArgumentException("Action ${actionId.name(context)} not found")
-}
-
-class ApiActionProducer(val context: Api, val actions: SparseArray<ApiAction>) : ActionProducer<ApiAction> {
-    override fun createAction(actionId: Int)
-            = actions[actionId] ?: throw IllegalArgumentException("Action $actionId not found")
 }

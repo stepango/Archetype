@@ -10,7 +10,7 @@
 
         <variable
             name="vm"
-            type="com.stepango.archetype.player.ui.episodes.PlayerViewModel"
+            type="com.stepango.archetype.player.ui.player.PlayerViewModel"
             />
 
     </data>
@@ -44,17 +44,17 @@
             android:layout_marginBottom="32dp"
             android:onClick="@{() -> vm.play()}"
             />
+
         <Button
             android:id="@+id/download"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="32dp"
-            android:text="@{vm.episode.state.textId()}"
             android:enabled="@{!vm.episode.state.isWait()}"
+            android:onClick="@{()->vm.episode.action()}"
+            android:text="@{vm.episode.state.textId()}"
             bind:visible="@{!vm.episode.isDownloaded}"
-            bind:actionData="@{vm::args}"
-            bind:performAction="@{vm.episode.state.action}"
             />
 
     </RelativeLayout>

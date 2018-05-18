@@ -1,25 +1,47 @@
 package com.stepango.archetype.action
 
 import android.content.Context
-import com.stepango.archetype.player.network.Api
 import io.reactivex.Completable
 
-interface Action<in T> {
+interface ContextAction<P> {
     fun isDisposable() = true
-    fun invoke(context: T, args: Args): Completable
+    operator fun invoke(context: Context, params: P): Completable
 }
 
-interface ContextAction : Action<Context> {
+interface IDAction : ContextAction<Long>
 
-    /**
-     * Action should perform with [Context]
-     */
-    override operator fun invoke(context: Context, args: Args): Completable
-
+class IdleAction : ContextAction<Unit> {
+    override fun invoke(context: Context, params: Unit): Completable = Completable.complete()
 }
 
-interface ApiAction : Action<Api>
+data class ActionData<P>(val action: ContextAction<P>, val params: P) {
 
-class IdleAction : ContextAction {
-    override fun invoke(context: Context, args: Args): Completable = Completable.complete()
+    @Suppress("UNCHECKED_CAST")
+    fun asHolder() = object : ActionDataHolder {
+        override fun actionData(): ActionData<Any>? = this@ActionData as ActionData<Any>
+    }
+
+    companion object {
+        val IDLE = ActionData(IdleAction(), Unit)
+    }
 }
+
+data class NamedActionData<T>(val name: String, val action: ActionData<T>) {
+    override fun toString() = name
+
+    companion object {
+        val IDLE = NamedActionData("", ActionData.IDLE)
+    }
+}
+
+interface ActionDataHolder {
+    fun actionData(): ActionData<Any>?
+}
+
+interface ActionHandlerHolder {
+    val actionHandler: ContextActionHandler
+}
+
+fun <P : Any> ContextAction<P>.with(param: P): ActionData<P> = ActionData(this, param)
+fun <P : Any> ActionData<P>.execute(ah: ContextActionHandler) = ah.handleAction(action, params)
+fun ContextAction<Unit>.noParams(): ActionData<Unit> = ActionData(this, Unit)
