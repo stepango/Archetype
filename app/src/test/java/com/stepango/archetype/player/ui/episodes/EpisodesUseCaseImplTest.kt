@@ -11,13 +11,13 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 import org.junit.Test
 
-class EpisodesComponentImplTest {
+class EpisodesUseCaseImplTest {
     @Test
     fun observeEpisodes() {
         val episodesRepo = mock<EpisodesModelRepo> {
             on { observeAll() } doReturn Observable.just(emptyList())
         }
-        val component = EpisodesComponentImpl(episodesRepo)
+        val component = EpisodesUseCaseImpl(episodesRepo)
         component.observeEpisodes()
                 .test()
                 .assertValueCount(0)
@@ -28,7 +28,7 @@ class EpisodesComponentImplTest {
         val episodesRepo = mock<EpisodesModelRepo> {
             on { observe(any()) } doReturn Observable.just(Optional.empty())
         }
-        val component = EpisodesComponentImpl(episodesRepo)
+        val component = EpisodesUseCaseImpl(episodesRepo)
         component.observeEpisode(0)
                 .test()
                 .assertValueCount(0)
@@ -39,7 +39,7 @@ class EpisodesComponentImplTest {
         val episodesRepo = mock<EpisodesModelRepo> {
             on { pull() } doReturn Completable.complete()
         }
-        val component = EpisodesComponentImpl(episodesRepo)
+        val component = EpisodesUseCaseImpl(episodesRepo)
         component.updateEpisodes()
                 .test()
                 .assertComplete()
@@ -50,7 +50,7 @@ class EpisodesComponentImplTest {
         val episodesRepo = mock<EpisodesModelRepo> {
             on { observeAll() } doReturn Observable.just(listOf(mock()))
         }
-        val component = EpisodesComponentImpl(episodesRepo)
+        val component = EpisodesUseCaseImpl(episodesRepo)
         component.observeEpisodes()
                 .test()
                 .assertValueCount(1)

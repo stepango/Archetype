@@ -4,8 +4,12 @@ import com.stepango.archetype.viewmodel.onCompleteStub
 import com.stepango.archetype.viewmodel.onErrorStub
 import com.stepango.archetype.viewmodel.onNextStub
 import com.stepango.koptional.Optional
-import io.reactivex.*
+import io.reactivex.Completable
+import io.reactivex.Maybe
+import io.reactivex.MaybeSource
+import io.reactivex.Observable
 import io.reactivex.Observable.fromIterable
+import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.BiFunction
 

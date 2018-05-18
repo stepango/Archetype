@@ -19,9 +19,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{()->item.open()}"
         android:orientation="horizontal"
-        bind:actionData="@{item::args}"
-        bind:performAction="@{R.id.action_show_episode}"
         >
 
         <ImageView
@@ -33,25 +32,25 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="16dp"
+            android:layout_weight="1"
             android:textColor="#212121"
             android:textSize="14sp"
             bind:text="@{item.name}"
             tools:text="Name"
             />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="10sp"
-            android:text="@{item.state.textId()}"
             android:enabled="@{!item.state.isWait()}"
+            android:text="@{item.state.textId()}"
+            android:textSize="10sp"
+            android:onClick="@{()->item.action()}"
             bind:visible="@{!item.isDownloaded}"
-            bind:actionData="@{item::args}"
-            bind:performAction="@{item.state.action}"
             />
 
     </LinearLayout>

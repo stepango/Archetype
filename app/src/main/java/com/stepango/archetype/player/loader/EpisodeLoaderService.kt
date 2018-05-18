@@ -15,10 +15,11 @@ import com.stepango.archetype.action.Args
 import com.stepango.archetype.logger.logger
 import com.stepango.archetype.player.data.db.model.EpisodeDownloadState
 import com.stepango.archetype.player.data.db.model.EpisodesModel
+import com.stepango.archetype.player.di.injector
 import com.stepango.archetype.player.di.lazyInject
 import com.stepango.archetype.player.episodeId
-import com.stepango.archetype.rx.CompositeDisposableComponent
-import com.stepango.archetype.rx.CompositeDisposableComponentImpl
+import com.stepango.archetype.rx.CompositeDisposableHolder
+import com.stepango.archetype.rx.filterNonEmpty
 import com.stepango.archetype.rx.subscribeBy
 import com.stepango.archetype.util.getFileName
 import io.reactivex.Completable
@@ -45,9 +46,9 @@ const val CANCEL_DOWNLOAD_ACTION = "cancel_action"
 
 class EpisodeLoaderService : Service() {
 
-    val episodeLoader by lazy { EpisodeLoader(this) }
+    val episodeLoader by lazy { EpisodeLoader(this, injector.compositeDisposableHolder()) }
 
-    val cancelReceiver = object: BroadcastReceiver() {
+    val cancelReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             episodeLoader.stopLoading()
         }
@@ -72,9 +73,9 @@ class EpisodeLoaderService : Service() {
     }
 }
 
-class EpisodeLoader(val service: Service) :
+class EpisodeLoader(val service: Service, compositeDisposableHolder: CompositeDisposableHolder) :
         ProgressUpdateListener,
-        CompositeDisposableComponent by CompositeDisposableComponentImpl() {
+        CompositeDisposableHolder by compositeDisposableHolder {
 
     val toaster by lazyInject { toaster() }
     val episodes by lazy { Episodes() }
@@ -125,7 +126,7 @@ class EpisodeLoader(val service: Service) :
         episodes.getById(id)
                 .flatMap { loadEpisode(it) }
                 .subscribeOn(loadScheduler)
-                .subscribeBy (
+                .subscribeBy(
                         onSuccess = { logger.d("loading done for $id") },
                         onError = { toaster.showToast("error on loading $id") }
                 ).bind()
@@ -147,7 +148,7 @@ class EpisodeLoader(val service: Service) :
     fun handleLoadErrorFor(id: Long) {
         episodes.updateState(id, EpisodeDownloadState.RETRY)
                 .subscribeOn(Schedulers.io())
-                .subscribeBy (
+                .subscribeBy(
                         onError = { toaster.showToast("can't set RETRY for episode $id") }
                 ).bind()
     }
@@ -156,9 +157,9 @@ class EpisodeLoader(val service: Service) :
         notificationHelper.text(episode.name)
         val file = File(service.filesDir, getFileName(episode.audioUrl))
         return EpisodeDownloadTask(
-                    loader.client,
-                    episode,
-                    file)
+                loader.client,
+                episode,
+                file)
                 .execute()
                 .doOnError { file.delete() }
                 .flatMap { episodes.updateFile(episode, it) }
@@ -184,19 +185,14 @@ class EpisodeLoader(val service: Service) :
 class Episodes {
     val repo by lazyInject { episodesRepo() }
 
-    fun updateState(id: Long, newState: EpisodeDownloadState): Single<EpisodesModel>
-            = getById(id).flatMap { updateState(it, newState) }
+    fun updateState(id: Long, newState: EpisodeDownloadState): Single<EpisodesModel> = getById(id).flatMap { updateState(it, newState) }
 
-    fun updateState(episode: EpisodesModel, newState: EpisodeDownloadState): Single<EpisodesModel>
-            = repo.save(episode.id, episode.copy(state = newState))
+    fun updateState(episode: EpisodesModel, newState: EpisodeDownloadState): Single<EpisodesModel> = repo.save(episode.id, episode.copy(state = newState))
 
-    fun updateFile(episode: EpisodesModel, file: File): Single<EpisodesModel>
-            = repo.save(episode.id, episode.copy(file = file.absolutePath))
+    fun updateFile(episode: EpisodesModel, file: File): Single<EpisodesModel> = repo.save(episode.id, episode.copy(file = file.absolutePath))
 
-    fun getById(id: Long): Single<EpisodesModel>
-            = repo.observe(id)
-            .take(1)
-            .map { it.get() }
+    fun getById(id: Long): Single<EpisodesModel> = repo.observe(id)
+            .filterNonEmpty()
             .firstOrError()
 }
 
@@ -227,7 +223,7 @@ class NotificationHelper(context: Context, val id: Int) {
 
     val REQUEST_CANCEL = 0
     val mgr = context.getSystemService(Context.NOTIFICATION_SERVICE)
-                as NotificationManager
+            as NotificationManager
     val builder: NotificationCompat.Builder = NotificationCompat.Builder(context)
             .setContentTitle(context.getString(R.string.app_name))
             .setSmallIcon(android.R.drawable.stat_sys_download)
@@ -255,7 +251,7 @@ class NotificationHelper(context: Context, val id: Int) {
     }
 
     fun progress(current: Long, total: Long) {
-        progress = if (total > 0) ((100 * current)/total).toInt() else 100
+        progress = if (total > 0) ((100 * current) / total).toInt() else 100
     }
 
     fun getNotification(): Notification = builder.build()

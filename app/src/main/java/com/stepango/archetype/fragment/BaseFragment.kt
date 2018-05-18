@@ -11,22 +11,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.stepango.archetype.action.Args
-import com.stepango.archetype.action.BaseActionHandler
 import com.stepango.archetype.action.argsOf
 import com.stepango.archetype.activity.BaseActivity
-import com.stepango.archetype.player.di.injector
 import com.trello.navi2.component.NaviFragment
 import io.reactivex.Completable
 
 abstract class BaseFragment<T : ViewDataBinding> : NaviFragment() {
 
     var onBackPressedHandler: (activity: Activity) -> Boolean = { false }
-
-    val actionHandler: BaseActionHandler = object : BaseActionHandler {
-        override fun handleAction(actionId: Int, args: Args) {
-            injector.contextActionsHandler().handleAction(this@BaseFragment.activity, actionId, args)
-        }
-    }
 
     abstract val layoutId: Int
 

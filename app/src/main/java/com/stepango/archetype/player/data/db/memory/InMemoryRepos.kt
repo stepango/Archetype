@@ -1,20 +1,24 @@
 package com.stepango.archetype.player.data.db.memory
 
-import android.content.Context
-import com.stepango.archetype.action.ActionProducer
-import com.stepango.archetype.action.ApiAction
-import com.stepango.archetype.action.ContextAction
-import com.stepango.archetype.action.ContextActionProducer
+import com.stepango.archetype.action.ContextActionHandler
 import com.stepango.archetype.db.KeyValueRepo
 import com.stepango.archetype.player.data.db.EpisodesModelRepo
 import com.stepango.archetype.player.data.db.model.EpisodesModel
-import com.stepango.archetype.player.network.Api
+import com.stepango.archetype.player.loader.RefreshDownloadedAction
+import com.stepango.archetype.player.network.get.GetEpisodesRequest
+import io.reactivex.Completable
 
 class InMemoryEpisodesRepo(
-        override val actionProducer: ActionProducer<ApiAction>,
-        override val apiService: Api,
-        override val contextActionProducer: ActionProducer<ContextAction>,
-        override val context: Context
+        val refreshDownloadedAction: RefreshDownloadedAction
 ) :
         EpisodesModelRepo,
-        KeyValueRepo<Long, EpisodesModel> by InMemoryKeyValueRepo<Long, EpisodesModel>()
+        KeyValueRepo<Long, EpisodesModel> by InMemoryKeyValueRepo() {
+    override fun pull(): Completable =
+            GetEpisodesRequest().execute()
+                    .flatMap {
+                        save(it.associateBy({ it.id }) { it })
+                    }
+                    .toCompletable()
+
+    override fun refreshFiles(ah: ContextActionHandler) = ah.createAction(refreshDownloadedAction, Unit)
+}

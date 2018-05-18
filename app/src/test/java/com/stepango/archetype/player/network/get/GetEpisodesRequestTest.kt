@@ -19,7 +19,7 @@ import com.stepango.archetype.player.network.Api
 import io.reactivex.Single
 import org.junit.Test
 
-class GetEpisodesActionTest {
+class GetEpisodesRequestTest {
     @Test
     fun invoke() {
 
@@ -31,7 +31,7 @@ class GetEpisodesActionTest {
         }
         whenever(injector.episodesRepo()).doReturn(repo)
 
-        GetEpisodesAction().invoke(context, argsOf())
+        GetEpisodesRequest().execute(context, argsOf())
                 .test()
                 .await()
                 .assertComplete()

@@ -1,3 +1,3 @@
 package com.stepango.archetype.action
 
-interface IntentAction : ContextAction, IntentMaker
+interface IntentAction<T : Any> : ContextAction<T>, IntentMaker

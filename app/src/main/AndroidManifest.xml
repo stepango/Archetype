@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".player.ui.episodes.PlayerActivity"/>
+        <activity android:name=".player.ui.player.PlayerActivity"/>
 
         <service android:name="com.stepango.archetype.player.loader.EpisodeLoaderService"/>
     </application>

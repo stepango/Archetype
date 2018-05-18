@@ -2,13 +2,13 @@
 
 buildscript {
 
-    ext.androidPluginVersion = "3.2.0-alpha14"
+    ext.androidPluginVersion = "3.2.0-alpha15"
     ext.kotlin_version = '1.2.41'
     ext.smugglerVersion = "0.14.0"
     ext.supportLibVersion = "27.1.1"
     ext.glideVersion = "3.7.0"
     ext.glideOkHttp = "1.5.0"
-    ext.lastAdapterVersion = "2.0.0"
+    ext.lastAdapterVersion = "2.3.0"
     ext.dataBinding = ext.androidPluginVersion
     ext.okhttpVersion = "3.6.0"
     ext.retrofitVersion = "2.2.0"
