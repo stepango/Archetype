@@ -146,7 +146,7 @@ class InjectorImpl(val app: App) : Injector {
 
     private fun showEpisodeAction() = ShowEpisodeActionImpl()
     private fun cancelDownloadEpisodeAction(): CancelDownloadEpisodeAction = CancelDownloadEpisodeActionImpl()
-    private fun downloadEpisodeAction(): DownloadEpisodeAction = DownloadEpisodeActionImpl()
+    private fun downloadEpisodeAction(): DownloadEpisodeAction = DownloadEpisodeActionImpl(intentMaker())
     //endregion
 
     //region repositories

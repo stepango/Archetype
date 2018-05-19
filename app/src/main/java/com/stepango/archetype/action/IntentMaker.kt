@@ -44,7 +44,7 @@ fun <T : Activity> IntentMaker.startIntent(
 
 fun IntentMaker.startBroadcast(
         context: Context, action: String
-)  = make(action).start(context)
+)  = make(action).sendBroadcast(context)
 
 // Here we are using nullable resourceType because methods like putExtra() in tests returns null
 fun Intent.start(
@@ -72,7 +72,7 @@ fun Intent.start(
     }
 }
 
-fun Intent.start(
+fun Intent.sendBroadcast(
         ctx: Context
 ): Completable = Completable.fromCallable {
     ctx.sendBroadcast(this)
