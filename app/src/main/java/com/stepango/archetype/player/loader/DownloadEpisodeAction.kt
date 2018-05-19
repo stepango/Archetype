@@ -46,11 +46,15 @@ class RefreshDownloadedFilesActionImpl : RefreshDownloadedAction {
     }
 }
 
-interface DownloadEpisodeAction : IntentAction<Unit>
+interface DownloadEpisodeAction : IntentAction<DownloadEpisodeActionParams>
+class DownloadEpisodeActionParams(val episodeId: Long)
 
-class DownloadEpisodeActionImpl : DownloadEpisodeAction, IntentMaker by Injector().intentMaker() {
+class DownloadEpisodeActionImpl(
+        val intentMaker: IntentMaker
+) : DownloadEpisodeAction {
 
-    override fun invoke(context: Context, params: Unit): Completable = startService<EpisodeLoaderService>(context)
+    override fun invoke(context: Context, params: DownloadEpisodeActionParams): Completable =
+            EpisodeLoaderService.intent(params.episodeId, intentMaker, context).startService(context)
 }
 
 interface CancelDownloadEpisodeAction : IntentAction<Unit>

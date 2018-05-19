@@ -12,6 +12,9 @@ import android.os.IBinder
 import android.support.v4.app.NotificationCompat
 import com.stepango.archetype.R
 import com.stepango.archetype.action.Args
+import com.stepango.archetype.action.IntentMaker
+import com.stepango.archetype.action.argsOf
+import com.stepango.archetype.action.intent
 import com.stepango.archetype.logger.logger
 import com.stepango.archetype.player.data.db.model.EpisodeDownloadState
 import com.stepango.archetype.player.data.db.model.EpisodesModel
@@ -38,13 +41,13 @@ import java.io.File
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
-/**
- * Wild, 01.07.2017.
- */
-
 const val CANCEL_DOWNLOAD_ACTION = "cancel_action"
 
 class EpisodeLoaderService : Service() {
+
+    companion object {
+        fun intent(episodeId: Long, intentMaker: IntentMaker, context: Context) = intentMaker.intent<EpisodeLoaderService>(context, argsOf { episodeId { episodeId } })
+    }
 
     val episodeLoader by lazy { EpisodeLoader(this, injector.compositeDisposableHolder()) }
 

@@ -12,6 +12,7 @@ import com.stepango.archetype.player.data.db.model.EpisodeDownloadState
 import com.stepango.archetype.player.data.db.model.EpisodesModel
 import com.stepango.archetype.player.loader.CancelDownloadEpisodeAction
 import com.stepango.archetype.player.loader.DownloadEpisodeAction
+import com.stepango.archetype.player.loader.DownloadEpisodeActionParams
 import com.stepango.archetype.player.ui.player.ShowEpisodeAction
 import com.stepango.archetype.player.ui.player.ShowEpisodeActionParams
 import com.stepango.archetype.ui.LastAdapterItem
@@ -55,7 +56,7 @@ class EpisodeListItemWrapper(
             EpisodeDownloadState.WAIT   -> ActionData.IDLE
             EpisodeDownloadState.CANCEL -> cancelDownloadEpisodeAction.noParams()
             EpisodeDownloadState.DOWNLOAD,
-            EpisodeDownloadState.RETRY  -> downloadEpisodeAction.noParams()
+            EpisodeDownloadState.RETRY  -> downloadEpisodeAction.with(DownloadEpisodeActionParams(stableId))
         }.execute(ah)
     }
 }
@@ -83,6 +84,7 @@ class EpisodeWrapper(
         private val downloadEpisodeAction: DownloadEpisodeAction,
         private val ah: ContextActionHandler
 ) {
+    val episodeId: Long = model.id
     val name: String = model.name
     val summary: String = model.summary.run { if (this.linesCount() > 1) this.firstLine() else this }
     val content: String = model.content ?: model.summary.run { if (this.linesCount() > 1) this else "" }
@@ -96,7 +98,7 @@ class EpisodeWrapper(
             EpisodeDownloadState.WAIT   -> ActionData.IDLE
             EpisodeDownloadState.CANCEL -> cancelDownloadEpisodeAction.noParams()
             EpisodeDownloadState.DOWNLOAD,
-            EpisodeDownloadState.RETRY  -> downloadEpisodeAction.noParams()
+            EpisodeDownloadState.RETRY  -> downloadEpisodeAction.with(DownloadEpisodeActionParams(episodeId))
         }.execute(ah)
     }
 }
